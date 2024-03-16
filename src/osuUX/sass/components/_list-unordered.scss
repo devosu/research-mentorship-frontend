@@ -1,0 +1,48 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+// First level.
+ul.bux-list-ul {
+	list-style: none;
+	margin-left: 0;
+	margin-top: 0;
+	padding-left: calc(#{$sp-64} - #{$sp-16});
+	font-family: $serif;
+	font-size: $ts-base;
+	line-height: 1.5;
+	li {
+		list-style-type: none;
+		margin-bottom: $sp-8;
+		&::before {
+			color: $scarlet;
+			content: "\f001";
+			font-family: $icon;
+			font-size: 7px;
+			display: inline-block;
+			width: $sp-24;
+			vertical-align: middle;
+			margin-left: calc(#{$sp-8} * -1);
+		}
+	}
+}
+// Second level.
+ul.bux-list-ul ul {
+	padding-left: $sp-48;
+	margin-top: $sp-8;
+	li {
+		&::before {
+			content: "\f002";
+		}
+	}
+}
+// Third level.
+ul.bux-list-ul ul ul {
+	padding-left: $sp-48;
+	li {
+		&::before {
+			content: "\f003";
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-card-carousel">
+  <div class="bux-card-carousel__nav bux-card-carousel__nav--left-column">
+    <div class="bux-card-carousel__nav--left" tabindex="0" aria-label="Go to previous card">
+    </div>
+  </div>
+  <div class="bux-card-carousel__container">
+    {% for item in items %}
+      {% set vars = {
+        card_image: true,
+        image_url: item.card_image,
+        card_image_alt: item.card_image_alt,
+        card_heading_level: item.card_heading_level,
+        card_heading: item.card_heading,
+        card_body: item.card_body,
+        card_url: item.card_url,
+        card_cta: item.card_cta
+      } %}
+        {% include base_path ~ directory ~ bux ~ '/twig/card.twig' with vars %}
+    {% endfor %}
+  </div>
+  <div class="bux-card-carousel__nav  bux-card-carousel__nav--right-column">
+    <div class="bux-card-carousel__nav--right" tabindex="0" aria-label="Go to next card">
+    </div>
+  </div>
+</div>

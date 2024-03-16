@@ -1,0 +1,53 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-quote {
+	border-left: 4px solid $scarlet;
+	padding: 0 0 0 $sp-32;
+
+	/*&__content {
+		@include breakpoint(md) {
+			display: flex;
+		}
+	}*/
+
+	p {
+		font-family: $serif;
+		font-size: $ts-22;
+		font-weight: 900;
+		line-height: 2rem;
+		margin: 0 0 $sp-16;
+		padding: 0;
+
+		@include breakpoint(md) {
+			font-size: $ts-md;
+			line-height: 2.25rem;
+		}
+	}
+	cite {
+		font-family: $sans;
+		font-size: $ts-18;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.5rem;
+	}
+	&__image {
+		align-self: flex-start;
+		margin: 0 0 $sp-24 0;
+		max-width: 100px;
+		position: relative;
+	
+		@include breakpoint(md) {
+			margin: 0 $sp-24 0 0;
+			position: absolute;
+		}
+	}
+	&__source {
+		font-family: $sans;
+		font-size: $ts-18;
+		font-weight: 700;
+		line-height: 1.5rem;
+	}
+}

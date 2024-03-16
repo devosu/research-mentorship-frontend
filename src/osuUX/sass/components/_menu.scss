@@ -1,0 +1,550 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+div.bux-container--menu {
+
+    position: relative;
+    z-index: 999;
+
+  nav.disclosure-nav {
+    &.disclosure-nav-closed {
+      display: none;
+    }
+
+    button.disclosure-nav-button {
+      background-color: transparent;
+      border: none;
+
+      &::after {
+        // Down arrow
+        font-family: bux-icons; 
+        content: "\f010";
+        color: $gray-dark-80;
+        position: relative;
+        top: -1px;
+        left: 4px;
+      }
+
+      &[aria-expanded=true] {
+        &::after {
+          // Up arrow
+          content: "\f011";
+        }
+      }
+      
+      &[aria-expanded=false] {
+        &::after {
+          // Down arrow
+          content: "\f010";
+        }
+      }
+    }
+
+    a, span {
+      color: $gray-dark-80;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      font-family: $sans;
+      font-size: $ts-base;
+      font-weight: 700;
+
+      &.disclosure-nav-submenu-open {
+        display: block;
+      }
+
+      &.disclosure-nav-submenu-closed {
+        display: none;
+      }
+    }
+
+    &.disclosure-nav-orientation-horizontal {
+
+      & > ul > li {
+        display: inline-flex;
+        position: relative;
+        margin: $sp-12 $sp-16 0;
+
+        &:hover {
+          a.bux-menu__link,
+          span.bux-menu__link,
+          button.disclosure-nav-button-no-link {
+            border-bottom-color: $gray-dark-40;
+
+            &.bux-menu__link--active {
+              border-bottom-color: $gray-dark-40;
+
+              & + button {
+                border-bottom-color: $gray-dark-40;
+              }
+            }
+
+            & + button {
+              border-bottom-color: $gray-dark-40;
+            }
+          }
+        }
+
+        & > a,
+        & > span {
+          &.bux-menu__link {
+            float:inline-block;
+            min-width: 44px;
+            padding: 0 0 $sp-4 0;
+            color: $gray-dark-80;
+            text-decoration: none;
+            border-bottom: 4px solid $clear;
+            white-space: nowrap;
+
+            &.bux-menu__link--active {
+              border-bottom-color: $scarlet;
+
+              & + button {
+                border-bottom-color: $scarlet;
+              }
+            }
+          }
+        }
+
+        & > button {
+          border-bottom: 4px solid $clear;
+        }
+
+        li {
+          display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+
+          &:first-child {
+            border-top: 2px solid $gray-light-80;
+          }
+          &:last-child {
+            border-bottom: 2px solid $gray-light-80;
+          }
+
+          a, span, button.disclosure-nav-button-no-link {
+            display: block;
+            padding: $sp-12 $sp-64 $sp-12 $sp-12;
+            background-color: $white;
+            white-space: normal;
+            border-bottom: none;
+            border-left: $sp-4 solid $clear;
+
+            &:hover, &:focus {
+              border-left-color: $gray-dark-60;
+              background-color: $gray-light-90;
+            }
+
+            &.bux-menu__link--active {
+              border-bottom-color: $clear;
+              border-left-color: $scarlet;
+            }
+          }
+        }
+
+        ul {
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          width: 15rem;
+          padding: $sp-8 0 $sp-8 0;
+
+          ul {
+            top: 0;
+            left: 100%;
+          }
+
+          button {
+
+            float: right;
+            position: relative;
+
+            &.disclosure-nav-button-no-link {
+              float: none;
+              text-align: left;
+              width: 100%;
+            }
+
+            &::after {
+              position: absolute;
+              top: 25%;
+              right:0;
+              left:auto;
+            }
+
+            &[aria-expanded=true] {
+              &::after {
+                content: "\f111";
+              }
+            }
+            
+            &[aria-expanded=false] {
+              &::after {
+                content: "\f111";
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.disclosure-nav-orientation-vertical {
+
+    background-color: $white;
+      ul {
+        background-color: $white;
+
+        li {
+          position: relative;
+          margin: $sp-12 $sp-16 0 $sp-16;
+        }
+        
+        a, span, button.disclosure-nav-button-no-link {
+          display: block;
+          border-bottom: none;
+          white-space: normal;
+          border-left: $sp-4 solid $clear;
+          padding: $sp-12;
+
+          &.disclosure-nav-item-with-submenu {
+            padding-right: 2.45rem;
+          }
+    
+          &:hover, &:focus {
+            color: $gray-dark-80;
+            border-left-color: $gray-dark-60;
+            background-color: $gray-light-90;
+          }
+    
+          &.bux-menu__link--active {
+            border-left-color: $scarlet;
+          }
+
+        }
+
+        button.disclosure-nav-button {
+
+          position: absolute;
+          right:0.45rem;
+          top: 0.45rem;
+          padding:0;
+          height: 2rem;
+          width: 2rem;
+
+          background-color: $gray-light-90;
+
+          &.disclosure-nav-button-no-link {
+            position: static;
+            right: auto;
+            top: auto;
+            float: none;
+            text-align: left;
+            width: 100%;
+            height:auto;
+            background-color: $white;
+
+            &::after {
+              position: absolute;
+              top: 1.25rem;
+              right:1.25rem;
+              left:auto;
+            }
+
+            &:hover::after {
+              border-right-color: $gray-dark-80;
+              border-bottom-color: $gray-dark-80;
+            }
+          }
+
+          &:hover {
+            background-color: $gray-dark-60;
+            cursor:pointer;
+          }
+
+          &::after {
+            // Pure CSS Chevron.
+            content: '';
+            display: inline-block;
+            border-right: 2px solid $gray-dark-80;
+            border-bottom: 2px solid $gray-dark-80;
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            top:0;
+            left:0;
+          }
+
+          &:hover::after {
+            border-right-color: $white;
+            border-bottom-color: $white;
+          }
+          
+          &[aria-expanded=true] {
+            &::after {
+              transform:rotate(45deg);
+              transition: 120ms transform ease-in-out;
+            }
+          }
+
+          &[aria-expanded=false] {	
+            &::after {
+              transform:rotate(-45deg);
+              transition: 120ms transform ease-in-out;
+            }
+          }
+        }
+
+        ul {
+          // Second level submenus.
+          li {
+            margin-top: 0;
+
+            // ul {
+            //   // Third level submenus.
+            //   li {
+                
+            //   }
+
+            //   ul {
+            //     // Fourth level submenus.
+            //     li {
+
+            //     }
+            //   }
+            // }
+          }
+        }
+      }
+
+    }
+
+    &.disclosure-nav-responsive {
+      width: 100%;
+    }
+
+  }
+
+  button.disclosure-nav-toggle {
+    @include button-reset();
+    background-color: $gray-light-90;
+    color: $gray-dark-80;
+    width: 100%;
+    padding: 0.5rem 50px 0.5rem 0.5rem;
+    text-align: right;
+    position: relative;
+    touch-action: manipulation;
+    font-weight: 700;
+    height: 46px;
+    
+    &:focus,
+    &:hover
+    {
+      background-color: $gray-light-90;
+      color: $gray-dark-80;
+      outline-color: $gray-dark-80;
+      
+      span {
+        &,
+        &::before,
+        &::after
+        {
+          background:$gray-dark-80;
+        }
+      }
+    }
+    
+    &[aria-expanded=false] {
+      // Hamburger icon.
+      span {
+        position: absolute;
+        right:1rem;
+        top:45%;
+        
+        &,
+        &::before,
+        &::after
+        {
+          cursor:pointer;
+          border-radius:1px;
+          height:3px;
+          width:20px;
+          background: $gray-dark-80;
+          position:absolute;
+          display:block;
+          content:'';
+        }
+        
+        &::before {
+          top:-5px;
+        }
+        
+        &::after {
+          bottom:-5px;
+        }
+      }
+    }
+
+    &[aria-expanded=true] {
+      // Close "X" icon.
+      span {
+        &::before, &::after {
+          cursor:pointer;
+          position: absolute;
+          right: 1.5rem;
+          top: 25%;
+          content: ' ';
+          height: 20px;
+          width: 2px;
+          background-color: $gray-dark-80;
+        }
+        &::before {
+          transform: rotate(45deg);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .bux-menu__link, .disclosure-nav-button,  button.disclosure-nav-toggle, button.disclosure-nav-button-no-link {
+    &:focus {
+      outline: 2px solid $focus;
+      outline-offset: 0px;
+    }
+  }
+
+  button.disclosure-nav-toggle {
+    &:focus {
+      outline-offset: -2px;
+    }
+  }
+
+}
+
+.bux-container--menu {
+  .disclosure-nav-closed .bux-menu__search {
+		display: none;
+	}
+
+	.disclosure-nav-open .bux-menu__search {
+		display: flex;
+        margin-top: $sp-16;
+		width: 100%;
+		padding: 0 $sp-16;
+
+		.bux-form__text-field--menu-search__wrapper {
+			width: 100%;
+		}
+
+		#menuSearchBtn {
+			display: none;
+		}
+
+		.bux-from__text-field--menu-search,
+		.bux-search__submit {
+			display: inline;
+		}
+		
+		.bux-search__submit {
+			margin-top: 2px;
+		}
+
+		
+	}
+
+	.bux-search__submit {
+		margin-top: 6px;
+		&::after {
+			color: $scarlet;
+		}
+	}
+
+	#searchIcon {
+		font-size: 1.25rem;
+	}
+
+
+
+	@include breakpoint(md) {
+		.bux-menu__search {
+			flex-grow: 2;
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: flex;
+			justify-content: flex-end;
+			padding-right: $container-gutter;
+			height: 46px;
+
+			&.active {
+				background-color: $gray-light-90;
+				width: 100%;
+
+				.bux-from__text-field--menu-search,
+				.bux-search__submit {
+					display: inline;
+				}
+			}
+
+			.bux-form__text-field--menu-search__wrapper {
+				position: relative;
+				width: 33%;
+			}
+
+			.bux-from__text-field--menu-search {
+				margin: 0;
+				height: 46px;
+			}
+		}
+		#menuSearchBtn {
+			display: block;
+			background: none;
+			border: none;
+			color: $scarlet;
+			height: 43px;
+			margin-top: 3px;
+
+			i::before {
+				font-size: rem-calc(20);
+			}
+		}
+	}
+	@include breakpoint(lg) {
+		.bux-menu__search {
+			padding-right: ($container-gutter * 2);
+		}
+	}
+}
+
+.bux-container.bux-grid.bux-container--menu {
+	padding: 0;
+	height: 46px;
+}
+
+@include breakpoint(md) {
+		
+	.bux-container.bux-grid.bux-container--menu {
+		padding-left: 48px;
+		padding-right: 48px;
+	}
+}
+
+@include breakpoint(lg) {
+		
+	.bux-container.bux-grid.bux-container--menu {
+		padding-left: 112px;
+		padding-right: 112px;
+	}
+}
+
+@include breakpoint(md) {
+		
+	.bux-menu--with-search ul.bux-menu {
+		margin-top: 0;
+	}
+}

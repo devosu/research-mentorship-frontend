@@ -1,0 +1,92 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+@mixin pagination($link-color: $scarlet, $active-bg: $gray-light-80) {
+	font-family: $sans;
+	margin-top: 4px;
+
+	.bux-pagination__list {
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.bux-pagination__item {
+		
+	}
+
+	.bux-pagination__link {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: $ts-base;
+		font-weight: 600;
+		color: $link-color;
+		text-decoration: none;
+		height: 40px;
+		width: 40px;
+		padding: $sp-8; 
+		text-align: center;
+
+		&:hover {
+			background-color: $active-bg;
+			color: $gray-dark-80;
+		}
+		&:focus {
+			position: relative;
+			outline: 2px solid $focus;
+		}
+	}
+
+	.bux-pagination__link--truncated {
+		&:hover {
+			background-color: $clear;
+			color: $link-color;
+		}
+	}
+
+	.bux-pagination__link--previous:before,
+	.bux-pagination__link--next:after {
+		font-family: $icon;
+		font-size: $ts-20;
+		line-height:0;
+		vertical-align: rem-calc(-5);
+	}
+
+	.bux-pagination__link--previous:before {
+		content: "\f004";
+		font-weight: 400;
+	}
+
+	.bux-pagination__link--next:after {
+		content: "\f005";
+		font-weight: 400;
+	}
+
+	.bux-pagination__link--truncated:before {
+		font-family: $icon;
+		content: "\f00d";
+		font-size: $ts-xs;
+		color: $gray-dark-80; 
+	}
+
+	.bux-pagination__link--current {
+		background-color: $active-bg;
+		color: $gray-dark-80;
+		cursor: default;
+	}
+}
+
+.bux-pagination {
+	@include pagination();
+}
+
+.bux-pagination--alt {
+	@include pagination($scarlet, $white);
+}
+
+.bux-pagination--reverse {
+	@include pagination($white, $white);
+}

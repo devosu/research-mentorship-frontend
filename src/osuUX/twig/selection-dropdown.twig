@@ -1,0 +1,27 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+{% set random_seed = random() %}
+{% set selection_dropdown_id = "selection-dropdown-" ~ random_seed %}
+
+<div class="bux-selection-dropdown">
+	<label class="bux-selection-dropdown__label" for="bux-selection-dropdown__{{ selection_dropdown_id }}">{{ input_label }}{% if required %} <span class="bux-text-field__required">{{required}}</span>{% endif %}</label>
+	<span class="bux-selection-dropdown__helper-text" id="bux-selection-dropdown__helper-text-{{ random_seed }}">{{ helper_text }}</span>
+	<div class="bux-selection-dropdown__input{% if modifier %} bux-selection-dropdown__input--{{ modifier }}{% endif %}">
+    <select id="bux-selection-dropdown__{{ selection_dropdown_id }}" 
+		aria-describedby="{% if "error" in modifier %}bux-selection-dropdown__error-message-{{ random_seed }} {% endif %}bux-selection-dropdown__helper-text-{{ random_seed }}" 
+		{% if required %} required {% endif %} 
+		{% if "disabled" in modifier %} disabled {% endif %}
+		{% if "error" in modifier %} aria-invalid="true" {% endif %}>
+    	<option>{{ dropdown_label }}</option>
+		{% for item in items %}
+			<option value="{{ item.text }}">{{ item.text }}</option>
+		{% endfor %}
+	</select>
+</div>
+{% if "error" in modifier %}
+	<span class="bux-selection-dropdown__error-message" id="bux-selection-dropdown__error-message-{{ random_seed }}">{{ error_helper_text }}</span>
+{% endif %}
+</div>
