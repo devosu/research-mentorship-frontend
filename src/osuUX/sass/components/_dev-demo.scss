@@ -1,0 +1,22 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.menu-placeholder {
+	background-color: $gray-light-90;
+	height: 40px;
+	display: flex;
+	align-items: center;
+}
+
+.main-content {
+	min-height: 100px;
+}
+
+.bux-lead {
+	font-family: $sans;
+	font-size: $ts-md;
+	font-weight: 700;
+	line-height: 1.3;
+}

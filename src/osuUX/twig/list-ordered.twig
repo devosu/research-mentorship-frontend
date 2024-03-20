@@ -1,0 +1,32 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<ol class="bux-list-ol">
+	{% for item in list_items %}
+		{% if item.level2_items %}
+			<li>
+				{{- item.text -}}
+				<ol>
+					{% for item in item.level2_items %}
+						{% if item.level3_items %}
+							<li>
+								{{- item.text -}}
+								<ol>
+									{% for item in item.level3_items %}
+										<li>{{- item.text -}}</li>
+									{% endfor %}
+								</ol>
+							</li>
+						{% else %}
+							<li>{{- item.text -}}</li>
+						{% endif %}
+					{% endfor %}
+				</ol>
+			</li>
+		{% else %}
+			<li>{{- item.text -}}</li>
+		{% endif %}
+	{% endfor %}
+</ol>

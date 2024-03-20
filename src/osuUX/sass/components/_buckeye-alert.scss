@@ -1,0 +1,42 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-buckeye-alert {
+  background-color: $scarlet;
+  padding: $sp-16 $sp-12;
+
+  h2 {
+    @include visually-hidden;
+  }
+
+  a {
+    @include link-base("scarlet", "no");
+  }
+
+  p {
+    color: $white;
+    font-family: $sans;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .bux-buckeye-alert-container {
+    display: flex;
+
+    .bux-buckeye-alert-container__icon {
+      line-height: 1;
+      margin-right: $sp-16;
+
+      &:after {
+        content: "\f301";
+        font-family: $icon;
+        font-size: $ts-md;
+        color: $white;
+      }
+    }
+  }
+}

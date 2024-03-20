@@ -1,0 +1,193 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+// Set breakpoint value for displaying links without toggle.
+$navbar-bp: lg;
+
+.bux-osu-nav {
+	background-color: $white;
+	font-family: $sans;
+	padding: 10px 0;
+	position: relative;
+	border-bottom: 2px solid $gray-light-60;
+
+	.bux-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	@include breakpoint($navbar-bp) {
+		padding: $sp-12 0;
+	}
+
+	&__overlay {
+		display: none;
+		height: 100vh;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100vw;
+		z-index: 999;
+	}
+	&__wrapper {
+		position: relative;
+		z-index: 1000;
+	}
+}
+
+.bux-osu-nav__osu-logo-link {
+	display: inline-block;
+	&:focus {
+		outline: 2px solid $focus;
+	}
+}
+
+#osu-navname-block, .bux-osu-nav__osu-logo-img {
+	height: 35px;
+	@include breakpoint($navbar-bp) {
+		height: 50px;
+	}
+}
+
+// Only display links at md and above, unless #osu-nav-trigger is clicked.
+#osu-navlinks {
+	display: none;
+
+	@include breakpoint($navbar-bp) {
+		display: block;
+	}
+}
+
+// Menu trigger for navlinks at smaller breakpoints.
+#osu-navlinks-block button {
+	background: none;
+	display: inline-block;
+	width: 44px;
+	height: 44px;
+	position: relative;
+	right: -12px;
+	z-index: 99;
+	text-align: center;
+	border: none;
+	border-left: 2px solid $gray-light-20;
+	padding-top: 10px;
+	padding-left: 14px;
+	z-index: 100;
+
+	&::after {
+		font-family: $icon;
+		content: "\f00e";
+		color: $gray-dark-80;
+		font-size: 20px;
+		cursor: pointer;
+		font-weight: 700;
+	}
+
+	// Don't display trigger at designated breakpoint and above.
+	@include breakpoint($navbar-bp) {
+		display: none;
+	}
+}
+
+// Show links if trigger is clicked.
+#osu-nav-trigger[aria-expanded="true"] ~ #osu-navlinks {
+	display: block;
+	background-color: $white;
+	padding: rem-calc(55 20 20);
+	left: 0;
+	width: 100%;
+	margin: 0;
+	top: 0;
+	position: absolute;
+	z-index: 99;
+	
+	@include breakpoint($navbar-bp) {
+		background-color: $clear;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+// Change button icon if menu is open.
+#osu-nav-trigger[aria-expanded="true"] {
+	position: relative;
+	border-left: none;
+	z-index: 999;
+
+	@include breakpoint(md) {
+		margin-right: -2px;
+	}
+
+	&::after {
+		content: "\f105";
+	}
+
+	&::before {
+		color: $gray-dark-80;
+		content: "";
+		font-family: $sans;
+		font-weight: 700;
+		position: absolute;
+		right: 50px;
+		top: 10px;
+	}
+}
+
+// Style links.
+.bux-osu-nav__link {
+	@include breakpoint($navbar-bp) {
+		padding: $sp-12;
+	}
+	border-bottom: 2px solid $gray-light-60;
+
+	&:first-child {
+		border-top: 2px solid $gray-light-60;
+	}
+
+	a {
+		@include link-base(light, no);
+		border-bottom: none;
+		color: $gray-dark-60;
+		display: block;
+		padding: $sp-12;
+		font-weight: 700;
+		@include breakpoint($navbar-bp) {
+			display: inline;
+			padding: 0;
+		}
+		&:hover,
+		&:focus {
+			border-left: 4px solid #3f4443;
+			padding-left: 8px;
+			color: $scarlet;
+
+			@include breakpoint($navbar-bp) {
+				border-left: none;
+				padding-left: 0;
+			}
+		}
+	}
+
+	@include breakpoint($navbar-bp) {
+		display: inline-block;
+		margin: 0;
+		margin-left: $sp-8;
+		border-bottom: none;
+
+		&:first-child {
+			border-top: none;
+		}
+
+		a {
+			font-size: $ts-base;
+
+			&:hover {
+				color: $scarlet;
+				border-bottom: 1px solid $scarlet;
+			}
+		}
+	}
+}

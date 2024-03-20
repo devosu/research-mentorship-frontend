@@ -1,0 +1,88 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+// Heading mixin.
+
+@mixin heading(
+  $size,
+  $height,
+  $weight,
+  $color: $gray-dark-80,
+  $font: $sans,
+  $link-color: $scarlet
+) {
+  font-size: $size;
+  line-height: rem-calc($height);
+  font-weight: $weight;
+  font-family: $font;
+  color: $color;
+  margin: 0;
+  margin-bottom: $sp-8;
+  a {
+    text-decoration: none;
+    color: $link-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Heading elements at small breakpoint.
+@include breakpoint(sm) {
+  h1,
+  .bux-h1 {
+    @include heading($ts-28, 36, 900, $font: $serif);
+  }
+  h2,
+  .bux-h2 {
+    @include heading($ts-md, 30, 800);
+  }
+  h3,
+  .bux-h3 {
+    @include heading($ts-20, 26, 600);
+  }
+  h4,
+  .bux-h4 {
+    @include heading($ts-18, 24, 600);
+  }
+  h5,
+  .bux-h5 {
+    @include heading($ts-base, 24, 600);
+  }
+  h6,
+  .bux-h6 {
+    @include heading($ts-base, 24, 600);
+  }
+
+  // Alternate headings.
+  h1.bux-h1--alt {
+    @include heading($ts-28, 36, 800);
+  }
+
+  h2.bux-h2--alt {
+    @include heading($ts-20, 26, 600);
+  }
+}
+
+// Heading modifications at medium and up.
+@include breakpoint(md) {
+  h1,
+  .bux-h1 {
+    @include heading($ts-xl, 48, 900, $font: $serif);
+  }
+  h2,
+  .bux-h2 {
+    @include heading($ts-28, 36, 800);
+  }
+  h3,
+  .bux-h3 {
+    @include heading($ts-20, 26, 600);
+  }
+
+  // Alternate headings.
+  h1.bux-h1--alt {
+    @include heading($ts-xl, 48, 800);
+  }
+}

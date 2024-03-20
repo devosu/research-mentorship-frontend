@@ -1,0 +1,16 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-listicle">
+	{% for item in items %}
+		<div class="bux-listicle__item {% if modifier %} bux-listicle__item--{{modifier}} {% endif %}">
+			<h{{heading_level|default(2)}} class="bux-listicle__title">
+				<span class="bux-listicle__title-number">{{ loop.index }}</span>
+				<span class="bux-listicle__title-text">{{ item.title }}</span>
+			</h{{heading_level|default(2)}}>
+			<div class="bux-listicle__text">{{ item.text }}</div>
+		</div>
+	{% endfor %}
+</div>

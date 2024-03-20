@@ -1,0 +1,15 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-link-example{% if modifier %} bux-link-example--{{ modifier }}{% endif %}">
+<p>This is an 
+    <a class=
+        "bux-link{% if modifier %} bux-link--{{ modifier }}{% endif %}" 
+        href="{{ link_url }}" 
+        {% for attribute in attributes %} 
+            {{attribute.label}}="{{attribute.value}}" 
+        {% endfor %}>{{ link_text }}</a>.
+</p>
+</div>

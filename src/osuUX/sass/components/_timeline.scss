@@ -1,0 +1,178 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-timeline {
+  position: relative;
+  padding: $sp-24;
+
+  // Vertical line.
+  &::before {
+    content: "";
+    margin-left: $sp-4;
+    position: absolute;
+    top: 0;
+    left: $sp-24;
+    height: 100%;
+    width: $sp-4;
+    background: $gray-light-40;
+  }
+
+  // Arrow.
+  &__item::after {
+    margin-left: 0;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: $gray-light-80;
+    border-width: rem-calc(16);
+    top: rem-calc(10);
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: $sp-48;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__marker {
+    width: $sp-12;
+    height: $sp-12;
+    position: absolute;
+    background: $white;
+    box-shadow: 0 0 0 $sp-4 $scarlet;
+    border-radius: 50%;
+    margin-top: rem-calc(20);
+  }
+
+  &__content {
+    padding: $sp-16 $sp-24;
+    margin-left: rem-calc(32);
+    background-color: $white;
+    border: 2px solid $gray-light-80;
+    border-top: 0;
+    box-shadow: 0 -4px 0 0 $scarlet;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__heading {
+    font-size: $ts-22;
+    color: $gray-dark-80;
+    font-weight: 700;
+    margin-bottom: $sp-4;
+    @include breakpoint(md) {
+      font-size: $ts-md;
+      line-height: 1.25;
+    }
+  }
+
+  &__date {
+    font-size: $ts-18;
+    color: $gray-dark-40;
+    font-weight: 600;
+    margin-bottom: $sp-16;
+  }
+}
+
+// Right Variant.
+.bux-timeline--right {
+  // Vertical line.
+  &::before {
+    left: auto;
+    right: calc(#{$sp-24} + #{$sp-4});
+  }
+
+  // Arrow.
+  .bux-timeline__item::after {
+    margin-left: 0;
+    right: 0;
+    border-left-color: $gray-light-80;
+    border-right-color: transparent;
+  }
+
+  .bux-timeline__marker {
+    margin-left: 0;
+    right: 0;
+  }
+
+  .bux-timeline__content {
+    margin-left: 0;
+    margin-right: rem-calc(32);
+  }
+}
+
+// Center Variant.
+// Only valid at md breakpoint and above.
+// Uses default timeline styles below md.
+@include breakpoint(md) {
+  .bux-timeline--center {
+    &::before {
+      left: 50%;
+      margin-left: 0;
+    }
+
+    .bux-timeline__row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: $sp-24;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .bux-timeline__item {
+      flex-basis: 50%;
+      max-width: 50%;
+      padding: 0 $sp-16 * 0.75;
+      width: 100%;
+
+      &::after {
+        margin-left: -$sp-24;
+        left: 100%;
+        border-left-color: $gray-light-80;
+        border-right-color: transparent;
+      }
+
+      .bux-timeline__marker {
+        margin-left: -$sp-4;
+        left: 100%;
+      }
+
+      .bux-timeline__content {
+        margin-left: 0;
+        margin-right: $sp-16 * 0.75;
+      }
+    }
+
+    .bux-timeline__item--even {
+      margin-left: auto;
+
+      &::after {
+        margin-left: -$sp-16;
+        left: auto;
+        border-right-color: $gray-light-80;
+        border-left-color: transparent;
+      }
+
+      .bux-timeline__marker {
+        left: auto;
+        margin-left: -$sp-16;
+      }
+
+      .bux-timeline__content {
+        margin-right: 0;
+        margin-left: $sp-16;
+      }
+    }
+  }
+}

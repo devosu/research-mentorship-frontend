@@ -1,0 +1,15 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<ul class="bux-social-links{% if background_color %} bux-social-links--{{ background_color }}{% endif %}">
+  {% for social_link in social_links %}
+  <li class="bux-social-links__item bux-social-links__item--{{ social_link.name }}">
+    <a class="bux-social-links__link" href="{{ social_link.url }}" target="_blank">
+      <span class="visually-hidden">{{ social_link.name }} profile — external</span>
+      <span class="icon {{ social_link.icon }}" aria-hidden="true"></span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

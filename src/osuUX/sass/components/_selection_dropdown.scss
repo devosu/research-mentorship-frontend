@@ -1,0 +1,80 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-selection-dropdown {
+  @include form-element;
+
+  &__input {
+    position: relative;
+    margin-top: $sp-8;
+
+    select {
+      appearance: none;
+      background: $white;
+      border: 2px solid $gray-dark-80;
+      border-radius: 0;
+      width: 100%;
+      height: 44px;
+      padding-left: $sp-8;
+
+      &:focus {
+        outline: 2px solid $focus;
+      }
+
+      &:focus:not(:focus-visible) {
+        outline: none !important;
+      }
+
+      option {
+        background-color: $white;
+        padding: 15px 0;
+        border: 2px solid $gray-dark-80;
+      }
+    }
+
+    &:before {
+      content: "\f010";
+      font-size: 22px;
+      font-family: "bux-icons";
+      background-color: $white;
+      color: $gray-dark-80;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      bottom: 2px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-top: 5px;
+      pointer-events: none;
+    }
+
+    &--disabled select {
+      color: $gray-light-40;
+      border-color: $gray-light-40;
+      background-color: $gray-light-80;
+      cursor: not-allowed;
+      opacity: 1;
+    }
+
+    &--disabled:before {
+      background-color: $gray-light-80;
+      color: $gray-light-40;
+    }
+
+    &--error > select {
+      background: #ffeff2;
+      border-color: $scarlet;
+    }
+
+    &--error:before {
+      background: #ffeff2;
+    }
+  }
+
+  &__error-message {
+    @include form-error-message;
+    margin-top: 8px;
+  }
+}

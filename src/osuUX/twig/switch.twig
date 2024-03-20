@@ -1,0 +1,29 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+{% set random_seed = random() %}
+{% set switch_id = "switch-" ~ random_seed %}
+
+<div class="bux-switch">
+  <fieldset class="bux-switch__fieldset" id="bux-switch__{{ switch_id }}" aria-describedby="{% if "error" in modifier %} bux-switch__error-message {% endif %}bux-switch__helper-text-{{ random_seed }}"
+  {% if required %} required {% endif %}
+  {% if "error" in modifier %} aria-invalid="true" {% endif %}>
+  <legend class="bux-switch__legend">{{ legend }}{% if required %} <span class="bux-switch__required">{{required}}</span>{% endif %}</legend>
+  <span class="bux-switch__helper-text" id="bux-switch__helper-text-{{ random_seed }}">{{ helper_text }}</span>
+  <div class="bux-switch__input-spacer">
+    {% for item in items %}
+      {% set random_seed_option = random() %}
+      {% set switch_option_id = "bux-switch__option-" ~ random_seed_option %}
+      <div class="bux-switch__option{% if modifier %} bux-switch__option--{{ modifier }}{% endif %}">
+        <input type="checkbox" id="{{ switch_option_id }}" {% if "disabled" in modifier %} disabled {% endif %}>
+        <label for="{{ switch_option_id }}">{{ item.text }}</label>
+      </div>
+    {% endfor %}
+  </div>
+  {% if "error" in modifier %}
+    <span class="bux-switch__error-message" id="bux-switch__error-message-{{ random_seed }}">{{ error_helper_text }}</span>
+  {% endif %}
+</fieldset>
+</div>

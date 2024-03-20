@@ -1,0 +1,32 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-timeline {% if modifier %}bux-timeline--{{ modifier }}{% endif %}">
+	{% if modifier == 'center' %}
+		{% for item in items %}
+		<div class="bux-timeline__row">
+			<div class="bux-timeline__item{% if loop.index is even %} bux-timeline__item--even{% endif %}">
+				<div class="bux-timeline__marker" aria-hidden="true"></div>
+				<div class="bux-timeline__content">
+					<h{{ timeline_heading_level|default(3) }} class="bux-timeline__heading">{{ item.timeline_heading }}</h{{ timeline_heading_level|default(3) }}>
+					<div class="bux-timeline__date">{{ item.timeline_date }}</div>
+					{{ item.timeline_content }}
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	{% else %}
+		{% for item in items %}
+		<div class="bux-timeline__item">
+			<div class="bux-timeline__marker" aria-hidden="true"></div>
+			<div class="bux-timeline__content">
+				<h{{ timeline_heading_level|default(3) }} class="bux-timeline__heading">{{ item.timeline_heading }}</h{{ timeline_heading_level|default(3) }}>
+				<div class="bux-timeline__date">{{ item.timeline_date }}</div>
+				{{ item.timeline_content }}
+			</div>
+		</div>
+		{% endfor %}
+	{% endif %}
+</div>

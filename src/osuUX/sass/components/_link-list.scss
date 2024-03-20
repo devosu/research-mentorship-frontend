@@ -1,0 +1,38 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-link-list {
+  font-size: $ts-base;
+
+  &__item {
+    border-top: 2px solid $gray-light-80;
+    padding: $sp-16;
+
+    &:only-child {
+      border-bottom: 2px solid $gray-light-80;
+    }
+  }
+  &__text {
+    margin-top: $sp-8;
+  }
+  .bux-text-link {
+    display: block;
+    font-weight: 700;
+    margin-right: 0;
+    padding-right: $sp-24;
+    position: relative;
+
+    &:after {
+      font-weight: 400;
+      padding-left: $sp-8;
+      right: $sp-8;
+    }
+    &:hover {
+      &:after {
+        right: 0;
+      }
+    }
+  }
+}
