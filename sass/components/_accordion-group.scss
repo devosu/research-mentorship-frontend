@@ -1,0 +1,156 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-accordion {
+	border-bottom: 2px solid $gray-light-80;
+}
+
+.bux-accordion__heading {
+	margin-bottom: 0;
+}
+
+.bux-accordion__trigger {
+	@include button-reset;
+	color: $gray-dark-80;
+	background-color: $white;
+	border-top: 2px solid $gray-light-80;
+	padding: $sp-16;
+	width: 100%;
+	text-align: left;
+	position: relative;
+	&:focus,
+	&:hover {
+		color: $gray-dark-80;
+		background: $gray-light-90;
+		border: none;
+		border-top: 2px solid $gray-light-80;
+	}
+	&:focus {
+        outline: 2px solid $focus;
+		outline-offset: -2px;
+	}
+}
+
+.bux-accordion__trigger[aria-expanded="true"] {
+	background: $white;
+	&:hover {
+		background: $gray-light-90;
+	}
+}
+
+.bux-accordion__title {
+	font-size: $ts-base;
+	display: block;
+	pointer-events: none;
+	font-weight: 700;
+	padding-left: rem-calc(26);
+}
+
+.bux-accordion__icon:before {
+	position: absolute;
+	color: $scarlet;
+	font-size: $ts-base;
+	left: $sp-16;
+	top: 36%;
+	content: "\f005";
+	font-family: $icon;
+}
+
+.bux-accordion__trigger[aria-expanded="true"] .bux-accordion__icon:before {
+	content: "\f007";
+}
+
+.bux-accordion__panel {
+	margin: 0;
+	padding: rem-calc(8 16 24 44);
+	font-family: $sans;
+	font-size: $ts-base;
+	background-color: $white;
+}
+
+/* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
+.bux-accordion__panel[hidden] {
+	display: none;
+}
+
+/* Fix for accordion list font family */
+
+.bux-accordion ul.bux-list-ul {
+	font-family: $sans;
+}
+
+.bux-details {
+	width: 100%;
+	text-align: left;
+}
+
+.bux-details__summary {
+	list-style: none;
+	border-top: none;
+	border-bottom: 2px solid $gray-light-80;
+	padding: $sp-16;
+	font-size: $ts-base;
+	font-weight: 700;
+	line-height: normal;
+
+	
+	&:focus,
+	&:hover {
+		background: $gray-light-90;
+	}
+	&:focus {
+		outline-offset: -2px;
+		outline: 2px solid $focus;
+	}
+
+	&:before {
+		position: relative;
+		top: 2px;
+		margin-right: rem-calc(10);
+		color: $scarlet;
+		font-size: $ts-base;
+		content: "\f005";
+		font-family: $icon;
+	}
+}
+
+.bux-details__wrapper .bux-detail:first-child .bux-details__summary {
+	border-top: 2px solid $gray-light-80;
+}
+
+.bux-details__inner {
+	padding: rem-calc(8 16 24 44);
+
+	ul.bux-list-ul {
+		font-family: $sans;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// When open.
+.bux-details[open] {
+	border-bottom: 2px solid $gray-light-80;
+
+	.bux-details__summary {
+		background: $white;
+		border-bottom: none;
+
+		&:hover {
+			background: $gray-light-90;
+		}
+
+		&:before {
+			content: "\f007";
+		}
+	}
+}
+
+// Fix for double arrow in Safari
+*::-webkit-details-marker {
+	display: none;
+}

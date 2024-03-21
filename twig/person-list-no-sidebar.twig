@@ -1,0 +1,43 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-grid__cell bux-grid__cell--12@sm">
+            
+    {% include base_path ~ directory ~ bux ~ '/twig/breadcrumb.twig' %} 
+    <h1>H1 page title</h1>
+    <div class="page-subhead">One to three concise sentences of introtext informs visitors what the purpose of the
+        webpage is. It helps users quickly decide if they’re in the right place or not.</div>
+</div>
+
+{% for i in 0..5 %}
+    
+    <div class="bux-grid__cell bux-grid__cell--12 person-row bux-mar-top-sp-32">
+          <!-- start person -->
+        <div class="person-name"> 
+            <span style="font-size: 1.25rem; font-weight: 700;">FirstName LastName</span>
+            <span style="color: #a7b1b7;">pronouns</span>
+            <span>Title One</span>
+            <span>Title Two</span>
+            <span style="text-transform: uppercase; color: #a7b1b7;">Primary Unit Name</span>
+        </div>
+    
+        <div class="person-contact"> 
+           <div class="icon">
+                <span class="icon-envelope"></span>
+                <div><strong>Email</strong> name.#@osu.edu</div>
+            </div>
+            
+            <div class="icon">
+                <span class="icon-phone"></span>
+                <div><strong>Phone</strong> 123-456-7890</div>
+            </div>
+        </div>
+        <div class="person-image">
+            <img class="bux-quote__image" style="position:relative;" src={{ "/images/placeholders/bux-image-placeholder-1-1.png"|path }} alt="">
+        </div>
+            <!-- end person -->
+  </div>
+
+{% endfor %}

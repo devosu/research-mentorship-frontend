@@ -1,0 +1,52 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-featured-card {
+
+  flex-direction: column-reverse;
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+
+  .bux-featured-card--image {
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+
+      @include breakpoint(md) {
+        max-width: calc(100% + 8.33% + 8.33%);
+        width: auto;
+      }
+      
+    }
+  }
+
+  .bux-featured-card--wrapper {
+    align-self: center;
+    max-width: 100%;
+    margin-left: 0;
+
+    @include breakpoint(md) {
+      margin-right: -8.33%;
+    }
+    
+  }
+
+  &--image-left {
+
+    @include breakpoint(md) {
+      flex-direction: row-reverse;
+
+      .bux-featured-card--wrapper {
+        margin-right: 0;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,26 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-qa {% if modifier %} bux-qa--{{modifier}} {% endif %}">
+	{% for item in items %}
+		<div class="bux-qa__item">
+			<h{{heading_level|default(2)}} class="bux-qa__question">
+				{% if modifier != "storytelling" %}
+				<span class="bux-qa__question-marker" aria-hidden="true">Q</span>
+				{% endif %}
+				<span class="visually-hidden">Question</span>
+				<div class="bux-qa__question-text">{{ item.question }}</div>
+			</h{{heading_level|default(2)}}>
+			<div class="bux-qa__answer">
+				{% if modifier != "storytelling" %}
+				<span class="bux-qa__answer-marker" aria-hidden="true">A</span>
+				{% endif %}
+				<span class="visually-hidden">Answer</span>
+				<div class="bux-qa__answer-text">{{ item.answer }}</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+

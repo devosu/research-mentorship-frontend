@@ -1,0 +1,15 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-grid__cell bux-grid__cell--12@sm">
+    {% include base_path ~ directory ~ bux ~ '/twig/breadcrumb.twig' %}
+    <h1>Page title</h1>
+    <div class="page-subhead">One to three concise sentences of introtext informs visitors what the purpose of the webpage is. It helps users quickly decide if they’re in the right place or not.</div>
+</div>
+{% for i in 0..8 %}
+    <div class="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--4@md bux-mar-top-sp-24">
+        {% include base_path ~ directory ~ bux ~ '/twig/card.twig' %}
+    </div>
+{% endfor %}

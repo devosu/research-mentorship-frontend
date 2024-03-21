@@ -1,0 +1,51 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+{% set classes_array = ["bux-table"] %}
+{% if striped is defined %}
+	{% set classes_array = classes_array|merge(["bux-table--striped"]) %}
+{% endif %}
+{% if compact is defined %}
+	{% set classes_array = classes_array|merge(["bux-table--compact"]) %}
+{% endif %}
+{% if sortable is defined %}
+	{% set classes_array = classes_array|merge(["bux-table--sortable"]) %}
+{% endif %}
+
+
+{% set table_classes = classes_array|join(" ") %}
+
+<table class="{{ table_classes }}" {% if summary %} aria-describedby="{{ summaryId }}" {% endif %}>
+	<caption>{{ caption }}</caption>
+	<thead>
+		<tr>
+			{% for col in header_columns %}
+				{% if sortable %}
+					<th scope="col" class="sort-by"><button aria-pressed="false">{{ col }}</button></th>
+				{% else %}
+					<th scope="col">{{ col }}</th>
+				{% endif %}
+			{% endfor %}
+		</tr>
+	</thead>
+	<tbody>
+		{% for row in rows %}
+			<tr>
+				{% for cell in row.cells %}
+					{% if row_header and loop.first %}
+						<th scope="row">{{ cell }}</th>
+					{% else %}
+						<td>{{ cell }}</td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<div class="{{ table_classes }} bux-table--announcement-region" aria-live="polite"></div>
+
+{% if summary %}
+	<p id="{{ summaryId }}" class="visually-hidden"> {{ summary }}</p>
+{% endif %}

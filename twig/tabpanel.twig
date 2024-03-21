@@ -1,0 +1,30 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+{% set panels = '' %}
+<div class="bux-tabpanel">
+	<ul class="bux-tabpanel__tabs" role="tablist" aria-label="{{ title }}" tabindex="-1">
+		{% for item in items %}
+			{% set isTabSelected = (loop.first) ? true : false %}
+			{% set tabTabIndex = (isTabSelected) ? '' : 'tabindex="-1"' %}
+			{% set tabId = 'bux-tabpanel__tab--' ~ item.id %}
+			{% set panel = '' %}
+			{% set panelId = 'bux-tabpanel__panel--' ~ item.id %}
+			{% set panelVisibility = (isTabSelected) ? '' : 'hidden="hidden"' %}
+			<li class="bux-tabpanel__button" role="presentation">
+				<button id="{{ tabId }}" class="bux-tabpanel__tab" role="tab" aria-selected="{{ isTabSelected }}" aria-controls="{{ panelId }}" {{ tabTabIndex }}>
+					{{ item.title }}
+				</button>
+			</li>
+			{% set panel %}
+			<div id="{{ panelId }}" class="bux-tabpanel__panel" role="tabpanel" aria-labelledby="{{ tabId }}" tabindex="0" {{panelVisibility}}>
+				{{ item.content }}
+			</div>
+			{% endset %}
+			{% set panels = panels ~ panel %}
+		{% endfor %}
+	</ul>
+	{{ panels }}
+</div>

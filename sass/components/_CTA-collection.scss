@@ -1,0 +1,112 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-cta-collection {
+    display: flex;
+    justify-content: center;
+    padding: $sp-24 0;
+
+    ul {
+        padding: 0;
+        margin: -(rem-calc(28)) 0 0;
+        text-align: center;
+    }
+
+    ul li {
+        display: block;
+        text-align: center;
+        line-height: rem-calc(28);
+        margin-top: rem-calc(28);
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $scarlet;
+        font-size: $ts-22;
+        line-height: rem-calc(28); 
+        font-weight: 700;
+
+        &:hover {
+            background-color: $gray-light-80;
+            color: $gray-dark-80;
+        }
+
+        &:focus {
+            outline: 2px solid $focus;
+        }
+    }
+
+    .icon {
+        display: none;
+    }
+
+    @include breakpoint(md) {
+
+        padding: $sp-48 0;
+
+        ul li {
+            display: inline-block;
+            padding: 0 $sp-48;
+            border-right: 2px solid $gray-light-60;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+       
+        &__link {
+            font-size: $ts-md;
+            line-height: $sp-32;
+        }
+
+        .icon {
+            display: inline-block;
+            color: $scarlet;
+            padding-right: $sp-12;
+            font-size: rem-calc(30);
+            translate: 0 7px;
+
+        }
+    }
+}
+
+.bux-cta-collection--gray {
+    background-color: $gray-light-80;
+
+    a:hover {
+        background-color: $white;
+    }
+}
+
+.bux-cta-collection--standard-icons {
+    .bux-cta-collection__link {
+        @include breakpoint(md) {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .icon {
+        font-size: 3.625rem;
+        height: 4.5rem;
+        translate: 0;
+        width: 4.5rem;
+
+        &::before {
+            left: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .standard-icon {
+        display: none;
+        @include breakpoint(md) {
+            display: block;
+            height: 4.5rem;
+            margin: 0 $sp-16 0 0;
+            width: 4.5rem;
+        }
+    }
+}

@@ -1,0 +1,87 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+{% if background_color == "light" %}
+	{% set logo_link = "images/osu-logos/horiz/osu-horiz-gray.svg" %}
+	{% set link_class = "bux-link" %}
+{% elseif background_color == "dark" %}
+	{% set logo_link = "images/osu-logos/horiz/osu-horiz-white.svg" %}
+	{% set link_class = "bux-link bux-link--reverse" %}	
+{% else %}
+	{% set logo_link = "images/osu-logos/horiz/osu-horiz-gray.svg" %}
+	{% set link_class = "bux-link" %}
+{% endif %}
+
+<footer class="bux-footer{% if background_color %} bux-footer--{{ background_color }}{% endif %}">
+	<div class="bux-container bux-grid bux-grid--footer">
+		<div class="bux-footer__col bux-footer__col--left bux-grid__cell bux-grid__cell--12 bux-grid__cell--5@md">
+			<div class="bux-footer__logo">
+				<a href="http://osu.edu" target="_blank">
+					<img src="{{ base_path ~ directory ~ bux }}/{{ logo_link }}" alt="{{ logo_alt_text | default('The Ohio State University') }}"/>
+				</a>
+			</div>
+			<div class="bux-footer__contact bux-footer__contact--address">
+				<p class="bux_footer__site-name">
+					{% if site_name_prefix %}
+						{{ site_name_prefix }}
+					{% endif %}
+					{{ site_name }}
+				</p>
+				{% if address_1 %}
+					<p class="bux_footer__address">{{ address_1 }}</p>
+				{% endif %}
+				{% if address_2 %}
+					<p class="bux_footer__address">{{ address_2 }}</p>
+				{% endif %}
+				{% if city or state or zip %}
+					<p class="bux_footer__address">{{ city }}, {{ state }} {{ zip }}</p>
+				{% endif %}
+			</div>
+
+			{% if contact_email or contact_phone %}
+				<div class="bux-footer__contact bux-footer__contact--email-phone">
+					<hr/>
+					{% if contact_email %}
+						<p class="bux_footer__email"><a class="{{ link_class }}" href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
+					{% endif %}
+					{% if contact_phone %}
+						<p class="bux_footer__phone"><a class="{{ link_class }}" href="tel:{{ contact_phone }}">Phone: {{ contact_phone }}</a></p>
+					{% endif %}
+					{% if contact_fax %}
+						<p class="bux_footer__fax"><a class="{{ link_class }}" href="tel:{{ contact_fax }}">Fax: {{ contact_fax }}</a></p>
+					{% endif %}
+				</div>
+			{% endif %}	
+		</div>
+
+		<div class="bux-footer__col bux-footer__col--right bux-grid__cell bux-grid__cell--12 bux-grid__cell--7@md">
+
+			<div class="bux-footer__social">
+				{% include base_path ~ directory ~ bux ~ '/twig/social-links.twig' with social_links %}
+			</div>
+			
+			<div class="bux-footer__fine-print">
+				<div class="bux-footer__ada">
+                        {{ a11y_message | default('If you have a disability 
+                            and experience difficulty accessing this content, 
+                            please contact the Digital Accessibility Center 
+                            for assistance at <a class="bux-link" 
+                            href="mailto:accessibility@osu.edu">
+                            accessibility@osu.edu</a> or <a class="bux-link" 
+                            href="tel:614-292-1760">614-292-1760</a>.')|raw }}	
+				</div>
+				<div class="bux-footer__links">
+					<p class="bux_footer__link"><a class="{{ link_class }}" href="{{ privacy_url|default('https://go.osu.edu/privacy') }}">Privacy Statement</a></p>
+					<p class="bux_footer__link"><a class="{{ link_class }}" href="{{ non_discrimination_url|default('https://go.osu.edu/nondiscrimination-notice') }}">Non-discrimination Notice</a></p>
+					<p class="bux_footer__link"><a id="ot-sdk-btn" class="ot-sdk-show-settings {{ link_class }}">Cookie Settings</a></p>
+					{% if login_url %}
+						<p class="bux_footer__link"><a class="{{ link_class }}" href="{{ login_url }}">Login</a></p>
+					{% endif %}
+				</div>
+				<div class="bux-footer__copyright">© {{ 'now' | date('Y') }} The Ohio State University</div>
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,48 @@
+{
+  "name": "research-db-frontend",
+  "version": "0.0.1",
+  "description": "Bootstrap and React frontend for DEV's Research Database Project.",
+  "main": "index.js",
+  "scripts": {
+    "build": "set -e; if [ -d '_site' ]; then rm -rf _site; fi; eleventy; node clean.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devosu/research.git"
+  },
+  "keywords": [
+    "OSU",
+    "DEV",
+    "student-organization",
+    "bootstrap",
+    "react",
+    "frontend",
+    "software-engineering"
+  ],
+  "author": "Bennett Godinho-Nelson <bennettgodinhonelson@gmail.com>",
+  "contributors": [
+    "D'Andre Williams <dwilliamsbuckeye@gmail.com>",
+    "Keming He <keminghe.career@gmail.com>",
+    "Suyeon Chae <schae0103@gmail.com>",
+    "Alex Eichner <eichneralex3@gmail.com>",
+    "Jerry Chang <jerry091401@gmail.com>",
+    "Connor Radkov <cradkov27@gmail.com>",
+    "Max Miller <millermax98765@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devosu/research/issues"
+  },
+  "homepage": "https://github.com/devosu/research#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "cheerio": "^1.0.0-rc.12",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "jest": "^29.7.0"
+  }
+}

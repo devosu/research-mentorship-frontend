@@ -1,0 +1,330 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+@use "sass:math";
+
+@mixin button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  line-height: normal;
+  cursor: pointer;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+}
+
+// Clearfix.
+// Adds clearfix based on http://bourbon.io/docs/#clearfix
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+// Link base.
+// Used as a starting point for inline link styles and similar link types.
+// $background options = none (default, for white backgrounds), light (for light colored backgrounds), dark (for dark colored backgrounds), scarlet (for scarlet backgrounds).
+// $visited options = yes (default), no (to exclude styling visited links differently)
+@mixin link-base($background: none, $hasVisited: yes) {
+  font-family: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid;
+
+  &:focus {
+    border-bottom: none;
+    outline: 2px solid $focus;
+    outline-offset: 2px;
+  }
+
+  @if $background == dark {
+    color: $white;
+    border-bottom-color: $white;
+    &:hover {
+      color: $white;
+      border-bottom-color: $white;
+      background-color: $gray-dark-40;
+    }
+    &:focus {
+      color: $white;
+      background-color: $gray-dark-40;
+    }
+    @if $hasVisited == yes {
+      &:visited {
+        color: $visited-light;
+        border-bottom-color: $visited-light;
+      }
+      &:hover {
+        color: $gray-dark-80;
+        border-bottom-color: $white;
+        background-color: $gray-light-80;
+      }
+      &:focus {
+        color: $gray-dark-80;
+        background-color: $gray-light-80;
+        outline: 2px solid $focus-light;
+      }
+    }
+  } @else if $background == scarlet {
+    color: $white;
+    border-bottom-color: $white;
+    &:hover {
+      color: $gray-dark-80;
+      border-bottom-color: $white;
+      background-color: $gray-light-80;
+    }
+    &:focus {
+      color: $gray-dark-80;
+      background-color: $gray-light-80;
+      outline: 2px solid $focus-light;
+    }
+    @if $hasVisited == yes {
+      &:visited {
+        color: $visited-light;
+        border-bottom-color: $visited-light;
+      }
+      &:hover {
+        color: $gray-dark-80;
+        border-bottom-color: $white;
+        background-color: $gray-light-80;
+      }
+      &:focus {
+        color: $gray-dark-80;
+        background-color: $gray-light-80;
+        outline: 2px solid $focus-light;
+      }
+    }
+  } @else if $background == light {
+    color: $scarlet;
+    border-bottom-color: $scarlet;
+    &:hover {
+      color: $black;
+      border-bottom-color: $gray-dark-80;
+      background-color: $white;
+    }
+    &:focus {
+      color: $scarlet;
+      background-color: $white;
+    }
+    @if $hasVisited == yes {
+      &:visited {
+        color: $visited;
+        border-bottom-color: $visited;
+      }
+    }
+  } @else {
+    color: $scarlet;
+    border-bottom-color: $scarlet;
+    &:hover {
+      color: $gray-dark-80;
+      border-bottom-color: $gray-dark-80;
+      background-color: $gray-light-80;
+    }
+    &:focus {
+      color: $scarlet;
+    }
+    @if $hasVisited == yes {
+      &:visited {
+        color: $visited;
+        border-bottom-color: $visited;
+      }
+    }
+  }
+}
+
+// Link reset.
+// Strips bux basic link styles. May be used as a starting point for other link-based elements.
+@mixin link-reset {
+  color: inherit;
+  border-bottom: none;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    border-bottom-color: none;
+    background-color: inherit;
+  }
+}
+
+// Rem-calc
+// Adapted from: https://gist.github.com/kylewebdev/f36acbfd2e9257d88253
+
+$rem-base: 16px !default;
+
+@function strip-unit($num) {
+  @return math.div($num, $num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
+  @if ($value == 0rem) {
+    $value: 0;
+  } // Turn 0rem into 0
+  @return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+  @if $max == 1 {
+    @return convert-to-rem(nth($values, 1), $base-value);
+  }
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+// Visually Hidden
+// Hides element visually, but leaves it available for screenreaders.
+@mixin visually-hidden($focusable: false) {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  // Extends the `visually-hidden` class to allow the element to be focusable
+  // when navigated to via the keyboard.
+  @if $focusable == true {
+    &:active,
+    &:focus {
+      clip: auto !important;
+      height: auto !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      position: static !important;
+      width: auto !important;
+    }
+  }
+}
+
+.visually-hidden {
+  @include visually-hidden();
+}
+
+// Visually Hidden Reset
+// Displays an item that was visually hidden. Is useful when something is hidden
+// at smaller breakpoint but needs to be shown again.
+@mixin visually-hidden-reset() {
+  position: static !important;
+  width: inherit !important;
+  overflow: visible !important;
+}
+
+@mixin form-element {
+  position: relative;
+
+  &__label {
+    display: block;
+    font-weight: 700;
+    font-size: $ts-base;
+  }
+
+  &__required {
+    color: $scarlet; 
+  }
+
+  &__helper-text {
+    display: block;
+    font-size: $ts-sm;
+    color: $gray-dark-80;
+    margin-top: $sp-8;
+  }
+
+  &__fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  &__legend {
+    width: 100%;
+    padding: 0;
+    font-size: $ts-base;
+    font-weight: 700;
+    line-height: inherit;
+
+    + * {
+      clear: both;
+    }
+  }
+
+  &__input-spacer {
+    margin-top: $sp-8;
+  }
+}
+
+@mixin form-input {
+  display: block;
+  background-color: $white;
+  border: 2px solid $gray-light-80;
+  border-bottom: 2px solid $gray-dark-80;
+  padding: $sp-8;
+  margin: $sp-8 0;
+  width: 100%;
+
+  &::placeholder {
+    color: $gray-dark-40;
+    opacity: 1;
+    font-size: $ts-base;
+  }
+
+  &:focus {
+    border-color: $gray-dark-80;
+  }
+}
+
+@mixin form-input-disabled {
+  border-color: $gray-light-40;
+  background-color: $gray-light-80;
+  cursor: not-allowed;
+
+  &::placeholder {
+    color: $gray-dark-40;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $gray-light-40;
+  }
+}
+
+@mixin form-input-error {
+  border-color: $scarlet;
+  background: #ffeff2;
+
+  &:focus {
+    border-color: $scarlet;
+  }
+}
+
+@mixin form-error-message {
+  display: block;
+  font-size: $ts-sm;
+  padding-left: 20px;
+  font-size: $ts-sm;
+  color: $scarlet;
+
+  &:before {
+    content: "\f106";
+    font-family: $icon;
+    color: $scarlet;
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+    line-height: 1.3;
+  }
+}
