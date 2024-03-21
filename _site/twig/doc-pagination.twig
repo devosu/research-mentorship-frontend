@@ -1,0 +1,25 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<nav aria-label="Document pages" class="bux-doc-pagination">
+	{% if previous_page %}
+		<div class="bux-doc-pagination__item bux-doc-pagination__item--prev">
+			<a href="{{ previous_page.url }}" class="bux-doc-pagination__link bux-doc-pagination__link--prev" rel="prev">
+				<div class="bux-doc-pagination__label bux-doc-pagination__label--prev">
+					{{ previous_page.label }}
+				</div>
+			</a>
+		</div>
+	{% endif %}
+	{% if next_page %}
+		<div class="bux-doc-pagination__item bux-doc-pagination__item--next">
+			<a href="{{ next_page.url }}" class="bux-doc-pagination__link bux-doc-pagination__link--next" rel="next">
+				<div class="bux-doc-pagination__label bux-doc-pagination__label--next">
+					{{ next_page.label }}
+				</div>
+			</a>
+		</div>
+	{% endif %}
+</nav>

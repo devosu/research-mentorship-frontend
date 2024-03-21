@@ -1,0 +1,26 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-cta-collection 
+            {% if modifier %}
+            bux-cta-collection--{{modifier}}
+            {% endif %}
+            ">
+    <ul>
+        {% for link in links %}
+        <li>
+            <a class="bux-cta-collection__link" href={{link.url}}>
+                {% if modifier == 'icons' %}
+                <span class="icon icon-{{ link.icon }}" aria-hidden="true"></span>
+                {% endif %}
+                {% if modifier == 'standard-icons' %}
+                <img class="standard-icon" src="{{ link.icon }}" alt="" />
+                {% endif %}
+                {{link.name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

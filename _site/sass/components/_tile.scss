@@ -1,0 +1,118 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-tile {
+	position: relative;
+}
+
+.bux-tile__link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+
+}
+
+.bux-tile .bux-image {
+    width: 100%;
+    object-fit:cover;
+    &--16x9 {
+        aspect-ratio: 16/9;
+    }
+    &--1x1 {
+        aspect-ratio: 1/1;
+    }
+    &--3x2 {
+        aspect-ratio: 3/2;
+    }
+}
+
+
+.bux-tile__content {
+	background-color: $gray-light-90;
+	padding: $sp-24;
+	position: relative;
+	z-index: 2;
+	pointer-events: none;
+}
+
+.bux-tile__std_icon {
+    max-width: rem-calc(72);
+    margin: 0 auto;
+    margin-bottom: $sp-16;
+}
+
+.bux-tile__ui_icon {
+	max-width: $sp-32;
+	margin: 0 auto $sp-16;
+
+	&::before {
+		color: $scarlet;
+		font-size: $sp-32;
+		width: $sp-32;
+		margin: 0 auto;
+		margin-bottom: $sp-16;
+		display:block;
+	}
+	
+}
+
+.bux-tile__body {
+	text-align: center;
+	font-family: $sans;
+	margin-top: $sp-16;
+	margin-bottom: $sp-8;
+}
+
+
+.bux-tile__text,
+bux-tile__header .bux-tile__text {
+	color: $scarlet;
+	display: block;
+	font-family: $sans;
+	font-size: $ts-22;
+	line-height: 1.35;
+	font-weight: 700;
+	text-align: center;
+	pointer-events: all;
+	text-decoration: none;
+    margin: 0;
+	@include breakpoint(md) {
+		font-size: $ts-md;
+		line-height: 1.35;
+	}
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: 2px solid $focus;
+    }
+}
+
+.bux-tile__header {
+    margin:0;
+}
+
+//Hover states
+
+.bux-tile {
+
+	&:hover {
+		.bux-tile__content {
+            border-bottom: 4px solid $scarlet;
+			transition-duration: 0.05s;
+            margin-bottom: -4px;
+		}	
+
+	&:focus {
+		outline: 2px solid $focus;
+	}
+
+}
+}

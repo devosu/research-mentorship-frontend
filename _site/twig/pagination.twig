@@ -1,0 +1,57 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<nav role="navigation" aria-label="Pagination"
+     class="bux-pagination{% if modifier %} bux-pagination--{{ modifier }}{% endif %}">
+
+	<ul class="bux-pagination__list">
+
+		{# Display previous link if we"re not on the first page. #}
+		{% if previous_page %}
+			<li class="bux-pagination__item">
+				<a class="bux-pagination__link bux-pagination__link--previous"
+           href="{{ previous_page }}" aria-label="Go to previous page"></a>
+			</li>
+		{% endif %}
+
+		{# Display elipsis if truncate_start. #}
+		{% if truncate_start == true %}
+			<li class="bux-pagination__item">
+				<span class="bux-pagination__link bux-pagination__link--truncated" aria-hidden="true"></span>
+			</li>
+		{% endif %}
+
+        {% for key, page in pages %}
+            <li class="bux-pagination__item">
+            {% if current_page == key %}
+              <a class="bux-pagination__link bux-pagination__link--current"
+                 href="{{ page }}" aria-label="Current page, page {{ key }}" aria-current="true">
+                {{- key -}}
+              </a>
+            {% else %}
+              <a class="bux-pagination__link"
+                 href="{{ page }}" aria-label="Go to page {{ key }}">
+                {{- key -}}
+              </a>
+            {% endif %}
+            </li>
+        {% endfor %}
+
+		{# Display elipsis if truncate_end. #}
+		{% if truncate_end == true %}
+			<li class="bux-pagination__item">
+				<span class="bux-pagination__link bux-pagination__link--truncated" aria-hidden="true"></span>
+			</li>
+		{% endif %}
+
+		{# Display next link if we"re not on the last page. #}
+		{% if next_page %}
+			<li class="bux-pagination__item">
+				<a class="bux-pagination__link bux-pagination__link--next"
+           href="{{ next_page }}" aria-label="Go to next page"></a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>

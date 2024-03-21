@@ -1,0 +1,89 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-grid__cell bux-grid__cell--12 story-head bux-mar-top-sp-24">
+<span class="bux-card__read-time">3-minute read</span>
+
+<h1>H1 page title</h1>
+<div class="page-subhead" style="border-bottom: none;">One to three concise sentences of introtext informs visitors what the purpose of the
+    webpage is. It helps users quickly decide if they’re in the right place or not.</div>
+
+
+    <!-- start byline and social -->
+    <div class="story-by-social">
+        <div>
+        <p class="sm-sans">By FirstName LastName</p>
+        <p class="sm-sans">Month Day, Year</p>
+    </div>
+
+{% include base_path ~ directory ~ bux ~ '/twig/social-links.twig' %}
+
+</div>
+    <!-- end byline and social -->
+<img class="bux-image bux-mar-top-sp-24" src={{ "/images/placeholders/bux-image-placeholder-16-9.png"|path }} alt="">
+<p class="caption">Cloud bread mixtape cornhole, forage godard organic retro knausgaard. Ethical 
+small batch mumblecore drinking vinegar.</p>
+
+<!-- end image with caption -->
+
+</div> 
+
+<div class="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--3@md bux-mar-top-sp-24 left-column">
+{% for i in 0..1 %}
+<div class="bux-mar-bottom-sp-24">
+{% include base_path ~ directory ~ bux ~ '/twig/card--storytelling.twig' %}
+</div>
+{% endfor %}
+</div>
+
+<div class="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--9@md bux-mar-top-sp-24">
+<!-- start content area with image-->
+<div class="body-with-image">
+    <div>
+        <p>Advance innovations and solve unrelenting problems at a scale few others can match big, lively and f
+        ull of opportunity empower people and their potential tincidunt venenatis ex nec aliquet Wexner Medical 
+        Center biodiversity blending creativity and analysis to truly be at the forefront of thought aliquam.</p>
+    
+    <p>Innovate Buckeyes research Newark faculty and students committed to novel, exciting research that can change 
+    the planet and confront modern challenges that power is human potential — an astonishing power so elemental, 
+    the world thrives on it. So vital, the world depends on it Buckeye leaf tbdbitl non magna quis tortor volutpat.</p>
+    
+    <p>Bringing together ideas and disciplines to create bold, new connections founded in 1870 commencement 
+    as a community, we empower people and their potential to envision the unimagined, advance 
+    innovations and solve unrelenting problems at a scale few others can match — propelling humanity 
+    forward ornare euismod velit.</p>
+    
+    </div>
+    <div> <img class="bux-image" src={{ "/images/placeholders/bux-image-placeholder-4-3.png"|path }} alt="">
+        <p class="caption-with-rule">Cloud bread mixtape cornhole, forage godard organic retro knausgaard. </p>
+    </div>
+    </div>
+    <!-- end content area with image-->
+    <!-- start content area -->
+    <p>Byrd Polar and Climate Research Center dot the i non magna quis tortor volutpat WOSU 
+        classroom excellence consectetur congue dolor reflecting our world's medley of ideas, 
+        beliefs, backgrounds and cultures lorem ipsum that team up north 1870 Skull Session Ohio 
+        Union scientific community homecoming week.</p>
+        <!-- start quote -->
+<div class="bux-mar-tb-sp-48">
+{% include base_path ~ directory ~ bux ~ '/twig/quote.twig' %}
+</div>
+
+<!-- end quote -->
+<p>Advance innovations and solve unrelenting problems at a scale few others can match big, lively and f
+    ull of opportunity empower people and their potential tincidunt venenatis ex nec aliquet Wexner Medical 
+    Center biodiversity blending creativity and analysis to truly be at the forefront of thought aliquam.</p>
+    <h2>Heading Two</h2>
+
+<p>Innovate Buckeyes research Newark faculty and students committed to novel, exciting research that can change 
+the planet and confront modern challenges that power is human potential — an astonishing power so elemental, 
+the world thrives on it. So vital, the world depends on it Buckeye leaf tbdbitl non magna quis tortor volutpat.</p>
+
+<p>Innovate Buckeyes research Newark faculty and students committed to novel, exciting research that can change 
+    the planet and confront modern challenges that power is human potential — an astonishing power so elemental, 
+    the world thrives on it. So vital, the world depends on it Buckeye leaf tbdbitl non magna quis tortor volutpat.</p>
+<!-- end content area -->
+
+</div>

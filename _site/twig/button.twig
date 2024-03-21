@@ -1,0 +1,13 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<button class="bux-button{% if modifier %} bux-button--{{ modifier }}{% endif %}" {% if "disabled" in modifier %} aria-disabled="true" {% endif %}>
+  {% if icon_class %}
+    <div class="bux-button__icon">
+      <span class="icon {{ icon_class }}" aria-hidden="true"></span>
+    </div>
+  {% endif %}
+  {{ button_text }}
+</button>

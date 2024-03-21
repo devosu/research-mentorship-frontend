@@ -4,7 +4,7 @@
   "description": "Bootstrap and React frontend for DEV's Research Database Project.",
   "main": "index.js",
   "scripts": {
-    "build": "set -e; if [ -d '_site' ]; then rm -rf _site; fi; eleventy; node clean.js",
+    "build": "node .eleventy.build.js",
     "test": "jest"
   },
   "repository": {
@@ -43,6 +43,7 @@
     "cheerio": "^1.0.0-rc.12",
     "fs-extra": "^11.2.0",
     "glob": "^10.3.10",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5"
   }
 }

@@ -1,0 +1,16 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-featured-card bux-grid bux-grid--no-gutters {% if image_position %} bux-featured-card--image-{{image_position}} {% endif %}">
+
+  <div class="bux-featured-card--wrapper bux-grid__cell bux-grid__cell--12 bux-grid__cell--5@md">
+    {% include base_path ~ directory ~ bux ~ '/twig/card.twig' %}
+  </div>
+
+  <div class="bux-featured-card--image bux-grid__cell bux-grid__cell--12 bux-grid__cell--7@md">
+    {% include base_path ~ directory ~ bux ~ '/twig/image.twig' %}
+  </div>
+
+</div>

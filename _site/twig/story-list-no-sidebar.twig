@@ -1,0 +1,22 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<div class="bux-grid__cell bux-grid__cell--12@sm">
+{% include base_path ~ directory ~ bux ~ '/twig/breadcrumb.twig' %}
+
+<h1>Two Columns Starter File</h1>
+</div>
+
+<div class="bux-grid__cell bux-grid__cell--12 bux-mar-tb-sp-48">
+    {% include base_path ~ directory ~ bux ~ '/twig/card--horizontal.twig' %}
+</div>
+
+{% for i in 0..11 %}
+
+<div class="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--4@md bux-mar-top-sp-24">
+    {% include base_path ~ directory ~ bux ~ '/twig/card--storytelling.twig' %}
+</div>
+
+{% endfor %}

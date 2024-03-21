@@ -1,0 +1,53 @@
+{#
+Buckeye UX - version 0.10.0
+Copyright (C) 2021 The Ohio State University
+#}
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>{{ title }}</title>
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="{{ "/css/bux-styles.css"|path }}">
+		<link rel="stylesheet" href="{{ "/system-css/system-styles.css"|path }}">
+        <link rel="stylesheet" href="{{ "/templates/templates.css"|path }}">
+	</head>
+	<body>
+
+        {% include base_path ~ directory ~ bux ~ '/twig/osu-navbar.twig' %}
+        {% include base_path ~ directory ~ bux ~ '/twig/header.twig' %}
+        {% include base_path ~ directory ~ bux ~ '/twig/menu.twig' %}
+
+        <div class="bux-container bux-mar-top-sp-32 bux-mar-bottom-sp-32">
+            <div class="main-content">
+                <div class="bux-grid">
+                    <div class="bux-grid__cell  bux-grid__cell--12@sm bux-grid__cell--10@md" style="margin-left:auto; margin-right:auto;">
+                    <div class="bux-grid bux-pad-bottom-sp-24">
+                        {{ yield }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<script src="{{ "/js/bux.min.js"|path }}"></script>
+		<script>
+			const buckeyeAlert = new BuckeyeAlert({
+				url: 'https://www.osu.edu/feeds/alert-test/feed.rss',
+				callback: function() {
+				console.log('The Buckeye Alert callback has been executed.');
+				},
+			});
+
+			buckeyeAlert.initialize();
+		</script>
+	</body>
+
+    <footer>
+        {% include base_path ~ directory ~ bux ~ '/twig/footer.twig' %}
+    </footer>
+
+</html>

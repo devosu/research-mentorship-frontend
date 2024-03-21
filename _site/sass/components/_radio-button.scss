@@ -1,0 +1,78 @@
+/*
+ * Buckeye UX - version 0.10.0
+ * Copyright (C) 2021 The Ohio State University
+ */
+
+.bux-radio {
+  @include form-element;
+
+  &__option {
+    display: grid;
+    grid-template-columns: 18px auto;
+    gap: 8px;
+
+    label {
+      margin-top: 2px;
+    }
+
+    & + & {
+      margin-top: $sp-8;
+    }
+
+    input[type="radio"] {
+      appearance: none;
+      background-color: #fff;
+      margin: 0;
+      font: inherit;
+      color: $gray-dark-80;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $gray-dark-80;
+      border-radius: 50%;
+      transform: translateY(2.5px);
+      display: grid;
+      place-content: center;
+
+      &:before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: 120ms transform ease-in-out;
+        background-color: $scarlet;
+      }
+
+      &:checked:before {
+        transform: scale(1);
+      }
+
+      &:checked {
+        border-color: $scarlet;
+      }
+    }
+
+    &--disabled input[type="radio"] {
+      border: 2px solid $gray-light-40;
+      background-color: $gray-light-80;
+    }
+
+    &--disabled label {
+      color: $gray-light-20;
+    }
+
+    &:focus {
+      outline: 2px solid $focus;
+    }
+
+    &--error > input[type="radio"] {
+      background: #ffeff2;
+      border-color: $scarlet;
+    }
+  }
+
+  &__error-message {
+    @include form-error-message;
+    margin-top: 5px;
+  }
+}
