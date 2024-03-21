@@ -15,7 +15,7 @@ const execAsync = promisify(exec);
 module.exports = async () => {
   try {
     // Clean _site.
-    await fileSysX.remove('_site');
+    await fileSysX.remove('docs');
 
     // Build _site.
     await execAsync('eleventy');

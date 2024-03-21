@@ -87,7 +87,7 @@ What's the setup?
 
 - HTML code are separated into `something.html` in `root` and `_layout.html` in the `_include` directory. Layouts are HTML code that can be reused across multiple pages, hurray!!
 
-- To build the whole site, all you need to do is to run the command, and watch the `_site` directory gets populated automatically.
+- To build the whole site, all you need to do is to run the command, and watch the `docs` directory gets populated automatically.
 
 ```bash
 npm run build
