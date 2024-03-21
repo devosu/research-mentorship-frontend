@@ -1,4 +1,4 @@
-# Research Database Frontend
+# Research Mentorship Frontend
 
 Frontend application of [DEV](https://osu.dev)'s unique solution that aggregates all the research opportunities on campus for all majors and departments. **Key features include:**
 
@@ -16,22 +16,26 @@ This student project is made with passion and :heart:  by:
 - [Jerry Chang](jerry091401@gmail.com) as Jr SWE
 - [Max Miller](millermax98765@gmail.com) as Jr SWE
 
-Documented on 03/20/24 by Keming He as the DevOps consultant for this project. Connect with me at https://linkedin.com/in/keminghe :star:
+Documented on 03/21/24 by Keming He as the DevOps consultant for this project. Connect with me at https://linkedin.com/in/keminghe :star:
 
 ## Quick Start
 
-Preview of the static build is readily running at https://devosu.github.com/research-db-frontend (...soon?)
+Preview of the **static** build is readily running at https://research.osu.edu. A later updated **dynamic** version will be hosted differently from GitHub Pages
 
-> [!NOTE]
-> Remember to add screenshot of the live site.
+> [!TIP]
+> 
+> Remember to add screenshots of the live site here for demonstration.
 
 ## For Developers
 
 ### 0. Git and Node.js Set Up
 
-Install the latest version of Node.js on your local dev environment. Official link: https://nodejs.org/en/download
+Install the latest version of Node.js on your local dev environment. 
+> Official link: https://nodejs.org/en/download
 
-Install the latest version of git version control on your local dev environment. Official link: https://git-scm.com/downloads
+Install the latest version of git version control on your local dev environment. 
+
+> Official link: https://git-scm.com/downloads
 
 Run these commands in a terminal/cmd/powershell to confirm installation success:
 
@@ -59,14 +63,22 @@ Open any termial and run:
 git clone https://github.com/devosu/research-mentorship-frontend.git
 ```
 
-If you are a admin or contrib member of this repo, you should be able to clone it. For `Access Denied` issues, please first consult: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens then @ any Officer in our Discord.
+If you are a admin or contrib member of this repo, you should be able to clone it. 
+
+> [!TIP] 
+> 
+> For `Access Denied` issues, please first consult: 
+> 
+> https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens 
+> 
+> then @ any Officer in our Discord.
 
 Once successfully cloned our repo, make sure to enter and create your own feature branch:
 
 ```bash
 cd research-mentorship-frontend
 git pull
-git checkout -b dev-feature_name-your_name
+git checkout -b dev-featurename-yourname
 ```
 
 Yeah! You are almost ready to code!! Just don't forget your dependencies:
