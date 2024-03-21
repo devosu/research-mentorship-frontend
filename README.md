@@ -75,8 +75,6 @@ Yeah! You are almost ready to code!! Just don't forget your dependencies:
 npm install
 ```
 
-``
-
 ### 2. Let's Build
 
 The static site generator we are using (in this early stage) is call [Eleventy](https://www.11ty.dev/). 
