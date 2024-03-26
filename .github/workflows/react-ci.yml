@@ -1,4 +1,4 @@
-name: React - Review (Format, Lint, Test) and Test-Build
+name: React review and test build
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x]
 
     steps:
       - name: Repository checkout
