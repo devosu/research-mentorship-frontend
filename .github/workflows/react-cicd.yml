@@ -57,8 +57,12 @@ jobs:
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "New build"
-          git push origin main
+          if ! git diff --quiet; then
+            git commit -m "New build"
+            git push origin main
+          else
+            echo "No changes in the new build, commit skipped."
+          fi
 
   # Single deploy job since we're just deploying
   deploy:
