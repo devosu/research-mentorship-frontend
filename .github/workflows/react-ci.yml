@@ -1,4 +1,4 @@
-name: React - Review, Build, and Deploy to Pages
+name: React - Review (Format, Lint, Test) and Test-Build
 
 on:
   push:
@@ -22,12 +22,12 @@ concurrency:
 
 jobs:
   build:
-    name: Node CI - test
+    name: React CI
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [16.x, 18.x, 20.x]
 
     steps:
       - name: Repository checkout
@@ -45,24 +45,6 @@ jobs:
         run: npm run review
       - name: Code coverage
         uses: codecov/codecov-action@v1
+        
       - name: Run build
         run: npm run build
-      
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: 'build'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
