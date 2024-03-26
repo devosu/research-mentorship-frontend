@@ -1,4 +1,4 @@
-name: React - Review, Build, and Deploy to Pages
+name: React review, test-build, and deploy
 
 on:
   push:
@@ -21,8 +21,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Node CI - test
+  cicd:
+    if: github.actor != 'github-actions[bot]' && github.actor != 'github-actions'
+    name: React CI/CD
     runs-on: ubuntu-latest
 
     strategy:
@@ -45,9 +46,20 @@ jobs:
         run: npm run review
       - name: Code coverage
         uses: codecov/codecov-action@v1
-      - name: Run build
-        run: npm run build
-      
+        
+      - name: Clear and replace with new build
+        run: |
+          rm -rf build
+          npm run build
+
+      - name: Commit new build
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m "New build"
+          git push origin main
+
   # Single deploy job since we're just deploying
   deploy:
     environment:
@@ -62,6 +74,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Upload entire repository
           path: 'build'
       - name: Deploy to GitHub Pages
         id: deployment
