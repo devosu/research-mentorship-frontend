@@ -61,10 +61,10 @@ jobs:
           if ! git diff --quiet; then
             git commit -m 'New build from CI/CD.'
             git push origin main
-            echo '::set-output name=deploy_new::true'
+            echo 'deploy_new=true' >> $GITHUB_OUTPUT
           else
             echo 'No changes in the new build, commit/deploy skipped.'
-            echo '::set-output name=deploy_new::true'
+            echo 'deploy_new=false' >> $GITHUB_OUTPUT
           fi
 
   # Single deploy job since we're just deploying
