@@ -52,7 +52,8 @@ jobs:
           rm -rf build
           npm run build
 
-      - name: Commit new build
+      - id: commit
+        name: Commit new build
         run: |
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
@@ -60,12 +61,16 @@ jobs:
           if ! git diff --quiet; then
             git commit -m "New build"
             git push origin main
+            echo "::set-output name=deploy_new::true"
           else
-            echo "No changes in the new build, commit skipped."
+            echo "No changes in the new build, commit/deploy skipped."
+            echo "::set-output name=deploy_new::true"
           fi
 
   # Single deploy job since we're just deploying
   deploy:
+    needs: cicd
+    if: ${{ needs.cicd.outputs.deploy_new == 'true' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -73,13 +78,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload only the build dir
           path: 'build'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
