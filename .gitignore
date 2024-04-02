@@ -8,9 +8,11 @@
 # testing
 /coverage
 
-# Commenting out for GitHub Pages hosting
+# React apps requires node server to run,
+# cannot be hosted on GitHub Pages.
+
 # production
-# /build
+/build
 
 # misc
 .DS_Store

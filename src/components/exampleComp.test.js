@@ -1,13 +1,13 @@
-// ./src/components/example.test.js
+// Path: <rootDir>/src/components/exampleComp.test.js
 //
 // Example unit test for the Example component.
 import React from "react";
-import Example from "./example";
+import ExampleComp from "./exampleComp";
 import { render, screen } from "@testing-library/react";
 
-describe("Example", () => {
+describe("Example Component", () => {
   it("should render", () => {
-    render(<Example />);
+    render(<ExampleComp />);
     expect(screen.getByText("Example Component")).toBeInTheDocument();
   });
 });

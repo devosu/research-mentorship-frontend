@@ -24,7 +24,6 @@ npm i
 ### 3. Run the Project!
 
 ```sh
-cd event-feed-project
 npm start
 ```
 
