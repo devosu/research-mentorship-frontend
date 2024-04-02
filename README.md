@@ -67,15 +67,29 @@ git --version
 # git version 2.44.0
 ```
 
-### 1. Clone the Repo
+### 1. Clone the repo and create your own branch
 
 ```sh
 # Open either VSCode, Windows Powershell, or macOS terminal,
 # and navigate to dir of your choice. The clone the repo.
 
+# Change this command:
 cd /path/to/your/dir
+
+# Then run:
 git clone https://github.com/devosu/event-feed-project.git
+cd event-feed-project
 ```
+
+> [!IMPORTANT]
+> Make sure you **create your own branch** both remote and locally by:
+> ```bash
+> # Create your own branch locally, then immediately push to remote.
+> # Change the featurename and yourname accordingly.
+> 
+> git checkout -b dev-featurename-yourname
+> git push -u origin dev-featurename-yourname
+> ```
 
 ### 2. Install dev dependencies
 
