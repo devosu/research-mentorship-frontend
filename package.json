@@ -4,10 +4,6 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
@@ -17,11 +13,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "review": "npm-run-all format lint test-ci",
-    "test-ci": "CI=true react-scripts test",
+    "review": "npm-run-all format-write lint-fix test-ci",
     "test": "react-scripts test",
+    "test-ci": "CI=true react-scripts test",
     "lint": "eslint src --ext .js,.jsx",
-    "format": "prettier --write src"
+    "lint-fix": "eslint src --ext .js,.jsx --fix",
+    "format": "prettier --check src",
+    "format-write": "prettier --write src"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +41,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "npm-run-all": "^4.1.5",
     "enzyme": "^3.11.0",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5"
