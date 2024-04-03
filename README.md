@@ -2,8 +2,13 @@
 
 [![Node 18 CI/CD](https://github.com/devosu/event-feed-project/actions/workflows/node-gcloud-cicd.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/node-gcloud-cicd.yml)
 [![CodeQL](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql)
+[![codecov](https://codecov.io/gh/devosu/event-feed-project/graph/badge.svg?token=N56MUQG4NS)](https://codecov.io/gh/devosu/event-feed-project)
 
-Node.js 18 x React web application to inform OSU students of the various club activities happing across campus.
+Node.js 18 x React web application to inform OSU students of the various club activities happing across campus. 
+
+View the "**Sunburst**" CodeCov report below. (The inner-most circle is the entire project, moving away from the center are folders then, finally, a single file. The size and color of each slice is representing the number of statements and the coverage, respectively.)
+
+![CodeCov report for this repo, visualized in Sunburst format.](https://codecov.io/gh/devosu/event-feed-project/graphs/sunburst.svg?token=N56MUQG4NS)
 
 ## User Stories
 
