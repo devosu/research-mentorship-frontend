@@ -1,6 +1,6 @@
 # Event Feed Project
 
-[![Node 18 CI/CD](https://github.com/devosu/event-feed-project/actions/workflows/node-gcloud-cicd.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/node-gcloud-cicd.yml)
+[![Node 18 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-maintenance.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-maintenance.yml)
 [![CodeQL](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql)
 [![codecov](https://codecov.io/gh/devosu/event-feed-project/graph/badge.svg?token=N56MUQG4NS)](https://codecov.io/gh/devosu/event-feed-project)
 
