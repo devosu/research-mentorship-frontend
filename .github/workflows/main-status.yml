@@ -1,4 +1,4 @@
-name: Node.js 18, 20 Main
+name: Node 18, 20 Main
 
 on:
   push:
