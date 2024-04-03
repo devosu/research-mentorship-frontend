@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 
 // Import components.
-import HealthCheckComp from "./healthCheckComp";
+import HealthCheckComp from "../components/healthCheckComp";
 import ExampleComp from "../components/exampleComp";
 
 /**
