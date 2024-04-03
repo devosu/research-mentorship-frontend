@@ -1,4 +1,4 @@
-name: Node 18 CI/CD
+name: GCloud Deploy
 
 on:
   push:
@@ -7,10 +7,6 @@ on:
     branches: [ 'production' ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-env:
-  NODE_VERSION: '18.x'
-  UPLOADER_SA_KEY: ${{ secrets.GCLOUD_ARTIFACT_REPO_SA_KEY }}
 
 permissions:
   contents: read
@@ -22,19 +18,4 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-      - name: Install full dependencies for code review
-        run: |
-          npm ci
-          npm run review
-        
-  # build:
-  #   needs: review
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
+      
