@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Example from "../components/example";
+import Yakob from "./Yakob";
+import Ziqi from "./Ziqi";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/example" element={<Example />} />
+        <Route path="/yakob" element={<Yakob />} />
+        <Route path="/ziqi" element={<Ziqi />} />
       </Routes>
     </BrowserRouter>
   );
