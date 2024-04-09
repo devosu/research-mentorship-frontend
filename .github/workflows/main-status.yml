@@ -2,9 +2,9 @@ name: Node 18, 20 Main
 
 on:
   push:
-    branches: [ 'main' ]
+    branches: [ 'main', 'dev-lead-trevor', 'dev-maintenance-keminghe' ]
   pull_request:
-    branches: [ 'main' ]
+    branches: [ 'main', 'dev-lead-trevor', 'dev-maintenance-keminghe' ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
