@@ -12,6 +12,7 @@
 # cannot be hosted on GitHub Pages.
 
 # production
+build
 /build
 
 # misc
