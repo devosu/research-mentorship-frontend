@@ -2,6 +2,13 @@
 
 Node.js 18 x React web application to inform OSU students of the various club activities happing across campus. 
 
+> [!CAUTION]
+> **DO NOT** commit/upload **ANY** credentials/secrets such as: `firebase credentials`, `gcloud service account keys`, and anything that should be left in your local `env` or `.env` file. 
+>
+> You can now find and use the firebase init module at `firebase/firebase.js` along with `firebase.test.js`. The `.env.exmaple` file is **NOT** a placeholder and is essential to loading the env vars correctly. Copy the `.env.example` to a `.env` file in your own `firebase` dir and keep your credentials offline.
+>
+> Read more on `dotenv-safe`: https://www.npmjs.com/package/dotenv-safe
+
 | Project Health | | |
 |---|---|---|
 | Main Status | [![Node 18, 20 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml) ||

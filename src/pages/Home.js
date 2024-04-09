@@ -1,4 +1,5 @@
 import '../static/index.css';
+// import { collection, addDoc } from 'firebase/firestore';
 
 const Home = () => {
   return (
@@ -12,3 +13,5 @@ const Home = () => {
 };
 
 export default Home;
+
+// https://firebase.google.com/docs/firestore/quickstart#web-modular-api_1
