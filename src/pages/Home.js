@@ -1,4 +1,4 @@
-import "../static/index.css";
+import '../static/index.css';
 
 const Home = () => {
   return (

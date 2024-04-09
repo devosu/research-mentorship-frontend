@@ -109,7 +109,7 @@ npm install
 ```sh
 # The dev server should be accessible at: 
 # http://localhost:3000
-npm run dev
+npm start
 ```
 
 ### 4. Perform auto-code review and testing
@@ -118,3 +118,9 @@ npm run dev
 # This will re-format your code to the team standard.
 npm run review
 ```
+
+### 5. Conrtibute to main
+
+**After making sure your code is formatted, lint, and tested** push to your own remote branch `dev-featurename-yourname` and open a pull request to the `main` branch. **Tag one of the sr devs for review.**
+
+> Open pull-request: https://github.com/devosu/event-feed-project/pulls
