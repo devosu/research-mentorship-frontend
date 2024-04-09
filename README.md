@@ -2,8 +2,9 @@
 
 Node.js 18 x React web application to inform OSU students of the various club activities happing across campus. 
 
-| Main Status | [![Node 18, 20 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml) | |
+| Project Health | | |
 |---|---|---|
+| Main Status | [![Node 18, 20 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml) ||
 | Prod Status | [![Node 18, 20 Production](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml) | [![GCloud Deploy](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml) |
 | Code Quality | [![CodeQL](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql) | [![codecov](https://codecov.io/gh/devosu/event-feed-project/graph/badge.svg?token=N56MUQG4NS)](https://codecov.io/gh/devosu/event-feed-project) |
 
