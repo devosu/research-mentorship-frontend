@@ -1,7 +1,16 @@
 import "../static/ziqi.css";
 
-const Ziqi = () => {
-  return <div>HTML code goes here</div>;
-};
+import React from "react";
 
-export default Ziqi;
+/**
+ * Health check component to check if the app is running.
+ *
+ * @returns {ReactElement} The React element.
+ */
+export default function Ziqi() {
+  return (
+    <div>
+      HTML Code here
+    </div>
+  );
+}
