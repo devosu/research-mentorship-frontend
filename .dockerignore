@@ -1,0 +1,11 @@
+# Path: <rootDir>/.dockerignore
+#
+# Files to exclude from the Docker build context.
+.git
+.gitignore
+.github
+.vscode
+
+node_modules
+build
+README.*
