@@ -1,13 +1,13 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Yakob from "./Yakob";
+import Ziqi from "./Ziqi";
 // Path: <rootDir>/src/pages/App.js
 //
 // Routing for the whole React application.
 
 // React essential imports.
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-// Import pages.
-import Home from "./Home";
 
 // Import components.
 import HealthCheckComp from "../components/healthCheckComp";
@@ -24,6 +24,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/yakob" element={<Yakob />} />
+        <Route path="/ziqi" element={<Ziqi />} />
         <Route path="/health" element={<HealthCheckComp />} />
         <Route path="/example" element={<ExampleComp />} />
       </Routes>
