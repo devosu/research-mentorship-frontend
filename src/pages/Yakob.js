@@ -1,5 +1,4 @@
 import "../static/yakob.css";
-
 import React from "react";
 
 /**
@@ -8,9 +7,40 @@ import React from "react";
  * @returns {ReactElement} The React element.
  */
 export default function Yakob() {
+  //signIn and signOut functions
+  const signIn = () => {
+    //signIn code
+  };
+
+  const signOut = () => {
+    //signOut code
+  };
+
   return (
-    <div>
-      HTML Code here
-    </div>
+    <>
+      <div className="main-header">
+        <img src="./media/Logo.png" alt="event-feed-project logo" className="logo"/>
+        <nav>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/groups">Groups</a></li>
+            <li><a href="/events">Events</a></li>
+          </ul>
+        </nav>
+        <div className="auth-buttons">
+          <button onClick={signIn}>Sign In</button>
+          <button onClick={signOut}>Sign Out</button>
+        </div>
+      </div>
+      <div className="sub-header">
+        <div className="events-counter">
+          Events ()
+        </div>
+        <div className="search-events">
+          <input type="search" placeholder="Search Events" />
+          <button>🔍</button>
+        </div>
+      </div>
+    </>
   );
 }
