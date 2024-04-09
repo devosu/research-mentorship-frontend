@@ -28,13 +28,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-<<<<<<< HEAD
         <Route path="/yakob" element={<Yakob />} />
         <Route path="/ziqi" element={<Ziqi />} />
-=======
         <Route path="/health" element={<HealthCheckComp />} />
         <Route path="/example" element={<ExampleComp />} />
->>>>>>> aa314c900a51be6d9102b50075b73cee15fdfeab
       </Routes>
     </BrowserRouter>
   );
