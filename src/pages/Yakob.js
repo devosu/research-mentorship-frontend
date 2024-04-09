@@ -19,12 +19,22 @@ export default function Yakob() {
   return (
     <>
       <div className="main-header">
-        <img src="./media/Logo.png" alt="event-feed-project logo" className="logo"/>
+        <img
+          src="./media/Logo.png"
+          alt="event-feed-project logo"
+          className="logo"
+        />
         <nav>
           <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/groups">Groups</a></li>
-            <li><a href="/events">Events</a></li>
+            <li>
+              <a href="/home">Home</a>
+            </li>
+            <li>
+              <a href="/groups">Groups</a>
+            </li>
+            <li>
+              <a href="/events">Events</a>
+            </li>
           </ul>
         </nav>
         <div className="auth-buttons">
@@ -33,9 +43,7 @@ export default function Yakob() {
         </div>
       </div>
       <div className="sub-header">
-        <div className="events-counter">
-          Events ()
-        </div>
+        <div className="events-counter">Events ()</div>
         <div className="search-events">
           <input type="search" placeholder="Search Events" />
           <button>🔍</button>

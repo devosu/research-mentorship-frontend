@@ -8,9 +8,5 @@ import React from "react";
  * @returns {ReactElement} The React element.
  */
 export default function Ziqi() {
-  return (
-    <div>
-      HTML Code here
-    </div>
-  );
+  return <div>HTML Code here</div>;
 }
