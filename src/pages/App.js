@@ -9,9 +9,6 @@ import Ziqi from "./Ziqi";
 // React essential imports.
 import React from "react";
 
-// Import pages.
-import Home from "./Home";
-
 // Import components.
 import HealthCheckComp from "../components/healthCheckComp";
 import ExampleComp from "../components/exampleComp";
