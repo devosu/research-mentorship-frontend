@@ -17,18 +17,19 @@ export default function Yakob() {
 
   return (
     <>
-      <div className="main-header">
+      <div className="main-header logo">
         <img
-          src="/public/logo-521x521.png"
+          src="/logo-521x521.png"
           alt="event-feed-project logo"
           className="logo"
         />
         <nav>
           <ul>
             <li>
-              <a href="/">Home</a>
+              <a href="/home">Home</a>
             </li>
-            {/* These links should point to valid routes or be replaced with buttons if they are placeholders */}
+            {/* These links should point to valid routes or be replaced with buttons 
+            if they are placeholders */}
             <li>
               <a href="/groups">Groups</a>
             </li>
@@ -44,7 +45,7 @@ export default function Yakob() {
         </div>
       </div>
       <div className="sub-header">
-        <div className="events-counter">Events (1457)</div>
+        <div className="events-counter">Events</div>
         <div className="search-events">
           <input type="search" placeholder="Search Events" />
           <button>🔍</button>

@@ -1,3 +1,10 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .main-header {
   display: flex;
   justify-content: space-between;
@@ -5,15 +12,22 @@
   background-color: #003F87;
   color: white;
   padding: 10px 20px;
+  width: 100%; 
+  height: 60px !important;
+  box-sizing: border-box; 
 }
-
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%; 
+}
 .logo {
-  height: 60px;
+  height: 100%;
 }
 
 nav ul {
   list-style: none;
-  padding: 0;
+  padding-right: 800px;
   margin: 0;
   display: flex;
   align-items: center;
