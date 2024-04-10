@@ -1,26 +1,25 @@
-import "../static/yakob.css";
-import React from "react";
+import '../static/yakob.css';
+import React, { useState } from 'react';
 
-/**
- * Health check component to check if the app is running.
- *
- * @returns {ReactElement} The React element.
- */
 export default function Yakob() {
-  //signIn and signOut functions
-  const signIn = () => {
-    //signIn code
-  };
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  const signOut = () => {
-    //signOut code
+  const toggleAuth = () => {
+    if (isSignedIn) {
+      // Replace with your sign out logic
+      alert('Sign out logic here.');
+    } else {
+      // Replace with your sign in logic
+      alert('Sign in logic here.');
+    }
+    setIsSignedIn(!isSignedIn);
   };
 
   return (
     <>
-      <div className="main-header">
+      <div className="main-header logo">
         <img
-          src="./media/Logo.png"
+          src="/logo-521x521.png"
           alt="event-feed-project logo"
           className="logo"
         />
@@ -29,6 +28,8 @@ export default function Yakob() {
             <li>
               <a href="/home">Home</a>
             </li>
+            {/* These links should point to valid routes or be replaced with buttons 
+            if they are placeholders */}
             <li>
               <a href="/groups">Groups</a>
             </li>
@@ -37,13 +38,14 @@ export default function Yakob() {
             </li>
           </ul>
         </nav>
-        <div className="auth-buttons">
-          <button onClick={signIn}>Sign In</button>
-          <button onClick={signOut}>Sign Out</button>
+        <div className="auth-button">
+          <button onClick={toggleAuth}>
+            {isSignedIn ? 'Sign Out' : 'Sign In'}
+          </button>
         </div>
       </div>
       <div className="sub-header">
-        <div className="events-counter">Events ()</div>
+        <div className="events-counter">Events</div>
         <div className="search-events">
           <input type="search" placeholder="Search Events" />
           <button>🔍</button>

@@ -1,6 +1,6 @@
-import "../static/ziqi.css";
+import '../static/ziqi.css';
 
-import React from "react";
+import React from 'react';
 
 /**
  * Health check component to check if the app is running.

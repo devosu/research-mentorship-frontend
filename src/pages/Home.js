@@ -1,5 +1,5 @@
-import "../static/index.css";
-import { collection, addDoc } from "firebase/firestore";
+import '../static/index.css';
+// import { collection, addDoc } from 'firebase/firestore';
 
 const Home = () => {
   return (
