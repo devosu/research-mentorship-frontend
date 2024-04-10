@@ -1,4 +1,4 @@
-name: Node 18, 20 Production
+name: Node 18, 20 Prod
 
 on:
   push:

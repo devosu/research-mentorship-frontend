@@ -1,10 +1,10 @@
-name: Node 18, 20 Main
+name: Node 18, 20 NextJS
 
 on:
   push:
-    branches: [ 'main', 'dev-lead-trevor' ]
+    branches: [ 'dev-maintenance-keminghe' ]
   pull_request:
-    branches: [ 'main', 'dev-lead-trevor' ]
+    branches: [ 'dev-maintenance-keminghe' ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 

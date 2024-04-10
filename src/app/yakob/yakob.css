@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -9,32 +10,34 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #003F87;
+  background-color: #003f87;
   color: white;
-  padding: 10px 20px;
-  width: 100%; 
-  height: 60px !important;
-  box-sizing: border-box; 
+  padding: 10px;
+  width: 100%;
+  height: 80px !important;
+  box-sizing: border-box;
 }
+
 .container {
   padding: 0;
   margin: 0;
-  width: 100%; 
+  width: 100%;
 }
+
 .logo {
   height: 100%;
+  width: auto;
 }
 
 nav ul {
   list-style: none;
-  padding-right: 800px;
-  margin: 0;
+  margin: 20;
   display: flex;
   align-items: center;
 }
 
 nav ul li {
-  margin-right: 20px;
+  margin: 20px;
 }
 
 nav ul li a {
@@ -44,8 +47,14 @@ nav ul li a {
 }
 
 .auth-button button {
+  width: 90px;
+  height: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   padding: 5px 15px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   border: none;
   border-radius: 5px;
   color: white;
@@ -57,7 +66,7 @@ nav ul li a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
 }

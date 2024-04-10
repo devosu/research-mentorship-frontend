@@ -27,7 +27,7 @@ RUN set -e; \
 # Stage 3.A Optimize for production, and use nginx server.
 FROM nginx:alpine AS production
 USER root
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/.next /usr/share/nginx/html
 
 # 3.B Resolve server routing via default config.
 COPY default.conf /etc/nginx/conf.d/
