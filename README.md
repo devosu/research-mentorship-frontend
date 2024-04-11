@@ -12,8 +12,9 @@ Node.js 18 x React web application to inform OSU students of the various club ac
 | Project Health | | |
 |---|---|---|
 | Main Status | [![Node 18, 20 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml) ||
-| Prod Status | [![Node 18, 20 Production](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml) | [![GCloud Deploy](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml/badge.svg?branch=production)](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml) |
+| Prod Status | [![Node 18, 20 Prod](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml) | [![GCloud Deploy](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml/badge.svg?branch=production)](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml) |
 | Code Quality | [![CodeQL](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql) | [![codecov](https://codecov.io/gh/devosu/event-feed-project/graph/badge.svg?token=N56MUQG4NS)](https://codecov.io/gh/devosu/event-feed-project) |
+| Maintenance Update | [![Node 18, 20 NextJS](https://github.com/devosu/event-feed-project/actions/workflows/maintenance-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/maintenance-status.yml)
 
 View the "**Sunburst**" CodeCov report below. (The inner-most circle is the entire project, moving away from the center are folders then, finally, a single file. The size and color of each slice is representing the number of statements and the coverage, respectively.)
 

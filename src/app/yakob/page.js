@@ -1,5 +1,15 @@
-import '../static/yakob.css';
+// ./src/app/yakob/page.js
+//
+// Yakob's page for the event feed project.
+'use client';
+
+// Next/React essential imports.
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
+
+// Style imports.
+import './yakob.css';
 
 export default function Yakob() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -7,10 +17,12 @@ export default function Yakob() {
   const toggleAuth = () => {
     if (isSignedIn) {
       // Replace with your sign out logic
-      alert('Sign out logic here.');
+      // alert('Sign out logic here.');
+      console.log('Sign out logic here.');
     } else {
       // Replace with your sign in logic
-      alert('Sign in logic here.');
+      // alert('Sign in logic here.');
+      console.log('Sign in logic here.');
     }
     setIsSignedIn(!isSignedIn);
   };
@@ -18,23 +30,25 @@ export default function Yakob() {
   return (
     <>
       <div className="main-header logo">
-        <img
-          src="/logo-521x521.png"
+        <Image
+          src="/logo-512x512.png"
           alt="event-feed-project logo"
           className="logo"
+          width={150}
+          height={150}
         />
         <nav>
           <ul>
             <li>
-              <a href="/home">Home</a>
+              <Link href="/home">Home</Link>
             </li>
             {/* These links should point to valid routes or be replaced with buttons 
             if they are placeholders */}
             <li>
-              <a href="/groups">Groups</a>
+              <Link href="/groups">Groups</Link>
             </li>
             <li>
-              <a href="/events">Events</a>
+              <Link href="/events">Events</Link>
             </li>
           </ul>
         </nav>
