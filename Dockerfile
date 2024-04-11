@@ -24,10 +24,18 @@ RUN set -e; \
   npm run review; \
   npm run build
 
-# Stage 3.A Optimize for production, and use nginx server.
-FROM nginx:alpine AS production
+# Stage 3.A Optimize for production, 
+# use the NextJS production server.
+FROM node:18-alpine AS production
+WORKDIR /app
 USER root
-COPY --from=build /app/.next /usr/share/nginx/html
+RUN chown --recursive node:node /app
+
+USER node
+COPY --chown=node:node package*.json ./
+RUN npm ci --omit=dev
+
+COPY --from=build --chown=node:node /app/.next .next
 
 # 3.B Resolve server routing via default config.
 COPY default.conf /etc/nginx/conf.d/
