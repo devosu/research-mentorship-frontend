@@ -28,23 +28,29 @@ RUN set -e; \
 # use the NextJS production server.
 FROM node:18-alpine AS production
 WORKDIR /app
+
 USER root
 RUN chown --recursive node:node /app
 
 USER node
-COPY --chown=node:node package*.json ./
+COPY --from=build --chown=node:node /app/next.config.js ./
+COPY --from=build --chown=node:node /app/package*.json ./
+COPY --from=build --chown=node:node /app/public ./public
+COPY --from=build --chown=node:node /app/.next ./.next
 RUN npm ci --omit=dev
 
-COPY --from=build --chown=node:node /app/.next .next
+# Accept incoming firebase env vars.
+ENV FIREBASE_API_KEY=
+ENV FIREBASE_AUTH_DOMAIN=
+ENV FIREBASE_PROJECT_ID=
+ENV FIREBASE_STORAGE_BUCKET=
+ENV FIREBASE_MESSAGING_SENDER_ID=
+ENV FIREBASE_APP_ID=
+ENV FIREBASE_MEASUREMENT_ID=
 
-# 3.B Resolve server routing via default config.
-COPY default.conf /etc/nginx/conf.d/
-
-# Make default http 80 port editable via build arg.
-ENV EXPOSE_PORT=80
+# Make NextJS's default 3000 port editable via build arg.
+ENV EXPOSE_PORT=3000
 EXPOSE $EXPOSE_PORT
 
-# 3.C Start the nginx server.
-# ENTRYPOINT for the executable, CMD for the arguments.
-ENTRYPOINT ["nginx"]
-CMD ["-g", "daemon off;"]
+# 3.C Start the NextJS production server.
+CMD ["npm", "start"]
