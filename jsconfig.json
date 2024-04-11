@@ -4,11 +4,20 @@
       "@/*": [
         "./src/*"
       ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@api/*": [
+        "./src/app/api/*"
+      ],
       "@components/*": [
-        "./src/components/*"
+        "./src/app/components/*"
       ],
       "@utils/*": [
         "./src/utils/*"
+      ],
+      "@firebase/*": [
+        "./src/firebase/*"
       ],
     },
   },
