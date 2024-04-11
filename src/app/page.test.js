@@ -1,28 +1,28 @@
-// ./src/pages/Home.test.js
+// ./src/app/page.test.js
 //
-// Unit tests for the Home page.
+// Unit tests for Homepage.
 
 // React essential imports.
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 // Page imports.
-import Home from './Home';
+import Homepage from './page';
 
 test('Home renders without crashing', () => {
-  const { container } = render(<Home />);
+  const { container } = render(<Homepage />);
   expect(container).toBeTruthy();
 });
 
 test('Home renders correct text', () => {
-  render(<Home />);
+  render(<Homepage />);
   expect(screen.getByText('Welcome to home page for event feed!')).toBeTruthy();
   expect(screen.getByText("Go to Yakob's Page")).toBeTruthy();
   expect(screen.getByText("Go to Ziqi's Page")).toBeTruthy();
 });
 
 test('Home renders correct links', () => {
-  render(<Home />);
+  render(<Homepage />);
   expect(screen.getByText("Go to Yakob's Page").href).toContain('/yakob');
   expect(screen.getByText("Go to Ziqi's Page").href).toContain('/ziqi');
 });

@@ -1,17 +1,17 @@
-name: Node 18, 20 Prod
+name: Node 18, 20 NextJS
 
 on:
   push:
-    branches: [ 'production' ]
+    branches: [ 'dev-maintenance-keminghe' ]
   pull_request:
-    branches: [ 'production' ]
+    branches: [ 'dev-maintenance-keminghe' ]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: read
-  
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -40,3 +40,9 @@ jobs:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
           FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
         run:  npm run review
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: devosu/event-feed-project
+        

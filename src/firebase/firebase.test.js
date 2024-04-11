@@ -5,12 +5,12 @@
 // 1. Setup mocks for the firebase modules before import.
 
 // 1.1. Mock the firebase/app module.
-const mockApp = {}
+const mockApp = {};
 const mockGetApps = jest.fn();
 const mockInitializeApp = jest.fn().mockReturnValue(mockApp);
 jest.mock('firebase/app', () => ({
   getApps: mockGetApps,
-  initializeApp: mockInitializeApp
+  initializeApp: mockInitializeApp,
 }));
 
 // 1.2. Mock the firebase/auth module.
@@ -26,8 +26,9 @@ jest.mock('firebase/app', () => ({
 // }));
 
 // 1.4. Mock the firebase/firestore module.
+const mockGetFirestore = jest.fn().mockReturnValue('mockFirestore');
 jest.mock('firebase/firestore', () => ({
-  getFirestore: jest.fn().mockReturnValue('mockFirestore')
+  getFirestore: mockGetFirestore,
 }));
 
 // 1.5. Mock the firebase/functions module.
@@ -47,7 +48,7 @@ beforeEach(() => {
 });
 
 describe('Firebase service setup and export', () => {
-  it('should initialize the app if not already initialized', () => {
+  it('initializes the app if not already initialized', () => {
     jest.isolateModules(() => {
       // 2.1. Test the app initialization.
       // Scenario: mockGetApps returns an empty array.
@@ -58,7 +59,7 @@ describe('Firebase service setup and export', () => {
     });
   });
 
-  it('should update ref to the app if already initialized', () => {
+  it('updates ref to the app if already initialized', () => {
     jest.isolateModules(() => {
       // Scenario: mockGetApps returns a non-empty array.
       mockGetApps.mockImplementation(() => [{}]);
@@ -68,7 +69,7 @@ describe('Firebase service setup and export', () => {
     });
   });
 
-  // it('should initialize the auth service', () => {
+  // it('initializes the auth service', () => {
   //   // 2.2. Test the auth service initialization.
   //   jest.isolateModules(() => {
   //     const { app, auth } = require('./firebase');
@@ -77,7 +78,7 @@ describe('Firebase service setup and export', () => {
   //   });
   // });
 
-  // it('should initialize the real-time database', () => {
+  // it('initializes the real-time database', () => {
   //   // 2.3. Test the real-time database initialization.
   //   jest.isolateModules(() => {
   //     const { app, fRealDB } = require('./firebase');
@@ -87,17 +88,17 @@ describe('Firebase service setup and export', () => {
   //   });
   // });
 
-  it('should initialize the Firestore database', () => {
+  it('initializes the Firestore database', () => {
     // 2.4. Test the Firestore database initialization.
     jest.isolateModules(() => {
-      const { app, fFirestore } = require('./firebase');
-      expect(getFirestore).toHaveBeenCalled();
-      expect(getFirestore).toHaveBeenCalledWith(app);
-      expect(fFirestore).toBe('mockFirestore');
+      const { app, db } = require('./firebase');
+      expect(mockGetFirestore).toHaveBeenCalled();
+      expect(mockGetFirestore).toHaveBeenCalledWith(app);
+      expect(db).toBe('mockFirestore');
     });
   });
 
-  // it('should initialize the Cloud Functions', () => {
+  // it('initializes the Cloud Functions', () => {
   //   // 2.5. Test the Cloud Functions initialization.
   //   jest.isolateModules(() => {
   //     const { app, fFunctions } = require('./firebase');
@@ -107,7 +108,7 @@ describe('Firebase service setup and export', () => {
   //   });
   // });
 
-  // it('should initialize the Analytics service', () => {
+  // it('initializes the Analytics service', () => {
   //   // 2.6. Test the Analytics service initialization.
   //   jest.isolateModules(() => {
   //     const { app, fAnalytics } = require('./firebase');

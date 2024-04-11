@@ -6,19 +6,17 @@
     "node": true,
     "browser": true
   },
-  "parser": "@babel/eslint-parser",
   "plugins": [
     "prettier"
   ],
   "extends": [
     "prettier",
-    "react-app",
-    "react-app/jest",
-    "eslint:recommended"
+    "eslint:recommended",
+    "next/core-web-vitals"
   ],
   "ignorePatterns": [
     "node_modules/",
-    "build/"
+    ".next/"
   ],
   "rules": {
     "no-console": 1,

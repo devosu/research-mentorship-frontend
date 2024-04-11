@@ -20,12 +20,14 @@ const firebaseProdConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
 // Modularize Firebase initialization.
 export function createFirebaseInstance() {
-  const app = getApps().length ? getApps()[0] : initializeApp(firebaseProdConfig);
+  const app = getApps().length
+    ? getApps()[0]
+    : initializeApp(firebaseProdConfig);
   const db = getFirestore(app);
 
   return { app, db };
