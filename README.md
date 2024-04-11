@@ -1,9 +1,18 @@
 # Event Feed Project
 
-Node.js 18 x React web application to inform OSU students of the various club activities happing across campus. 
+Node.js 18 x NextJS web app to inform OSU students of the various club activities happing across campus. 
+
+## Nav Links
+
+* Dashboard [Link :link:](https://github.com/devosu/event-feed-project?tab=readme-ov-file#dashboard)
+* User Stories [Link :link:](https://github.com/devosu/event-feed-project?tab=readme-ov-file#user-stories)
+* Developers List [Link :link:](https://github.com/devosu/event-feed-project?tab=readme-ov-file#developers)
+* Quickstart Guide [Link :link:](https://github.com/devosu/event-feed-project?tab=readme-ov-file#quickstart-guide)
+
+## Dashboard
 
 > [!CAUTION]
-> **DO NOT** commit/upload **ANY** credentials/secrets such as: `firebase credentials`, `gcloud service account keys`, and anything that should be left in your local `env` or `.env` file. 
+> **DO NOT** commit/upload **ANY** credentials/secrets such as: `firebase credentials`, `gcloud service account keys`, and anything that's in your local `env` or `.env` file. 
 >
 > You can now find and use the firebase init module at `firebase/firebase.js` along with `firebase.test.js`. The `.env.exmaple` file is **NOT** a placeholder and is essential to loading the env vars correctly. Copy the `.env.example` to a `.env` file in your own `firebase` dir and keep your credentials offline.
 >
@@ -117,7 +126,7 @@ npm install
 ```sh
 # The dev server should be accessible at: 
 # http://localhost:3000
-npm start
+npm run dev
 ```
 
 ### 4. Perform auto-code review and testing
