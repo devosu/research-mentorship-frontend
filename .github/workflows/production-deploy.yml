@@ -67,22 +67,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Google Auth
-      #   id: auth
-      #   uses: "google-github-actions/auth@v0"
-      #   with:
-      #     token_format: "access_token"
-      #     workload_identity_provider: "${{ secrets.WIF_PROVIDER }}" # e.g. - projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider
-      #     service_account: "${{ secrets.WIF_SERVICE_ACCOUNT }}" # e.g. - my-service-account@my-project.iam.gserviceaccount.com
-
-      # NOTE: Alternative option - authentication via credentials json
+      # Authentication via credentials json
       - name: Google Auth
-        id: auth
+        id: gcloud-auth
         uses: "google-github-actions/auth@v2"
         with:
           credentials_json: ${{ secrets.GCLOUD_DEPLOY_SA_KEY }}
-
-      # BEGIN of: Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
 
       # Authenticate Docker to Google Cloud Artifact Registry
       - name: Docker Auth
@@ -99,17 +89,23 @@ jobs:
           docker build -t "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}" ./
           docker push "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
 
-      # END of: Docker auth and build
-
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ vars.CRUN_SERVICE_NAME }}
           region: ${{ vars.CRUN_SERVICE_REGION }}
-          # NOTE: If using a pre-built image, update the image name here
           image: "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+          # Pass the GitHub repo secrets as environment variables to the Cloud Run service
+          env_vars: |
+            FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}
+            FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}
+            FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}
+            FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }}
+            FIREBASE_MESSAGING_SENDER_ID=${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+            FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}
+            FIREBASE_MEASUREMENT_ID=${{ secrets.FIREBASE_MEASUREMENT_ID }}
 
-      # If required, use the Cloud Run url output in later steps
+      # Report the Cloud Run url output.
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
