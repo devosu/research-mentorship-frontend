@@ -10,7 +10,6 @@ body {
     margin : auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    
 
     /* children layout */
     line-height: 0.5; 
@@ -38,10 +37,12 @@ body {
 
 .basic-information-block h1{
     font-size: 20px;
+    font-weight: 700;
 }
 
 .basic-information-block p{
     font-size: 16px;
+    font-weight: 200;
 }
 
 
