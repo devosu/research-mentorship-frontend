@@ -16,9 +16,9 @@
       "@utils/*": [
         "./src/utils/*"
       ],
-      "@firebase/*": [
-        "./src/firebase/*"
-      ],
+      // "@firebase/*": [
+      //   "src/firebase/*"
+      // ],
     },
   },
 }
