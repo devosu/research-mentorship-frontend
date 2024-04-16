@@ -16,15 +16,13 @@ test('Home renders without crashing', () => {
 
 test('Home renders correct text', () => {
   render(<Homepage />);
-  expect(screen.getByText('Welcome to home page for event feed!')).toBeTruthy();
-  expect(screen.getByText("Go to Yakob's Page")).toBeTruthy();
-  expect(screen.getByText("Go to Ziqi's Page")).toBeTruthy();
+  expect(screen.getByText('Sign In')).toBeTruthy();
 });
 
-test('Home renders correct links', () => {
-  render(<Homepage />);
-  expect(screen.getByText("Go to Yakob's Page").href).toContain('/yakob');
-  expect(screen.getByText("Go to Ziqi's Page").href).toContain('/ziqi');
-});
+// test('Home renders correct links', () => {
+//   render(<Homepage />);
+//   expect(screen.getByText("Go to Yakob's Page").href).toContain('/yakob');
+//   expect(screen.getByText("Go to Ziqi's Page").href).toContain('/ziqi');
+// });
 
 // Add more tests as project progresses.

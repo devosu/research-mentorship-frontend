@@ -4,10 +4,10 @@
 
 // Next essential imports.
 'use client';
-import { db } from "../firebase/firebase";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { db } from '../firebase/firebase';
+import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import EventCard from './components/eventCard';
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import './globals.css';
 import Image from 'next/image';
 import logo from './logo.png';
@@ -29,12 +29,8 @@ export default function Homepage() {
   const toggleAuth = () => {
     if (isSignedIn) {
       // Replace with your sign out logic
-      // alert('Sign out logic here.');
-      console.log('Sign out logic here.');
     } else {
       // Replace with your sign in logic
-      // alert('Sign in logic here.');
-      console.log('Sign in logic here.');
     }
     setIsSignedIn(!isSignedIn);
   };
@@ -49,14 +45,23 @@ export default function Homepage() {
 
   const getEvents = () => {
     const renderedComponents = [];
-    getDocs(query(collection(db, "events"), orderBy("date", "asc"))).then((q) => {
-      q.forEach((doc) => {
-        renderedComponents.push(<EventCard eventName={doc.data().event_name} date={doc.data().date} location={doc.data().location} clubName={doc.data().club_name} />);
-      });
-      if (!loaded) setEvents(renderedComponents);
-      setLoaded(true);
-    });
-  }
+    getDocs(query(collection(db, 'events'), orderBy('date', 'asc'))).then(
+      (q) => {
+        q.forEach((doc) => {
+          renderedComponents.push(
+            <EventCard
+              eventName={doc.data().event_name}
+              date={doc.data().date}
+              location={doc.data().location}
+              clubName={doc.data().club_name}
+            />
+          );
+        });
+        if (!loaded) setEvents(renderedComponents);
+        setLoaded(true);
+      }
+    );
+  };
 
   return (
     <main>
@@ -70,15 +75,22 @@ export default function Homepage() {
         />
         <div class="input-container">
           <span class="material-symbols-rounded search-icon">search</span>
-          <input type='text' class={inputClassName.length == 0 ? 'event-search' : inputClassName} placeholder="Search Events"></input>
+          <input
+            type="text"
+            class={inputClassName.length == 0 ? 'event-search' : inputClassName}
+            placeholder="Search Events"
+          ></input>
         </div>
-        <button onClick={toggleAuth} className={buttonClassName.length == 0 ? 'auth-button' : buttonClassName}>
+        <button
+          onClick={toggleAuth}
+          className={
+            buttonClassName.length == 0 ? 'auth-button' : buttonClassName
+          }
+        >
           {isSignedIn ? 'Sign Out' : 'Sign In'}
         </button>
       </div>
-      <div class="events-grid">
-        {events}
-      </div>
+      <div class="events-grid">{events}</div>
     </main>
   );
 }

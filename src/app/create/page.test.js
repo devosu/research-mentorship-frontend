@@ -7,9 +7,9 @@ import { render, screen } from '@testing-library/react';
 
 import CreateEvent from './page';
 
-describe('Sample component', () => {
+describe('CreateEvent component', () => {
   it('renders the component', () => {
     render(<CreateEvent />);
-    expect(screen.getByText('Sample Component')).toBeInTheDocument();
+    expect(screen.getByText('Submit')).toBeInTheDocument();
   });
 });
