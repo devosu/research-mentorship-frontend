@@ -3,10 +3,10 @@
 // Root layout for the Event Feed project.
 
 // Import global fonts and styles.
-// import { Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
-// const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   charset: 'utf-8',
@@ -26,16 +26,13 @@ export default function RootLayout({ children }) {
           Developed By:
             Trevor Gerald,
             William An,
-            Bo Ding,
             Yakob Getu,
             Ziqi Ou,
-            Aryan Tyagi,
             Ekumjyot Kaur,
             and Keming He
         */}
       </head>
-      {/* <body className={inter.className}> */}
-      <body>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

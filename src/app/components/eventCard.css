@@ -1,0 +1,48 @@
+.event-card  {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 15px;
+}
+.event-block {
+    width : 334px;
+    height: 375px;
+    margin : auto;
+    line-height: 0.5; 
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+}
+.event-image  {
+    width: 100%;
+    height: 75%;
+    border-radius: 15px 15px 0px 0px;
+}
+.basic-information-block{
+    padding-left: 15px;
+    flex-grow: 0; 
+    line-height: 0.8; 
+    font-weight: 300;
+}
+.basic-information-block h1{
+    font-size: 20px;
+    font-weight: 700;
+}
+.basic-information-block p{
+    font-size: 16px;
+}
+.organization-block  {
+    background-color:rgb(242, 242, 242);
+    padding-left: 15px;
+    display: flex; 
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0px 0px 15px 15px;
+}
+.club-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
