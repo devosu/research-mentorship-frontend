@@ -37,7 +37,7 @@ Feature: View same-day/week/month... club events
   Scenario: Trevor wants to find a recycling-themed club event after class at 3pm today 
     
     Given Trevor has access to the Internet and some mobile device (Android/iOS)
-    When Trevor opens URL https://findevents.osu.dev on his phone and applies the reclycing tag filter
+    When Trevor opens URL https://events.osu.dev on his phone and applies the reclycing tag filter
     Then The website will respond with either a list of recycling events (plus details) or related events if not found
 
 ```
@@ -50,10 +50,8 @@ Feature: View same-day/week/month... club events
 |---------------|----------------------------|--------------|
 | Trevor Gerald | tmgerald04@gmail.com       | Sr SWE       |
 | Ekumjyot Kaur | kaur.271@osu.edu           | Sr SWE       |
-| Aryan Tyagi   | aryantyagi1117@gmail.com   | Sr SWE       |
 | Ziqi Ou       | ou.152@buckeyemail.osu.edu | Jr SWE       |
-| Yakob Getu    | bo.ding2@icloud.com        | Jr SWE       |
-| Bo Ding       | bo.ding2@icloud.com        | Jr SWE       |
+| Yakob Getu    | getu.1@osu.edu             | Jr SWE       |
 | William An    | an.407@osu.edu             | Designer     |
 | Keming He     | keminghe.career@gmail.com  | Cloud DevOps |
 
