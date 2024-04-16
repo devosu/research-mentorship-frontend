@@ -2,9 +2,10 @@
 //
 // Unit tests for the Yakob page.
 
+import { describe, expect, it, jest } from '@jest/globals';
+import { fireEvent, render, screen } from '@testing-library/react';
 // React essential imports.
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
 
 // Page imports.
 import Yakob from './page';

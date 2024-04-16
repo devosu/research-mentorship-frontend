@@ -45,16 +45,10 @@
 name: GCloud Deploy
 
 on:
-  push:
-      branches: [ "production" ]
+  # Production only deployable via manual trigger.
+  workflow_dispatch:
 
 # Note, use environment instead of hard-coded env variables.
-# env:
-#   PROJECT_ID: YOUR_PROJECT_ID # TODO: update Google Cloud project id
-#   GAR_LOCATION: YOUR_GAR_LOCATION # TODO: update Artifact Registry location
-#   SERVICE: YOUR_SERVICE_NAME # TODO: update Cloud Run service name
-#   REGION: YOUR_SERVICE_REGION # TODO: update Cloud Run service region
-
 jobs:
   deploy:
     # Add "id-token" with the intended permissions for workload identity federation

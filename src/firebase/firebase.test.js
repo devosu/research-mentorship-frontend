@@ -2,6 +2,8 @@
 //
 // Unit tests for Firebase setup and export.
 
+import { beforeEach, describe, expect, it, jest } from '@jest/globals';
+
 // 1. Setup mocks for the firebase modules before import.
 
 // 1.1. Mock the firebase/app module.

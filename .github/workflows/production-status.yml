@@ -1,12 +1,9 @@
 name: Node 18, 20 Prod
 
 on:
+  # Production is only reachable via GitHub pull request merge.
   push:
     branches: [ 'production' ]
-  pull_request:
-    branches: [ 'production' ]
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 permissions:
   contents: read

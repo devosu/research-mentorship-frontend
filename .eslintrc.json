@@ -6,18 +6,9 @@
     "node": true,
     "browser": true
   },
-  "plugins": [
-    "prettier"
-  ],
-  "extends": [
-    "prettier",
-    "eslint:recommended",
-    "next/core-web-vitals"
-  ],
-  "ignorePatterns": [
-    "node_modules/",
-    ".next/"
-  ],
+  "plugins": ["prettier"],
+  "extends": ["prettier", "eslint:recommended", "next/core-web-vitals"],
+  "ignorePatterns": ["node_modules/", ".next/"],
   "rules": {
     "no-console": 1,
     "no-unused-vars": 1,

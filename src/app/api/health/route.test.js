@@ -2,25 +2,20 @@
 //
 // TDD on the health API endpoint.
 
+import { describe, expect, it } from '@jest/globals';
 // Jest server test runs on Node.js env.
 // Must use CommonJS module syntax.
 const axios = require('axios').default;
 
-describe('Health check api endpoint', () => {
-  it(
-    ('returns 200 OK for GET requests to "/api/health" ',
-      'when server is running and healthy.'),
-    async () => {
-      // Send a GET request to the /api/health endpoint.
-      axios
-        .get('http://localhost:3000/api/health')
-        .then((response) => {
-          expect(response.status).toBe(200);
-          expect(response.data).toBe('OK');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+describe('/api/heath route', () => {
+  it('healthily returns 200 OK for GET requests', async () => {
+    // Send a GET request to the /api/health endpoint.
+    try {
+      const response = await axios.get('http://localhost:3000/api/health');
+      expect(response.status).toBe(200);
+      expect(response.data).toBe('OK');
+    } catch (error) {
+      throw new Error(`Health check failed: ${error}`);
     }
-  );
+  });
 });

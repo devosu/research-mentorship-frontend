@@ -3,6 +3,7 @@
 // Unit tests for RootLayout.
 
 // Import testing utilities.
+import { describe, expect, it, jest } from '@jest/globals';
 import { renderToString } from 'react-dom/server';
 
 // Import the default and named exports from layout.js.

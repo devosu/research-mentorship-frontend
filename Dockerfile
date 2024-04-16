@@ -20,9 +20,9 @@ RUN npm ci
 FROM base AS build
 USER node
 COPY --chown=node:node . .
-RUN set -e; \
-  npm run review; \
-  npm run build
+# Removed review because Firebase env are not loaded 
+# in the build process.
+RUN npm run build
 
 # Stage 3.A Optimize for production, 
 # use the NextJS production server.
@@ -39,7 +39,7 @@ COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/.next ./.next
 RUN npm ci --omit=dev
 
-# Accept incoming firebase env vars.
+# Accept incoming firebase env vars only at runtime.
 ENV FIREBASE_API_KEY=
 ENV FIREBASE_AUTH_DOMAIN=
 ENV FIREBASE_PROJECT_ID=

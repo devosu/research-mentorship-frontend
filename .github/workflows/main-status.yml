@@ -1,3 +1,6 @@
+# ./.github/workflows/main-status.yml
+#
+# Auto code review for main and dev-lead-trevor branches.
 name: Node 18, 20 Main
 
 on:
@@ -5,8 +8,12 @@ on:
     branches: [ 'main', 'dev-lead-trevor' ]
   pull_request:
     branches: [ 'main', 'dev-lead-trevor' ]
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab.
   workflow_dispatch:
+  # Schedule auto review main branch every Sunday and Wednesday.
+  schedule:
+    - cron: '0 0 * * 0'
+    - cron: '0 0 * * 3'
 
 permissions:
   contents: read
