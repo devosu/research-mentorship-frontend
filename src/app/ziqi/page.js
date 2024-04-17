@@ -43,5 +43,9 @@ export default function Ziqi() {
                 <p>Club Name Here</p>
               </div>
             </div>
-            );
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
