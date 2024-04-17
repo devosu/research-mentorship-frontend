@@ -40,7 +40,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node }}@v4
+          node-version: ${{ matrix.node }}
           architecture: ${{ matrix.arch }}
           check-latest: true
           cache: 'npm'

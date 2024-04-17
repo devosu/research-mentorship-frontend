@@ -16,9 +16,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/ci-common.yml
-        with:
-          branch_name: 'dev-lead-trevor'
+  call-reusable-workflow:
+    uses: ./.github/workflows/ci-common.yml
+    with:
+      branch_name: ${{ github.ref }}

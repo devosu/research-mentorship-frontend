@@ -21,17 +21,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prod CI check
-        uses: ./.github/workflows/ci-common.yml
-        with:
-          branch_name: 'production'
-
-      # Remember set actual_deploy FALSE for testing.
-      - name: Prod CD check
-        uses: ./.github/workflows/cd-common.yml
-        with:
-          branch_name: 'production'
-          actual_deploy: false
+  call-reusable-workflow:
+    uses: ./.github/workflows/ci-common.yml
+    with:
+      branch_name: ${{ github.ref }}

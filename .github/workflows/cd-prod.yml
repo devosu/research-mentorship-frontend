@@ -1,21 +1,28 @@
 # ./.github/workflows/cd-prod.yml
 #
-# Manual build and deployment to GCP.
-name: Deploy Status
+# Auto build review for production branch.
+name: Prod CD
 
 on:
+  push:
+    branches:
+      - 'production'
+  pull_request:
+    branches:
+      - 'production'
+  # Allow manual trigger.
   workflow_dispatch:
+  # Schedule auto review prod branch every day.
+  schedule:
+    - cron: '0 0 * * *'
   
 permissions:
   contents: read
   pull-requests: read
 
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Prod deploy to GCP Cloud Run
-        uses: ./.github/workflows/cd-common.yml
-        with:
-          branch_name: 'production'
-          actual_deploy: true
+  call-reusable-workflow:
+    uses: ./.github/workflows/cd-common.yml
+    with:
+      branch_name: ${{ github.ref }}
+      actual_deploy: false
