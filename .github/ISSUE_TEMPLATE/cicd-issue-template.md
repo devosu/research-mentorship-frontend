@@ -1,6 +1,5 @@
 ---
-title: 
-  - 'CICD Failure Auto-Issue on {{ date | date("ddd, MMM Do at HH mm ss") }}'
+title: 'CICD Failure Auto-Issue on {{ date | date("ddd, MMM Do at HH mm ss") }}'
 assignees: 
   - 'KemingHe'
   - '{{ github.event.workflow_run.head_commit.author.name }}'
