@@ -3,9 +3,9 @@
 // Tutorial on how to write a sample component.
 
 'use client';
+import { addDoc, collection } from 'firebase/firestore';
 import React from 'react';
 import { db } from '../../firebase/firebase';
-import { collection, addDoc } from 'firebase/firestore';
 
 export default function CreateEvent() {
   const addEvent = () => {

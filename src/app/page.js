@@ -4,15 +4,15 @@
 
 // Next essential imports.
 'use client';
-import { db } from '../firebase/firebase';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-import EventCard from './components/eventCard';
-import { useState, useEffect } from 'react';
-import './globals.css';
-import Image from 'next/image';
-import logo from './logo.png';
-import { Inter } from 'next/font/google';
 import 'material-symbols/rounded.css';
+import { Inter } from 'next/font/google';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { db } from '../firebase/firebase';
+import EventCard from './components/eventCard';
+import './globals.css';
+import logo from './logo.png';
 
 const inter = Inter({ subsets: ['latin'] });
 

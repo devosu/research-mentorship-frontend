@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
+      # Must checkout code to access issue template file.
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Create issue
         uses: JasonEtco/create-an-issue@v2
         env:
