@@ -1,5 +1,6 @@
 ---
-title: 'CICD Failure Auto-Issue on {{ date | date("ddd, MMM Do at HH mm ss") }}'
+name: 'Auto-Issue on {{ date | date("ddd, MMM Do at HH mm ss") }}'
+description: 'CI workflow failed on branch: {{ github.event.workflow_run.head_branch }}.'
 assignees: 
   - 'KemingHe'
   - '{{ github.event.workflow_run.head_commit.author.name }}'
@@ -7,8 +8,6 @@ labels:
   - 'bug'
   - 'CICD'
 ---
-
-# The CI workflow failed on the branch: {{ github.event.workflow_run.head_branch }}. 
 
 - Workflow: {{ github.event.workflow_run.name }}
 - Run: {{ github.event.workflow_run.html_url }}
