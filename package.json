@@ -16,14 +16,17 @@
   "scripts": {
     "start": "next start",
     "dev": "next dev",
+    "stop": "kill $(lsof -t -i:3000) || true",
+    "prebuild": "rm -rf .next",
     "build": "next build",
+    "review-ci": "npm-run-all biome test-jest test-playwright",
     "prereview": "echo 'Starting automated format, lint, and test checks...'",
-    "review": "npm-run-all biome test-unit test-e2e",
+    "review": "npm-run-all biome-fix test-jest test-playwright",
     "postreview": "echo '...Congratulations! All automated checks passed! Ready to commit.'",
-    "test-unit": "jest",
-    "test-unit-watch": "jest --watchAll",
-    "test-e2e": "echo 'No end-to-end tests yet'",
-    "biome": "biome check --apply-unsafe ."
+    "test-jest": "jest",
+    "test-playwright": "echo 'Playwright tests not implemented yet.'",
+    "biome-fix": "biome check --apply-unsafe .",
+    "biome": "biome check ."
   },
   "browserslist": {
     "production": [

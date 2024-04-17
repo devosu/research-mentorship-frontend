@@ -1,6 +1,6 @@
 # Event Feed Project
 
-Node.js 18 x NextJS web app to inform OSU students of the various club activities happing across campus. 
+Node.js 18 NextJS web app to inform OSU students of the various club activities happing across campus. 
 
 ## Nav Links
 
@@ -17,13 +17,6 @@ Node.js 18 x NextJS web app to inform OSU students of the various club activitie
 > You can now find and use the firebase init module at `firebase/firebase.js` along with `firebase.test.js`. The `.env.exmaple` file is **NOT** a placeholder and is essential to loading the env vars correctly. Copy the `.env.example` to a `.env` file in your own `firebase` dir and keep your credentials offline.
 >
 > Read more on `dotenv-safe`: https://www.npmjs.com/package/dotenv-safe
-
-| Project Health | | |
-|---|---|---|
-| Main Status | [![Node 18, 20 Main](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/main-status.yml) ||
-| Prod Status | [![Node 18, 20 Prod](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/production-status.yml) | [![GCloud Deploy](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml/badge.svg?branch=production)](https://github.com/devosu/event-feed-project/actions/workflows/production-deploy.yml) |
-| Code Quality | [![CodeQL](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/github-code-scanning/codeql) | [![codecov](https://codecov.io/gh/devosu/event-feed-project/graph/badge.svg?token=N56MUQG4NS)](https://codecov.io/gh/devosu/event-feed-project) |
-| Maintenance Update | [![Node 18, 20 NextJS](https://github.com/devosu/event-feed-project/actions/workflows/maintenance-status.yml/badge.svg)](https://github.com/devosu/event-feed-project/actions/workflows/maintenance-status.yml)
 
 View the "**Sunburst**" CodeCov report below. (The inner-most circle is the entire project, moving away from the center are folders then, finally, a single file. The size and color of each slice is representing the number of statements and the coverage, respectively.)
 

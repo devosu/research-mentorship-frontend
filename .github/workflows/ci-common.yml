@@ -1,0 +1,80 @@
+# ./.github/workflows/ci-common.yml
+#
+# Shared code review workflow.
+name: Node CI
+
+on:
+  workflow_call:
+    inputs:
+      branch_name:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  code-review:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - 'ubuntu-latest'
+          - 'windows-latest'
+          - 'macos-latest'
+        arch:
+          - 'x64'
+        node: 
+          - '20.x'
+          - '18.x'
+
+    name: Node ${{ matrix.node }} - ${{ matrix.arch }} on ${{ matrix.os }}
+    steps:
+
+      # Checkout src code and setup node.
+      - name: Checkout branch code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch_name }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}@v4
+          architecture: ${{ matrix.arch }}
+          check-latest: true
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      # Install dependencies, build and start application in the background.
+      - name: Install dependencies
+        run: npm ci
+      - name: Build and start app.
+        run: set -e; npm run build; npm start &
+
+      - name: Run auto code review
+        env:
+          # Declare continuous integration env.
+          CI: true
+          BASE_URL: ${{ vars.APP_BASE_URL }}
+
+          # Load Firebase secrets.
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
+        run: npm run review-ci
+
+      - name: Stop application and proceed to clean up.
+        run: npm stop
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: devosu/event-feed-project
+
+      - run: 'echo "All done! 🎉"'

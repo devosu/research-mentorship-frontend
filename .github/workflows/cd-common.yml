@@ -1,4 +1,4 @@
-# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Cloud Run when a commit is pushed to the "main" branch
+# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Cloud Run when a commit is pushed to the 'main' branch
 #
 # Overview:
 #
@@ -42,20 +42,26 @@
 #   Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
 #   Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
 
-name: GCloud Deploy
+name: GCP CD Common
 
 on:
-  # Production only deployable via manual trigger.
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      branch_name:
+        required: true
+        type: string
+      actual_deploy:
+        required: true
+        type: boolean
 
 # Note, use environment instead of hard-coded env variables.
 jobs:
-  deploy:
-    # Add "id-token" with the intended permissions for workload identity federation
+  build-only:
+    # Add 'id-token' with the intended permissions for workload identity federation
     environment: Gcloud Deploy Env
     permissions:
-      contents: "read"
-      id-token: "write"
+      contents: 'read'
+      id-token: 'write'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -64,24 +70,37 @@ jobs:
       # Authentication via credentials json
       - name: Google Auth
         id: gcloud-auth
-        uses: "google-github-actions/auth@v2"
+        uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: ${{ secrets.GCLOUD_DEPLOY_SA_KEY }}
 
       # Authenticate Docker to Google Cloud Artifact Registry
       - name: Docker Auth
         id: docker-auth
-        uses: "docker/login-action@v3"
+        uses: 'docker/login-action@v3'
         with:
           username: _json_key
           password: ${{ secrets.GCLOUD_DEPLOY_SA_KEY }}
-          registry: "${{ vars.ART_REG_REGION }}-docker.pkg.dev"
+          registry: '${{ vars.ART_REG_REGION }}-docker.pkg.dev'
 
-      - name: Build and Push Container
-        id: docker-build-push
-        run: |-
-          docker build -t "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}" ./
-          docker push "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+      - name: Build Container
+        id: docker-build
+        run: |
+          docker build -t '${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}' ./
+
+  push-and-deploy:
+    needs: build-only
+    if: ${{ needs.build-only.result == 'success' && inputs.actual_deploy == true }}
+    environment: Gcloud Deploy Env
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push Container to Artifact Registry
+        id: docker-push
+        run: |
+          docker push '${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}'
 
       - name: Deploy to Cloud Run
         id: deploy
@@ -89,7 +108,7 @@ jobs:
         with:
           service: ${{ vars.CRUN_SERVICE_NAME }}
           region: ${{ vars.CRUN_SERVICE_REGION }}
-          image: "${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}"
+          image: '${{ vars.ART_REG_REGION }}-docker.pkg.dev/${{ vars.PROJECT_ID }}/${{ vars.ART_REG_NAME }}/${{ vars.IMAGE_NAME }}:${{ github.sha }}'
           # Pass the GitHub repo secrets as environment variables to the Cloud Run service
           env_vars: |
             FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}

@@ -1,0 +1,37 @@
+# ./.github/workflows/ci-prod.yml
+#
+# Auto code review for production branch.
+name: Prod CI
+
+on:
+  push:
+    branches:
+      - 'production'
+  pull_request:
+    branches:
+      - 'production'
+  # Allow manual trigger.
+  workflow_dispatch:
+  # Schedule auto review prod branch every day.
+  schedule:
+    - cron: '0 0 * * *'
+  
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prod CI check
+        uses: ./.github/workflows/ci-common.yml
+        with:
+          branch_name: 'production'
+
+      # Remember set actual_deploy FALSE for testing.
+      - name: Prod CD check
+        uses: ./.github/workflows/cd-common.yml
+        with:
+          branch_name: 'production'
+          actual_deploy: false

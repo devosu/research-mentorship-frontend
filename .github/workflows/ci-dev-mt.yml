@@ -1,0 +1,26 @@
+# ./.github/workflows/ci-dev-mt.yml
+#
+# Auto code review for maintenance branch.
+name: Maintenance CI
+
+on:
+  push:
+    branches:
+      - 'dev-maintenance-keminghe'
+  pull_request:
+    branches:
+      - 'dev-maintenance-keminghe'
+  # Allow manual trigger.
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/ci-common.yml
+        with:
+          branch_name: 'dev-maintenance-keminghe'

@@ -1,0 +1,21 @@
+# ./.github/workflows/cd-prod.yml
+#
+# Manual build and deployment to GCP.
+name: Deploy Status
+
+on:
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prod deploy to GCP Cloud Run
+        uses: ./.github/workflows/cd-common.yml
+        with:
+          branch_name: 'production'
+          actual_deploy: true
