@@ -17,10 +17,9 @@ export default function Ziqi() {
         setCurrentIndex((prevIndex) => {
           const newIndex = prevIndex + direction;
           return newIndex < 0 ? images.length - 1 : newIndex % images.length;
-          return newIndex < 0 ? images.length - 1 : newIndex % images.length;
         });
       };
-    };
+    });
 
     return (
       <div className="event-block">
@@ -49,5 +48,10 @@ export default function Ziqi() {
                   <p>Club Name Here</p>
                 </div>
               </div>
-              );
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
