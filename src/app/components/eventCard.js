@@ -2,11 +2,11 @@
 //
 // Tutorial on how to write a sample component.
 
+import Image from 'next/image';
 import React from 'react';
-import './eventCard.css';
 import blank_image from './blank_event_image.png';
 import default_club_icon from './default_club_icon.png';
-import Image from 'next/image';
+import './eventCard.css';
 
 export default function EventCard({ eventName, date, location, clubName }) {
   return (

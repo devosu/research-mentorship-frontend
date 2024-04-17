@@ -11,9 +11,9 @@ export default function Ziqi() {
   const [images, _setInmages] = useState([blank_image]);
   const [_currentIndex, setCurrentIndex] = useState(0);
 
-  const changeImage = (direction) => {
-    setCurrentIndex((prevIndex) => {
-      const changeImage = (direction) => {
+  const _changeImage = (_direction) => {
+    setCurrentIndex((_prevIndex) => {
+      const _changeImage = (direction) => {
         setCurrentIndex((prevIndex) => {
           const newIndex = prevIndex + direction;
           return newIndex < 0 ? images.length - 1 : newIndex % images.length;
@@ -24,14 +24,14 @@ export default function Ziqi() {
     return (
       <div className="event-block">
         <div className="image-gallary-block">
-          <button onClick={() => changeImage(-1)}>Prev</button>
+          <button onClick={() => _changeImage(-1)}>Prev</button>
           <Image src={blank_image} width={334} height={221} alt="" />
-          <button onClick={() => changeImage(1)}>Next</button>
+          <button onClick={() => _changeImage(1)}>Next</button>
           <div className="event-block">
             <div className="image-gallary-block">
-              <button onClick={() => changeImage(-1)}>Prev</button>
+              <button onClick={() => _changeImage(-1)}>Prev</button>
               <Image src={blank_image} width={334} height={221} alt="" />
-              <button onClick={() => changeImage(1)}>Next</button>
+              <button onClick={() => _changeImage(1)}>Next</button>
             </div>
 
             <div className="basic-information-block">
@@ -42,9 +42,17 @@ export default function Ziqi() {
               </div>
 
               <div className="organization-block">
-                <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+                <Image
+                  src={default_club_icon}
+                  alt="Club Icon"
+                  className="club-icon"
+                />
                 <div className="organization-block">
-                  <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+                  <Image
+                    src={default_club_icon}
+                    alt="Club Icon"
+                    className="club-icon"
+                  />
                   <p>Club Name Here</p>
                 </div>
               </div>
@@ -53,5 +61,5 @@ export default function Ziqi() {
         </div>
       </div>
     );
-  }
+  };
 }

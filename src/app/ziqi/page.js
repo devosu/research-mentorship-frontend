@@ -37,9 +37,17 @@ export default function Ziqi() {
             </div>
 
             <div className="organization-block">
-              <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+              <Image
+                src={default_club_icon}
+                alt="Club Icon"
+                className="club-icon"
+              />
               <div className="organization-block">
-                <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+                <Image
+                  src={default_club_icon}
+                  alt="Club Icon"
+                  className="club-icon"
+                />
                 <p>Club Name Here</p>
               </div>
             </div>
