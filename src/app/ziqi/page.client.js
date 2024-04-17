@@ -13,29 +13,41 @@ export default function Ziqi() {
 
   const changeImage = (direction) => {
     setCurrentIndex((prevIndex) => {
-      const newIndex = prevIndex + direction;
-      return newIndex < 0 ? images.length - 1 : newIndex % images.length;
-    });
-  };
+      const changeImage = (direction) => {
+        setCurrentIndex((prevIndex) => {
+          const newIndex = prevIndex + direction;
+          return newIndex < 0 ? images.length - 1 : newIndex % images.length;
+          return newIndex < 0 ? images.length - 1 : newIndex % images.length;
+        });
+      };
+    };
 
-  return (
-    <div className="event-block">
-      <div className="image-gallary-block">
-        <button onClick={() => changeImage(-1)}>Prev</button>
-        <Image src={blank_image} width={334} height={221} alt="" />
-        <button onClick={() => changeImage(1)}>Next</button>
-      </div>
+    return (
+      <div className="event-block">
+        <div className="image-gallary-block">
+          <button onClick={() => changeImage(-1)}>Prev</button>
+          <Image src={blank_image} width={334} height={221} alt="" />
+          <button onClick={() => changeImage(1)}>Next</button>
+          <div className="event-block">
+            <div className="image-gallary-block">
+              <button onClick={() => changeImage(-1)}>Prev</button>
+              <Image src={blank_image} width={334} height={221} alt="" />
+              <button onClick={() => changeImage(1)}>Next</button>
+            </div>
 
-      <div className="basic-information-block">
-        <h1>Name of the event</h1>
-        <p>Date/Time</p>
-        <p>Location</p>
-      </div>
+            <div className="basic-information-block">
+              <div className="basic-information-block">
+                <h1>Name of the event</h1>
+                <p>Date/Time</p>
+                <p>Location</p>
+              </div>
 
-      <div className="organization-block">
-        <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
-        <p>Club Name Here</p>
-      </div>
-    </div>
-  );
+              <div className="organization-block">
+                <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+                <div className="organization-block">
+                  <Image src={default_club_icon} alt="Club Icon" className="club-icon" />
+                  <p>Club Name Here</p>
+                </div>
+              </div>
+              );
 }
