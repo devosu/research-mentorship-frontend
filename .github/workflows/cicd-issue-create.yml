@@ -28,6 +28,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: './.github/ISSUE_TEMPLATE/cicd-issue-template.yml'
+          filename: './.github/issue-templates/cicd-issue-template.md'
           update_existing: true
           search_existing: all
