@@ -1,18 +1,22 @@
 // ./src/app/page.js
 //
 // Homepage for the event feed project.
-
-// Next essential imports.
 'use client';
+
+import { Inter } from 'next/font/google';
+// Next essential imports.
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+
+// Third-party imports.
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import 'material-symbols/rounded.css';
-import { Inter } from 'next/font/google';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { db } from '../firebase/firebase';
-import EventCard from './components/eventCard';
+
+import logo from '@app/logo.png';
+import EventCard from '@components/eventCard';
+import { db } from '@firebase/firebase';
+// Local imports.
 import './globals.css';
-import logo from './logo.png';
 
 const inter = Inter({ subsets: ['latin'] });
 

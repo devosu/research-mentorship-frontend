@@ -19,8 +19,8 @@ import '@testing-library/jest-dom';
 global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 
-// Allow total of 30 seconds for unit tests.
-jest.setTimeout(30000);
+// Allow total of 10 seconds for unit tests.
+jest.setTimeout(10000);
 
 // beforeAll(() => {});
 
