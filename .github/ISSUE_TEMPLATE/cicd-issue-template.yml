@@ -1,5 +1,5 @@
 name: CICD Auto-Issue
-title: 'CICD Auto-Issue on {{ date | date("ddd, MMM Do at HH mm ss") }}'
+title: New CICD Auto-Issue
 description: 'Auto-creates an issue with details about the failed CICD workflow.'
 assignees: 
   - 'KemingHe'
@@ -22,6 +22,7 @@ body:
 
         - Workflow: {{ github.event.workflow_run.name }}
         - Run: {{ github.event.workflow_run.html_url }}
+        - Date: {{ github.event.workflow_run.created_at }}
         - Commit: {{ github.event.workflow_run.head_commit.url }}
         - Commit message: {{ github.event.workflow_run.head_commit.message }}
         - Author: {{ github.event.workflow_run.head_commit.author.name }} ({{ github.event.workflow_run.head_commit.author.email }})
