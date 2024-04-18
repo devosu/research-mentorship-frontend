@@ -1,20 +1,26 @@
 ---
-title: CICD Auto-Issue {{ date | date("MMM Do at HH mm ss") }}
+title: CICD Auto-Issue {{ date | date('MMM Do at HH:mm:ss') }}
 assignees: KemingHe
+projects: 'DEV Event Feed Product Launch'
 labels: bug, CICD
 ---
 Hi there,
 
-A CICD workflow failed on branch: {{ github.event.workflow_run.head_branch }}. 
+A CICD workflow failed on branch: {{ tools.context.ref }}. 
 
 Here are more details:
 
-- Workflow: {{ github.event.workflow_run.name }}
-- Run: {{ github.event.workflow_run.html_url }}
-- Date: {{ github.event.workflow_run.created_at }}
-- Commit: {{ github.event.workflow_run.head_commit.url }}
-- Commit message: {{ github.event.workflow_run.head_commit.message }}
-- Author: {{ github.event.workflow_run.head_commit.author.name }} ({{ github.event.workflow_run.head_commit.author.email }})
+- Workflow: {{ tools.context.workflow }}
+- Author: {{ tools.context.actor }}
+
+The full `tools.context.payload` content is listed below:
+
+{{ tools.context.payload }}
+
+{{ payload.sender }}
+
+{{ payload.sender.login }}
+
 
 Please investigate and fix as soon as you can. Reach out if you need help.
 
