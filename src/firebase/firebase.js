@@ -1,6 +1,7 @@
 // ./firebase/firebase.js
 //
 // Setup the Firebase app and services for the application.
+
 import { getApps, initializeApp } from 'firebase/app';
 // import { initializeAuth } from 'firebase/auth';
 // import { getDatabase } from 'firebase/database';
