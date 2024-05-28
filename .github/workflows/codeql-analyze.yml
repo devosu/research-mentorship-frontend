@@ -1,6 +1,6 @@
 # CodeQL workflow for code security analysis.
 
-name: "CodeQL"
+name: CodeQL Analyze
 
 # Shield url for README.md: 
 # https://img.shields.io/github/workflow/status/GoogleCloudPlatform/github-actions/codeql?style=for-the-badge
