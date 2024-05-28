@@ -1,0 +1,57 @@
+name: Node CI
+
+# Shield url for README.md: 
+# https://img.shields.io/github/workflow/status/GoogleCloudPlatform/github-actions/node-ci?style=for-the-badge
+
+# Run all-around linting and testing per every push and PR.
+on:
+  [push, pull_request, workflow_dispatch]
+
+jobs:
+  super-lint:
+    name: Run Super-Linter
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # Needed for reporting GitHub Actions status checks.
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - name: Run super-linter
+        # To use a specific version of super-linter, replace 'main' with a tag (i.e. v6.5.0).
+        uses: super-linter/super-linter@main
+        env:
+          # For reporting GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  report-codecov:
+    name: Report Codecov
+    needs: super-lint
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # TODO: set up alpine linux to run the tests.
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          flags: smart-tests
+          verbose: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

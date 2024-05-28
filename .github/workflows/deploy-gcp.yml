@@ -1,0 +1,192 @@
+# This workflow build and push a Docker container to Google Artifact Registry and deploy it on Cloud Run when a commit is pushed to the $default-branch branch
+#
+# Overview:
+#
+# 1. Authenticate to Google Cloud
+# 2. Authenticate Docker to Artifact Registry
+# 3. Build a docker container
+# 4. Publish it to Google Artifact Registry
+# 5. Deploy it to Cloud Run
+#
+# To configure this workflow:
+#
+# 1. Ensure the required Google Cloud APIs are enabled:
+#
+#    Cloud Run            run.googleapis.com
+#    Artifact Registry    artifactregistry.googleapis.com
+#
+# 2. Create and configure Workload Identity Federation for GitHub (https://github.com/google-github-actions/auth#setting-up-workload-identity-federation)
+#
+# 3. Ensure the required IAM permissions are granted
+#
+#    Cloud Run
+#      roles/run.admin
+#      roles/iam.serviceAccountUser     (to act as the Cloud Run runtime service account)
+#
+#    Cloud Storage
+#      roles/storage.admin   (if using Google Container Registry (gcr) instead)
+#
+#    Artifact Registry
+#      roles/artifactregistry.admin     (project or repository level)
+#
+#    NOTE: You should always follow the principle of least privilege when assigning IAM roles
+#
+# 4. Create GitHub secrets for WIF_PROVIDER and WIF_SERVICE_ACCOUNT
+#
+# 5. Change the values for the GAR_LOCATION, SERVICE and REGION environment variables (below).
+#
+# NOTE: To use Google Container Registry instead, replace ${{ env.GAR_LOCATION }}-docker.pkg.dev with gcr.io
+#
+# For more support on how to run this workflow, please visit https://github.com/marketplace/actions/deploy-to-cloud-run
+#
+# Further reading:
+#   Cloud Run IAM permissions                 - https://cloud.google.com/run/docs/deploying
+#   Artifact Registry IAM permissions         - https://cloud.google.com/artifact-registry/docs/access-control#roles
+#   Container Registry vs Artifact Registry   - https://cloud.google.com/blog/products/application-development/understanding-artifact-registry-vs-container-registry
+#   Principle of least privilege              - https://cloud.google.com/blog/products/identity-security/dont-get-pwned-practicing-the-principle-of-least-privilege
+
+name: Deploy GCP
+
+# Shield url for README.md: 
+# https://img.shields.io/github/workflow/status/GoogleCloudPlatform/github-actions/deploy-gcp?style=for-the-badge
+
+# IMPORTANT:
+# Deploy to GCP preview per ANY pull request;
+# Deploy to GCP production per ONLY push to main;
+# Added manual trigger for preview deployment.
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+
+  # Verbose version, the deploy-production job will be more concise.
+  deploy-preview:
+
+    name: Deploy Preview
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' }}
+
+    # IMPORTANT:
+    environment: DEPLOY_PREVIEW_GCP
+
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+    steps:
+
+      # Use @main to always use the latest version of the action, assume well-maintained.
+      - name: Checkout Code
+        uses: 'actions/checkout@main'
+
+      # GCP auth using SA's credentials json
+      - name: GCP Auth
+        id: auth
+        uses: 'google-github-actions/auth@main'
+        with:
+          credentials_json: '${{ secrets.PREVIEW_SA_KEY_JSON }}'
+          token_format: 'access_token'
+
+      # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
+          
+      # Docker (GCP Artifact Registry) auth using credentials json
+      - name: Docker Auth
+        id: docker-auth
+        uses: 'docker/login-action@master'
+        with:
+          registry: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.PREVIEW_SA_KEY_JSON }}
+
+      - name: Docker Build and Push
+        run: |-
+          docker build -t "${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}" ./
+          docker push "${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}"
+
+      # END - Docker auth and build
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@main
+        with:
+          service: ${{ vars.GCP_CLOUD_RUN_SERVICE_NAME }}
+          region: ${{ vars.GCP_CLOUD_RUN_SERVICE_REGION }}
+          # NOTE: If using a pre-built image, update the image name here
+          image: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}
+          # Set up environment variables here:
+          env_vars: |
+            FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
+            FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
+            FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
+            FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
+            FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+            FIREBASE_APP_ID=${{ vars.FIREBASE_APP_ID }}
+
+      - name: Show Deployed URL
+        run: echo ${{ steps.deploy.outputs.url }}
+
+
+  # Concise production deployment job dev, only runs on push to main.
+  deploy-production:
+    name: Deploy Production
+
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    environment: DEPLOY_PRODUCTION_GCP
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: 'actions/checkout@main'
+
+      - name: GCP Auth
+        id: auth
+        uses: 'google-github-actions/auth@main'
+        with:
+          credentials_json: '${{ secrets.PRODUCTION_SA_KEY_JSON }}'
+          token_format: 'access_token'
+
+      - name: Docker Auth
+        id: docker-auth
+        uses: 'docker/login-action@master'
+        with:
+          registry: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.PRODUCTION_SA_KEY_JSON }}
+
+      - name: Docker Build and Push
+        run: |-
+          docker build -t "${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}" ./
+          docker push "${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}"
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@main
+        with:
+          service: ${{ vars.GCP_CLOUD_RUN_SERVICE_NAME }}
+          region: ${{ vars.GCP_CLOUD_RUN_SERVICE_REGION }}
+          image: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}
+          env_vars: |
+            FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
+            FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
+            FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
+            FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
+            FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+            FIREBASE_APP_ID=${{ vars.FIREBASE_APP_ID }}
+
+      - name: Show Deployed URL
+        run: echo ${{ steps.deploy.outputs.url }}
+        
