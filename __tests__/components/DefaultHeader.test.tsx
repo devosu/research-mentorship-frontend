@@ -5,7 +5,7 @@ import { describe, expect, it } from '@jest/globals';
 import { render } from '@testing-library/react';
 
 // Local imports.
-import DefaultHeader from '@components/DefaultHeader';
+import DefaultHeader from '@src/components/DefaultHeader';
 
 // Behavior for the DefaultHeader component.
 describe('The default header component', () => {

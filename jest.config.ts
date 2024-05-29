@@ -45,24 +45,15 @@ const customJestConfig: Config = {
 
   // The collect coverage from files configuration.
   collectCoverageFrom: [
-    '**/*.{mjs,js,jsx,ts,tsx}',
-
+    'src/**/*.{mjs,js,jsx,ts,tsx}',
     // Define exclusions after inclusions to take affect.
-    '!**/node_modules/**',
-    '!**/coverage/**',
-    '!**/vendor/**',
-    '!**/.next/**',
   ],
 
   // The coverage directory.
   coverageDirectory: 'coverage',
 
   // Dirs to ignore for coverage.
-  coveragePathIgnorePatterns: [
-    'node_modules/',
-    'coverage/',
-    '.next/',
-  ],
+  coveragePathIgnorePatterns: [],
 
   // NextJS specified using v8 as coverage provider.
   coverageProvider: 'v8',
@@ -132,7 +123,7 @@ const customJestConfig: Config = {
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@lib/(.*)$': '<rootDir>/src/lib/$1',
     '^@api/(.*)$': '<rootDir>/src/app/api/$1',
-    '^@components/(.*)$': '<rootDir>/src/app/components/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
