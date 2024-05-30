@@ -86,12 +86,9 @@
     "review": "pnpm run lint && pnpm run test",
     "lint": "biome ci .",
     "lint:fix": "biome check --apply .",
-    "test": "pnpm run test:behave && pnpm run test:e2e",
-    "test:jest": "jest",
-    "test:jest:watch": "jest --watch",
-    "test:behave": "cucumber-js",
-    "pretest:e2e": "pnpm run build",
-    "test:e2e": "playwright test"
+    "test": "pnpm run test:unit-and-snapshot && pnpm run test:feature",
+    "test:unit-and-snapshot": "jest",
+    "test:feature": "cucumber-js"
   },
   "dependencies": {
     "dotenv-safe": "^9.1.0",

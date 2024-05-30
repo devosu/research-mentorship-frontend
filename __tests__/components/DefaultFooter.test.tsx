@@ -13,4 +13,9 @@ describe('The default footer component', () => {
 		const { container } = render(<DefaultFooter />);
 		expect(container.querySelector('footer')).toBeDefined();
 	});
+
+  it('matches the snapshot', () => {
+    const { container } = render(<DefaultFooter />);
+    expect(container).toMatchSnapshot();
+  });
 });

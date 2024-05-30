@@ -13,4 +13,9 @@ describe('The default header component', () => {
 		const { container } = render(<DefaultHeader />);
 		expect(container.querySelector('header')).toBeDefined();
 	});
+
+  it('matches the snapshot', () => {
+    const { container } = render(<DefaultHeader />);
+    expect(container).toMatchSnapshot();
+  });
 });

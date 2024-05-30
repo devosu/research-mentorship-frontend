@@ -12,8 +12,7 @@ RUN chown --recursive node:node /app
 
 USER node
 COPY --chown=node:node package*.json ./
-RUN npm install --global pnpm@latest
-RUN pnpm ci
+RUN npm install --global pnpm@latest && pnpm ci
 
 # Stage 2. Install dependencies and build the app.
 # (Must use ci instead of ci --omit=dev because
@@ -21,8 +20,6 @@ RUN pnpm ci
 FROM base AS build
 USER node
 COPY --chown=node:node . .
-# Removed review because Firebase env are not loaded 
-# in the build process.
 RUN pnpm run build
 
 # Stage 3.A Optimize for production, 
@@ -38,8 +35,7 @@ COPY --from=build --chown=node:node /app/next.config.js ./
 COPY --from=build --chown=node:node /app/package*.json ./
 COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/.next ./.next
-RUN npm install --global pnpm@latest
-RUN pnpm ci --omit=dev
+RUN npm install --global pnpm@latest && pnpm ci --omit=dev
 
 # Accept incoming firebase env vars only at runtime,
 # latest Firebase app config no longer needs measurement id.
@@ -53,6 +49,12 @@ ENV FIREBASE_APP_ID=
 # Make NextJS's default 3000 port editable via build arg.
 ENV EXPOSE_PORT=3000
 EXPOSE $EXPOSE_PORT
+
+# Add a healthcheck to the NextJS server.
+# (Note: for node:22-alpine, curl is not installed by default.)
+RUN apk add --no-cache curl
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl --fail http://localhost:$EXPOSE_PORT || exit 1
 
 # 3.C Start the NextJS production server.
 CMD ["pnpm", "start"]
