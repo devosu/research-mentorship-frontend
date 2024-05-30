@@ -83,7 +83,7 @@
     "start": "next start",
     "dev": "next dev",
     "build": "next build",
-    "review": "pnpm run lint && pnpm run test",
+    "review": "pnpm run lint && pnpm run test && pnpm run build",
     "lint": "biome ci .",
     "lint:fix": "biome check --apply .",
     "test": "pnpm run test:unit-and-snapshot && pnpm run test:feature",
