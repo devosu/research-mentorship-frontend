@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The default header component matches the snapshot 1`] = `
+<div>
+  <header>
+    This is the default header.
+  </header>
+</div>
+`;

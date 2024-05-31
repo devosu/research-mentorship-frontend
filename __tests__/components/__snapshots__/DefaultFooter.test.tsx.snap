@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The default footer component matches the snapshot 1`] = `
+<div>
+  <footer>
+    This is the default footer.
+  </footer>
+</div>
+`;
