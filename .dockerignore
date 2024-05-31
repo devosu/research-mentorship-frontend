@@ -1,0 +1,40 @@
+# Exclude dependencies.
+node_modules
+
+# Exclude build output.
+.next
+
+# Exclude test files and coverage.
+__tests__
+coverage
+
+# Exclude version control files.
+.git
+
+# Exclude GitHub Action files.
+.github
+
+# Exclude environment variables.
+.env
+.env.test
+.env.local
+.env.production
+.env.development
+
+# Exclude log files.
+*.log
+
+# Exclude OS generated files.
+# macOS metadata.
+.DS_Store
+# Windows metadata.
+Thumbs.db
+
+# Exclude IDE specific files.
+# Visual Studio Code settings.
+.vscode
+# JetBrains IDE settings.
+.idea
+# Vim temporary files.
+*.swp
+*.swo

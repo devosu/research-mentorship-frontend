@@ -20,22 +20,20 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: 'actions/checkout@v4'
         with:
           # super-linter needs the full git history to get the
           # list of files that changed across commits
           fetch-depth: 0
 
       - name: Run super-linter
-        # To use a specific version of super-linter, replace 'main' with a tag (i.e. v6.5.0).
-        uses: super-linter/super-linter@main
+        uses: 'super-linter/super-linter@v6'
         env:
           # For reporting GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   report-codecov:
     name: Report Codecov
-    needs: super-lint
     runs-on: ubuntu-latest
 
     permissions:
@@ -44,12 +42,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: 'actions/checkout@v4'
 
-      # TODO: set up alpine linux to run the tests.
+      - name: Install pnpm
+        uses: 'pnpm/action-setup@v4'
+        with:
+          version: '6'
+
+      - name: Set up Node.js 22.x
+        uses: 'actions/setup-node@v4'
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+
+      - name: Install dependencies and test
+        run: pnpm install-test
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: 'codecov/codecov-action@v4'
         with:
           flags: smart-tests
           verbose: true
