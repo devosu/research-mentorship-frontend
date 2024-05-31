@@ -12,7 +12,9 @@
 > This project uses the new `Node.js 22` as runtime, `TypeScript` as dev language, and `pnpm` as package manager. You can read more about these handy tools here:
 >
 > Node.js 22: https://nodejs.org/en/blog/release/v22.2.0
+>
 > TypeScript: https://nextjs.org/docs/app/building-your-application/configuring/typescript
+>
 > Pnpm: https://pnpm.io/
 
 1. Setup Node.js 22 via `nvm`
