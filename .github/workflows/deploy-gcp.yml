@@ -69,7 +69,9 @@ jobs:
   deploy-preview:
 
     name: Deploy Preview
-    if: ${{ github.event_name == 'pull_request' && github.ref == 'refs/heads/main' }}
+
+    # Deploy to preview as test per every PR.
+    if: ${{ github.event_name == 'pull_request' }}
 
     # IMPORTANT: 'environment' is repo-defined, 'env' is workflow-defined.
     environment: DEPLOY_PREVIEW_GCP
@@ -94,7 +96,6 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.PREVIEW_SA_KEY_JSON }}'
-          token_format: 'access_token'
 
       # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
           
@@ -122,12 +123,13 @@ jobs:
           region: ${{ vars.GCP_CLOUD_RUN_SERVICE_REGION }}
           image: ${{ env.NEW_PREVIEW_IMAGE_NAME }}
           env_vars: |
-            FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
-            FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
-            FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
-            FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
-            FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
-            FIREBASE_APP_ID=${{ vars.FIREBASE_APP_ID }}
+            NEXT_PUBLIC_PORT=${{ vars.PORT }}
+            NEXT_PUBLIC_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
+            NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
+            NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
+            NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
+            NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+            NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PREVIEW_FIREBASE_APP_ID }}
 
       - name: Show Deployed URL
         run: echo ${{ steps.deploy.outputs.url }}
@@ -158,7 +160,6 @@ jobs:
         uses: 'google-github-actions/auth@v2'
         with:
           credentials_json: '${{ secrets.PRODUCTION_SA_KEY_JSON }}'
-          token_format: 'access_token'
 
       - name: Docker Auth
         id: docker-auth
@@ -181,12 +182,13 @@ jobs:
           region: ${{ vars.GCP_CLOUD_RUN_SERVICE_REGION }}
           image: ${{ env.NEW_PRODUCTION_IMAGE_NAME }}
           env_vars: |
-            FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
-            FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
-            FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
-            FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
-            FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
-            FIREBASE_APP_ID=${{ vars.FIREBASE_APP_ID }}
+            NEXT_PUBLIC_PORT=${{ vars.PORT }}
+            NEXT_PUBLIC_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
+            NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
+            NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
+            NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${{ vars.FIREBASE_STORAGE_BUCKET }}
+            NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+            NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PRODUCTION_FIREBASE_APP_ID }}
 
       - name: Show Deployed URL
         run: echo "${{ steps.deploy.outputs.url }}"

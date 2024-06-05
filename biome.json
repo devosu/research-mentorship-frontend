@@ -33,7 +33,7 @@
       "jsxQuoteStyle": "double",
       "quoteProperties": "asNeeded",
       "semicolons": "always",
-      "trailingComma": "all"
+      "trailingCommas": "all"
     },
     "parser": {
       "unsafeParameterDecoratorsEnabled": true
@@ -41,7 +41,7 @@
   },
   "json": {
     "formatter": {
-      "trailingCommas": "none"
+      "trailingCommas": "all"
     }
   },
   "linter": {
