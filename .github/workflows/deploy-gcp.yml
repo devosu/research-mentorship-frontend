@@ -69,7 +69,9 @@ jobs:
   deploy-preview:
 
     name: Deploy Preview
-    if: ${{ github.event_name == 'pull_request' && github.ref == 'refs/heads/main' }}
+
+    # Deploy to preview as test per every PR.
+    if: ${{ github.event_name == 'pull_request' }}
 
     # IMPORTANT: 'environment' is repo-defined, 'env' is workflow-defined.
     environment: DEPLOY_PREVIEW_GCP
