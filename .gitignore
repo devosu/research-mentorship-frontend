@@ -1,6 +1,5 @@
 # Ignore local config files and .env files.
 .vscode
-.nvmrc
 .env
 .swc
 tmp

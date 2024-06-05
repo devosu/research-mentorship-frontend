@@ -34,43 +34,9 @@
       "url": "https://github.com/trev-org04"
     },
     {
-      "name": "Bennett Godinho-Nelson",
-      "email": "bennettgodinhonelson@gmail.com",
-      "url": "https://github.com/BennettGN"
-    },
-    {
-      "name": "D'Andre Williams",
-      "email": "dwilliamsbuckeye@gmail.com",
-      "url": "https://github.com/williamsd39"
-    },
-    {
-      "name": "Ziqi Ou",
-      "email": "miracleabbyou@gmail.com",
-      "url": "https://github.com/ZiqiAbbyOu"
-    },
-    {
-      "name": "Max Miller",
-      "email": "millermax98765@gmail.com",
-      "url": "https://github.com/litigator98765"
-    },
-    {
       "name": "Jerry Chang",
       "email": "jerry091401@gmail.com",
       "url": "https://github.com/JerryChang091401"
-    },
-    {
-      "name": "Connor Radkov",
-      "email": "cradkov27@gmail.com",
-      "url": "https://github.com/cradkov27"
-    },
-    {
-      "name": "Alex Eichner",
-      "email": "eichneralex3@gmail.com",
-      "url": "https://github.com/alexeichner"
-    },
-    {
-      "name": "Suyeon Chae",
-      "email": "schae0103@gmail.com"
     }
   ],
   "funding": "https://osu.dev/support",
@@ -80,24 +46,24 @@
   },
   "scripts": {
     "prepare": "husky",
-    "start": "next start",
     "dev": "next dev",
-    "build": "next build",
-    "review": "pnpm run lint && pnpm run test && pnpm run build",
     "lint": "biome ci .",
-    "lint:fix": "biome check --apply .",
+    "lint:fix": "biome check --write .",
     "test": "pnpm run test:unit-and-snapshot && pnpm run test:feature",
     "test:unit-and-snapshot": "jest",
-    "test:feature": "cucumber-js"
+    "test:feature": "cucumber-js",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "dotenv-safe": "^9.1.0",
+    "husky": "^9.0.11",
     "next": "14.2.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.7.3",
+    "@biomejs/biome": "^1.8.0",
     "@cucumber/cucumber": "^10.8.0",
     "@cucumber/cucumber-expressions": "^17.1.0",
     "@cucumber/gherkin": "^28.0.0",
@@ -108,12 +74,14 @@
     "@testing-library/react": "^15.0.7",
     "@types/dotenv-safe": "^8.1.6",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.12.13",
+    "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/supertest": "^6.0.2",
+    "commitizen": "^4.3.0",
     "cucumber-tsflow": "^4.4.4",
-    "husky": "^9.0.11",
+    "cz-conventional-changelog": "^3.3.0",
+    "git-cliff": "^2.3.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "node-mocks-http": "^1.14.1",

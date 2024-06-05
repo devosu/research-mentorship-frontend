@@ -40,6 +40,15 @@ jobs:
       contents: read
       packages: read
 
+    env:
+      NEXT_PUBLIC_PORT: ${{ vars.PORT }}
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ vars.FIREBASE_AUTH_DOMAIN }}
+      NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ vars.FIREBASE_STORAGE_BUCKET }}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+      NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.PRODUCTION_FIREBASE_APP_ID }}
+
     steps:
       - name: Checkout code
         uses: 'actions/checkout@v4'
@@ -47,7 +56,10 @@ jobs:
       - name: Install pnpm
         uses: 'pnpm/action-setup@v4'
         with:
-          version: '6'
+          version: '9.1.4'
+
+      - name : Install dependencies
+        run: pnpm install
 
       - name: Set up Node.js 22.x
         uses: 'actions/setup-node@v4'
@@ -55,8 +67,8 @@ jobs:
           node-version: '22.x'
           cache: 'pnpm'
 
-      - name: Install dependencies and test
-        run: pnpm install-test
+      - name: Run tests to generate coverage
+        run: pnpm run test
 
       - name: Upload coverage to Codecov
         uses: 'codecov/codecov-action@v4'
