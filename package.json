@@ -60,7 +60,10 @@
     "husky": "^9.0.11",
     "next": "14.2.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.4",
+    "tw-elements": "^2.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.0",
@@ -78,6 +81,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/supertest": "^6.0.2",
+    "autoprefixer": "^10.4.19",
     "commitizen": "^4.3.0",
     "cucumber-tsflow": "^4.4.4",
     "cz-conventional-changelog": "^3.3.0",

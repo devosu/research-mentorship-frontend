@@ -7,17 +7,13 @@
 // Local imports.
 import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
+import DefaultCarousel from '@components/DefaultCarousel';
 
 export default function Homepage () {
   return (
     <main>
       <DefaultHeader/>
-      <h1>
-        Research Mentorship Program Homepage
-      </h1>
-      <p>
-        Hello world!
-      </p>
+      <DefaultCarousel/>
       <DefaultFooter/>
     </main>
   );
