@@ -4,13 +4,17 @@
 
 // NextJS essential imports.
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Local imports.
-import logo from '../../public/images/logo.png';
 
 export default function DefaultHeader () {
+	const [isMentor, setIsMentor] = useState(false);
+	const [isMentee, setIsMentee] = useState(true);
+	const [isApprovedMentee, setIsApprovedMentee] = useState(true);
+
 	useEffect(() => {
 		const init = async () => {
 		  const { Collapse, initTWE } = await import("tw-elements");
@@ -25,9 +29,9 @@ export default function DefaultHeader () {
 			data-twe-navbar-ref>
 			<div className="flex w-full flex-wrap items-center justify-between px-3">
 				<div>
-				<a className="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0" href="#">
-					<Image src={logo} width={35} height={35} alt='Logo'/>
-				</a>
+				<Link href="/" className="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0">
+					<Image src={'/images/logo.png'} width={35} height={35} alt='Logo'/>
+				</Link>
 				</div>
 
 				<button
@@ -65,49 +69,48 @@ export default function DefaultHeader () {
 					<li
 					className="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2"
 					data-twe-nav-item-ref>
-					<a
+					<Link
 						className="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
 						aria-current="page"
 						href="#"
 						data-twe-nav-link-ref
-						>OSU UREA</a
-					>
+						>OSU UREA</Link>
 					</li>
 				</ul>
 			
 				<div className="flex items-center">
-					<a
+					<Link
 					type="button"
 					href="/"
 					data-twe-ripple-init
 					data-twe-ripple-color="light"
 					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
 					Home
-					</a>
-					<a
+					</Link>
+					{(isMentor || (isMentee && isApprovedMentee)) && <Link
 					type="button"
 					href="/mentors"
 					data-twe-ripple-init
 					data-twe-ripple-color="light"
 					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
 					Mentors
-					</a>
-					<a
+					</Link>}
+					<Link
 					type="button"
 					href="/resources"
 					data-twe-ripple-init
 					data-twe-ripple-color="light"
 					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
 					Resources
-					</a>
-					<a
+					</Link>
+					<Link
 					type="button"
 					href="/apply"
 					data-twe-ripple-init
 					data-twe-ripple-color="light"
 					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
 					Apply
-					</a>
+					</Link>
 				</div>
 				</div>
 			</div>
