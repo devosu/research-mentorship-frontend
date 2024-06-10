@@ -13,7 +13,7 @@ exports[`The default header component matches the snapshot 1`] = `
         <div>
           <a
             class="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0"
-            href="#"
+            href="/"
           >
             <img
               alt="Logo"
@@ -21,8 +21,8 @@ exports[`The default header component matches the snapshot 1`] = `
               decoding="async"
               height="35"
               loading="lazy"
-              src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
-              srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+              src="/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75"
+              srcset="/_next/image?url=%2Fimages%2Flogo.png&w=48&q=75 1x, /_next/image?url=%2Fimages%2Flogo.png&w=96&q=75 2x"
               style="color: transparent;"
               width="35"
             />
@@ -70,9 +70,9 @@ exports[`The default header component matches the snapshot 1`] = `
                 aria-current="page"
                 class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
                 data-twe-nav-link-ref="true"
-                href="#"
+                href="/"
               >
-                OSU UREA
+                OSU Undergraduate Research Mentorship Program
               </a>
             </li>
           </ul>
@@ -87,15 +87,6 @@ exports[`The default header component matches the snapshot 1`] = `
               type="button"
             >
               Home
-            </a>
-            <a
-              class="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
-              data-twe-ripple-color="light"
-              data-twe-ripple-init="true"
-              href="/mentors"
-              type="button"
-            >
-              Mentors
             </a>
             <a
               class="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
