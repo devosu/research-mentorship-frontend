@@ -2,19 +2,22 @@
 //
 // DefaultHeader component definition.
 
-// NextJS essential imports.
 "use client";
+// NextJS essential imports.
 import { useEffect, useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Local imports.
+import { auth } from "@src/lib/firebaseInit";
+import { signOut } from "@src/lib/firebaseAuth";
+import { navigate } from "@src/app/actions";
 
 export default function DefaultHeader () {
 	const [isMentor, setIsMentor] = useState(false);
 	const [isMentee, setIsMentee] = useState(false);
 	const [isApprovedMentee, setIsApprovedMentee] = useState(false);
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	useEffect(() => {
 		const init = async () => {
@@ -22,7 +25,20 @@ export default function DefaultHeader () {
 		  initTWE({ Dropdown, Collapse });
 		};
 		init();
-	  }, []);
+		auth.onAuthStateChanged(function(user) {
+			if (user) {
+			  setIsAuthenticated(true);
+			} else {
+			  setIsAuthenticated(false);
+			}
+		  });
+	}, []);
+
+	function signOutUser() {
+		signOut();
+		navigate('/');
+	}
+
 	return (
 		<header>
 			<nav
@@ -207,6 +223,12 @@ export default function DefaultHeader () {
 						</li>
 						</ul>
 					</div>}
+					{ isAuthenticated &&
+						<button
+						className="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+						onClick={signOutUser}
+						data-twe-dropdown-item-ref
+						>Sign Out</button>}
 				</div>
 				</div>
 			</div>

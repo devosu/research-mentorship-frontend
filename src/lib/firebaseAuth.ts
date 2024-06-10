@@ -13,7 +13,8 @@ export async function signInWithGoogle() {
 
 export async function signInWithEmail(email: string, password: string) {
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        var result = await signInWithEmailAndPassword(auth, email, password);
+        return result.user;
     } catch (error) {
         console.error("Error signing in with email and password: ", error);
     }
@@ -23,7 +24,8 @@ export async function signInWithEmail(email: string, password: string) {
 /* Sign Up Functions */
 export async function signUpWithEmail(email: string, password: string) {
     try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        var result = await createUserWithEmailAndPassword(auth, email, password);
+        return result.user;
     } catch (error) {
         console.error("Error signing up with email and password: ", error);
     }

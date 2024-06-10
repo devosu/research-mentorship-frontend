@@ -1,15 +1,34 @@
-// @app/apply/page.tsx
+// @app/apply-mentor/page.tsx
 //
-// 'research.osu.dev' application page definition.
-
+// 'research.osu.dev' mentee application page definition.
+'use client';
 // NextJS essential imports.
+import { useEffect } from "react";
 
 // Local imports.
 import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
-import DefaultLoginForm from '@components/DefaultLoginForm';
+import { auth } from "@src/lib/firebaseInit";
+import { navigate } from "@src/app/actions";
 
-export default function Apply () {
+export default function ApplyMentor () {
+
+  useEffect(() => {
+		auth.onAuthStateChanged(function(user) {
+			if (!user) {
+        navigate('/signin');
+			}
+		  });
+	}, []);
+
+  function submitForm() {
+    var name = document.getElementById('mentorName')?.textContent;
+    var year = document.getElementById('mentorYear')?.textContent;
+    var major = document.getElementById('mentorMajor')?.textContent;
+    var researchField = document.getElementById('mentorResearchField')?.textContent;
+    var researchDescription = document.getElementById('mentorResearchDescription')?.textContent;
+  }
+
   return (
     <main>
       <DefaultHeader/>
@@ -53,7 +72,7 @@ are some key points and questions to consider when mentoring:
         <p className="mb-4">
           Aspiring mentors can list their details below to be matched with a mentee who is interested in their area of research.
         </p>
-        <form id="mentorForm" className="space-y-4">
+        <form id="mentorForm" className="space-y-4" onSubmit={submitForm}>
           <div>
             <label className="block text-gray-700">Name</label>
             <input title="Name" type="text" id="mentorName" className="w-full px-3 py-2 border rounded-md" required></input>

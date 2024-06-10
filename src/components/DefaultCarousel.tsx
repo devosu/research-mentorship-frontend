@@ -79,7 +79,7 @@ const DefaultCarousel = () => {
             <h5 className="text-xl"><strong>Inspire.</strong> <em>Listen.</em> <u>Grow.</u></h5>
             <a
                 type="button"
-                href="/apply"
+                href="/apply-mentor"
                 style={{marginTop: '25px', marginBottom: '10px'}}
                 data-twe-ripple-init
                 data-twe-ripple-color="light"

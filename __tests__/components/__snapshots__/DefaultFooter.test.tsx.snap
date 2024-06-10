@@ -10,9 +10,9 @@ exports[`The default footer component matches the snapshot 1`] = `
     >
       © 2024 Copyright:
       <a
-        href="https://tw-elements.com/"
+        href="https://usg.osu.edu/"
       >
-         The Ohio State University
+         Undergraduate Student Government at The Ohio State University
       </a>
     </div>
   </footer>

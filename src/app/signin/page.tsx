@@ -2,6 +2,7 @@
 //
 // 'research.osu.dev' account login definition.
 
+'use client';
 // NextJS essential imports.
 
 // Local imports.
@@ -9,7 +10,7 @@ import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
 import DefaultLoginForm from '@components/DefaultLoginForm';
 
-export default function SignUp () {
+export default function SignIn () {
   return (
     <main>
       <DefaultHeader/>

@@ -110,10 +110,20 @@ exports[`The default header component matches the snapshot 1`] = `
                 type="button"
               >
                 <span
-                  class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
-                  data-twe-dropdown-item-ref="true"
+                  class="[&>svg]:h-5 [&>svg]:w-5"
                 >
-                  Apply
+                  <svg
+                    fill="currentColor"
+                    stroke-width="1.5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </span>
                 <span
                   class="[&>svg]:w-5"
@@ -140,18 +150,18 @@ exports[`The default header component matches the snapshot 1`] = `
                   <a
                     class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
                     data-twe-dropdown-item-ref="true"
-                    href="/apply-mentor"
+                    href="/signin"
                   >
-                    Mentor App
+                    Sign In
                   </a>
                 </li>
                 <li>
                   <a
                     class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
                     data-twe-dropdown-item-ref="true"
-                    href="/apply-mentee"
+                    href="/signup"
                   >
-                    Mentee App
+                    Sign Up
                   </a>
                 </li>
               </ul>

@@ -1,15 +1,27 @@
-// @app/apply/page.tsx
+// @app/apply-mentee/page.tsx
 //
-// 'research.osu.dev' application page definition.
+// 'research.osu.dev' mentor application page definition.
 
+'use client';
 // NextJS essential imports.
+import { useEffect } from "react";
 
 // Local imports.
 import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
-import DefaultLoginForm from '@components/DefaultLoginForm';
+import { auth } from "@src/lib/firebaseInit";
+import { navigate } from "@src/app/actions";
 
-export default function ApplyMentor () {
+export default function ApplyMentee () {
+
+	useEffect(() => {
+		auth.onAuthStateChanged(function(user) {
+			if (!user) {
+                navigate('/signin');
+			}
+		  });
+	}, []);
+    
   return (
     <main>
     <DefaultHeader/>
