@@ -97,15 +97,65 @@ exports[`The default header component matches the snapshot 1`] = `
             >
               Resources
             </a>
-            <a
-              class="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
-              data-twe-ripple-color="light"
-              data-twe-ripple-init="true"
-              href="/apply"
-              type="button"
+            <div
+              class="relative"
+              data-twe-dropdown-ref="true"
             >
-              Apply
-            </a>
+              <a
+                aria-expanded="false"
+                class="flex items-center px-2 text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
+                data-twe-dropdown-toggle-ref="true"
+                href="#"
+                id="dropdownMenuButton2"
+                type="button"
+              >
+                <span
+                  class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                  data-twe-dropdown-item-ref="true"
+                >
+                  Apply
+                </span>
+                <span
+                  class="[&>svg]:w-5"
+                >
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </a>
+              <ul
+                aria-labelledby="dropdownMenuButton1"
+                class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
+                data-twe-dropdown-menu-ref="true"
+              >
+                <li>
+                  <a
+                    class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                    data-twe-dropdown-item-ref="true"
+                    href="/apply-mentor"
+                  >
+                    Mentor App
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                    data-twe-dropdown-item-ref="true"
+                    href="/apply-mentee"
+                  >
+                    Mentee App
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

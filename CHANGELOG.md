@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🚀 Features
 
 - *(defaultheader, defaultfooter, defaultcarousel, page.tsx)* Implemented home page
+- *(resources/page.tsx)* Implementation of resources page
 
 ### 🐛 Bug Fixes
 
