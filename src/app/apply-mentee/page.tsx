@@ -4,23 +4,42 @@
 
 'use client';
 // NextJS essential imports.
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Local imports.
 import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
 import { auth } from "@src/lib/firebaseInit";
 import { navigate } from "@src/app/actions";
+import { submitMenteeApplication } from "@src/lib/firebaseDb";
 
 export default function ApplyMentee () {
-
 	useEffect(() => {
 		auth.onAuthStateChanged(function(user) {
 			if (!user) {
-                navigate('/signin');
+        navigate('/signin');
 			}
 		  });
 	}, []);
+
+  function submitApplication() {
+    // var name = (document.getElementById('menteeName') as HTMLInputElement).value;
+    // var year = (document.getElementById('menteeYear') as HTMLInputElement).value;
+    // var major = (document.getElementById('menteeMajor') as HTMLInputElement).value;
+    var researchField = (document.getElementById('menteeResearchField') as HTMLInputElement).value;
+
+    console.log('Attempting application submission');
+    auth.onAuthStateChanged(function(user) {
+			if (user) {
+        try {
+          submitMenteeApplication(researchField, user.uid);
+        }
+        catch (e) {
+          console.log(e);
+        }
+			}
+		  });    
+  }
     
   return (
     <main>
@@ -83,7 +102,8 @@ don't worry, we have it organized in the application below for you:</p>
             <input title="Desired Research Field" type="text" id="menteeResearchField" className="w-full px-3 py-2 border rounded-md" required></input>
           </div>
           <button
-                type="submit"
+                type="button"
+                onClick={submitApplication}
                 className="inline-block w-full rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
                 data-twe-ripple-init
                 data-twe-ripple-color="light">

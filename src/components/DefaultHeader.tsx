@@ -97,6 +97,15 @@ export default function DefaultHeader () {
 
 			
 				<div className="flex items-center">
+					{/* Home/Dashboard Toggle */}
+					{isAuthenticated ? <Link
+					type="button"
+					href="/dashboard"
+					data-twe-ripple-init
+					data-twe-ripple-color="light"
+					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
+					Dashboard
+					</Link> : 
 					<Link
 					type="button"
 					href="/"
@@ -105,6 +114,8 @@ export default function DefaultHeader () {
 					className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500">
 					Home
 					</Link>
+					}
+					{/* Mentors Link */}
 					{(isMentor || (isMentee && isApprovedMentee)) && <Link
 					type="button"
 					href="/mentors"
@@ -176,6 +187,7 @@ export default function DefaultHeader () {
 						</li>
 						</ul>
 					</div>}
+					{/* Apply Dropdown */}
 					{isAuthenticated && <div className="relative" data-twe-dropdown-ref>
 						<a
 						className="flex items-center px-2 text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
@@ -223,6 +235,7 @@ export default function DefaultHeader () {
 						</li>
 						</ul>
 					</div>}
+					{/* Sign Out Button */}
 					{ isAuthenticated &&
 						<button
 						className="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"

@@ -6,6 +6,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { signUpWithEmail } from "@src/lib/firebaseAuth";
+import { createMenteeUserObject, createMentorUserObject } from "@src/lib/firebaseDb";
 
 // Local imports.
 
@@ -41,10 +42,16 @@ export default function DefaultRegisterForm () {
         console.log('confirmPassword: ' + confirmPassword);
 
         
-        if (password == confirmPassword) {
+        if (password == confirmPassword && isMentor) {
             signUpWithEmail(email, password).then((res) => {
                 console.log(res?.uid);
-                // create user object in firestore
+                createMentorUserObject(firstName, lastName, email);
+            });
+        }
+        else if (password == confirmPassword && !isMentor) {
+            signUpWithEmail(email, password).then((res) => {
+                console.log(res?.uid);
+                createMenteeUserObject(firstName, lastName, email);
             });
         }
         else {
