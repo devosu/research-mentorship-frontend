@@ -78,10 +78,13 @@ jobs:
     env:
       NEW_PREVIEW_IMAGE_NAME: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}
 
-    # Add 'id-token' with the intended permissions for workload identity federation
+    # Add 'id-token' with the intended permissions for workload identity federation.
     permissions:
+      # For checkout out code andGCP deploy.
       contents: 'read'
       id-token: 'write'
+      # For reporting deployed URL to pull request.
+      pull-requests: 'write'
 
     runs-on: ubuntu-latest
     steps:
@@ -124,6 +127,7 @@ jobs:
           image: ${{ env.NEW_PREVIEW_IMAGE_NAME }}
           env_vars: |
             NEXT_PUBLIC_PORT=${{ vars.PORT }}
+
             NEXT_PUBLIC_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
             NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
             NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
@@ -131,8 +135,16 @@ jobs:
             NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
             NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PREVIEW_FIREBASE_APP_ID }}
 
-      - name: Show Deployed URL
-        run: echo ${{ steps.deploy.outputs.url }}
+      - name: Report Deployed URL to Actinons Log
+        run: echo "Preview url at ${{ steps.deploy.outputs.url }}"
+
+      - name: Report Deployed URL to PR
+        uses: 'thollander/actions-comment-pull-request@v2'
+        with:
+          message: |
+            To: repo owner @${{ github.repository_owner }} and actions actor @${{ github.actor }}, 
+              The new preview is deployed at: ${{ steps.deploy.outputs.url }}
+              Have a great day!
 
 
   # Concise production deployment job dev, only runs on push to main.
@@ -148,6 +160,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+      pull-requests: 'write'
 
     runs-on: ubuntu-latest
 
@@ -183,6 +196,7 @@ jobs:
           image: ${{ env.NEW_PRODUCTION_IMAGE_NAME }}
           env_vars: |
             NEXT_PUBLIC_PORT=${{ vars.PORT }}
+
             NEXT_PUBLIC_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
             NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
             NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
@@ -190,6 +204,14 @@ jobs:
             NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
             NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PRODUCTION_FIREBASE_APP_ID }}
 
-      - name: Show Deployed URL
-        run: echo "${{ steps.deploy.outputs.url }}"
-        
+      - name: Report Deployed URL to Actinons Log
+        run: echo "Production url at ${{ steps.deploy.outputs.url }}"
+
+      - name: Report Deployed URL to PR
+        uses: 'thollander/actions-comment-pull-request@v2'
+        with:
+          message: |
+            To: repo owner @${{ github.repository_owner }} and actions actor @${{ github.actor }}, 
+              The new production is deployed at: ${{ steps.deploy.outputs.url }}
+              Have a great day!
+              
