@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The homepage matches the snapshot 1`] = `
+<div>
+  <main>
+    <header>
+      This is the default header.
+    </header>
+    <h1>
+      Research Mentorship Program Homepage
+    </h1>
+    <p>
+      Hello world!
+    </p>
+    <footer>
+      This is the default footer.
+    </footer>
+  </main>
+</div>
+`;
