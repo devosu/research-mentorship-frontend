@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(.github/workflows/deploy-gcp.yml)* Preview deploy url is not auto-commented to PR to main
+
 ### 🐛 Bug Fixes
 
 - *(whole project)* Fixed build and deployment issues
