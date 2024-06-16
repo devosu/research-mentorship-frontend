@@ -1,15 +1,12 @@
 {
   "private": true,
   "name": "research-mentorship-frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Next JS frontend application for DEV's Research Mentorship Project.",
   "keywords": [
     "nextjs",
     "typescript",
-    "tailwindcss",
-    "jest",
-    "biome",
-    "google-cloud"
+    "tailwindcss"
   ],
   "homepage": "https://research.osu.dev",
   "bugs": {
@@ -53,6 +50,7 @@
     "test:unit-and-snapshot": "NODE_ENV=test jest",
     "test:feature": "cucumber-js",
     "build": "next build",
+    "release": "release-it",
     "start": "NODE_ENV=production next start"
   },
   "packageManager": "pnpm@9.3.0",

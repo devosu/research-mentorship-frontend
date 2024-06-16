@@ -8,14 +8,19 @@
       "pnpm run build"
     ],
     "after:bump": [
-      "echo 'After bump'"
+      "echo",
+      "echo 'Successfully bumped to v${ version }. Now generating changelog...'"
     ],
     "after:release": [
-      "echo 'After release'"
+      "echo",
+      "echo 'New release project: ${ name }, version: v${ version } available to be pushed to ${ repo.repository }.'",
+      "echo",
+      "echo 'Run `git push --follow-tags` to push the release.'"
     ]
   },
   "git": {
     "commit": false,
+    "push": false,
     "requrieCleanWorkingDir": true,
     "tag": true,
     "tagName": "v${version}"
