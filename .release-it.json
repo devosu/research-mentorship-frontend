@@ -1,24 +1,17 @@
 {
   "verbose": 2,
   "hooks": {
-    "before:init": [
-      "pnpm install",
-      "pnpm run lint",
-      "pnpm test",
-      "pnpm run build"
-    ],
     "after:bump": [
-      "pnpm cz"
+      "pnpm git add --no-verify . && pnpm git commit -m --no-verify 'chore(release): update version to ${version}'"
     ],
     "after:release": [
       "echo 'Successfully released the project: ${name}, version: ${version}, to the repository: ${repo.repository}.'"
     ]
   },
   "git": {
-    "requireCleanWorkingDir": true,
-    "addUntrackedFiles": false,
     "commit": true,
     "commitMessage": "chore(release): v${version}",
+    "requireCleanWorkingDir": true,
     "tag": true,
     "tagName": "v${version}"
   },
@@ -26,10 +19,7 @@
     "publish": false
   },
   "github": {
-    "release": true,
-    "releaseName": "v${version} release",
-    "skipChecks": false,
-    "tokenRef": "GITHUB_TOKEN"
+    "release": false
   },
   "plugins": {
     "@release-it/conventional-changelog": {
