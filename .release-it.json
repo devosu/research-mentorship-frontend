@@ -1,0 +1,43 @@
+{
+  "verbose": 2,
+  "hooks": {
+    "before:init": [
+      "pnpm install",
+      "pnpm run lint",
+      "pnpm test",
+      "pnpm run build"
+    ],
+    "after:bump": [
+      "echo",
+      "echo 'Successfully bumped to v${ version }. Now generating changelog...'"
+    ],
+    "after:release": [
+      "echo",
+      "echo 'New release project: ${ name }, version: v${ version } available to be pushed to ${ repo.repository }.'",
+      "echo",
+      "echo 'As a safety meansure, please manually create and push a new release commit.'"
+    ]
+  },
+  "git": {
+    "commit": false,
+    "push": false,
+    "requrieCleanWorkingDir": true,
+    "tag": true,
+    "tagName": "v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits"
+      }
+    }
+  }
+}

@@ -17,17 +17,17 @@ const createJestConfig = nextJest({
 // Const for coverage threshold.
 const customCoverageThreshold = {
 
-  // Test coverage for branch must be above 75%.
-  // branches: 75,
+  // Test coverage for branch must be above 50%.
+  branches: 50,
 
-  // Test coverage for functions must be above 75%.
-  // functions: 75,
+  // Test coverage for functions must be above 50%.
+  functions: 50,
 
-  // Test coverage for lines must be above 75%.
-  // lines: 75,
+  // Test coverage for lines must be above 50%.
+  lines: 50,
 
-  // At most 10 statements can be uncovered.
-  // statements: -10,
+  // At most 20 statements can be uncovered.
+  statements: -20,
 };
 
 const customJestConfig: Config = {
@@ -119,11 +119,16 @@ const customJestConfig: Config = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // Must match `tsconfig.json` paths.
   moduleNameMapper: {
+    '^@__tests__/(.*)$': '<rootDir>/__tests__/$1',
+    '^@__features__/(.*)$': '<rootDir>/__tests__/__features__/$1',
+    '^@__servers__/(.*)$': '<rootDir>/__tests__/__servers__/$1',
     '^@src/(.*)$': '<rootDir>/src/$1',
-    '^@app/(.*)$': '<rootDir>/src/app/$1',
-    '^@lib/(.*)$': '<rootDir>/src/lib/$1',
-    '^@api/(.*)$': '<rootDir>/src/app/api/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@config/(.*)$': '<rootDir>/src/config/$1',
+    '^hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^utils/(.*)$': '<rootDir>/src/utils/$1',
+    '^@app/(.*)$': '<rootDir>/src/app/$1',
+    '^@api/(.*)$': '<rootDir>/src/app/api/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -136,7 +141,7 @@ const customJestConfig: Config = {
   // notifyMode: 'failure-change',
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -197,8 +202,10 @@ const customJestConfig: Config = {
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
     '/tmp/',
+    '/temp/',
     '/node_modules/',
     '/__tests__/__features__/',
+    '/__tests__/__servers__/',
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
