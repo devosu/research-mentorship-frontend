@@ -25,9 +25,7 @@
     "publish": false
   },
   "github": {
-    "release": true,
-    "releaseName": "v${version} release",
-    "releaseNotes": "See CHANGELOG.md for details."
+    "release": false
   },
   "plugins": {
     "@release-it/conventional-changelog": {
