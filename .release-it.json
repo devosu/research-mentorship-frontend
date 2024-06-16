@@ -1,19 +1,33 @@
 {
   "verbose": 2,
   "hooks": {
+    "before:init": [
+      "pnpm install",
+      "pnpm run lint",
+      "pnpm test",
+      "pnpm run build"
+    ],
     "after:bump": [
+      "echo 'After bump'"
     ],
     "after:release": [
+      "echo 'After release'"
     ]
   },
   "git": {
-    "commit": false
+    "commit": true,
+    "commitMessage": "chore(release): v${version}",
+    "requrieCleanWorkingDir": true,
+    "tag": true,
+    "tagName": "v${version}"
   },
   "npm": {
     "publish": false
   },
   "github": {
-    "release": false
+    "release": true,
+    "releaseName": "v${version} release",
+    "releaseNotes": "See CHANGELOG.md for details."
   },
   "plugins": {
     "@release-it/conventional-changelog": {
