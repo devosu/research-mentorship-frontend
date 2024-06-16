@@ -142,9 +142,11 @@ jobs:
         uses: 'thollander/actions-comment-pull-request@v2'
         with:
           message: |
-            To: repo owner @${{ github.repository_owner }} and actions actor @${{ github.actor }}, 
-              The new preview is deployed at: ${{ steps.deploy.outputs.url }}
-              Have a great day!
+            To DEV's devops officer @KemingHe and the triggering person for this deployment @${{ github.triggering_actor }},
+
+                The new preview of ${{ github.repository }} has been deployed and live at: ${{ steps.deploy.outputs.url }}
+
+                Have a great day!
 
 
   # Concise production deployment job dev, only runs on push to main.
@@ -213,7 +215,9 @@ jobs:
           token: ${{ github.token }}
           title: ':rocket: New Production Deployment from ${{ github.sha }}'
           body: |
-            To: repo owner @${{ github.repository_owner }} and actions actor @${{ github.actor }},
-              The new production is deployed at: ${{ steps.deploy.outputs.url }}
-              Have a great day!
+            To DEV's @technology team and the triggering person for this deployment @${{ github.triggering_actor }},
+
+                The new production of ${{ github.repository }} has been deployed and live at: ${{ steps.deploy.outputs.url }}
+
+                Have a great day!
               

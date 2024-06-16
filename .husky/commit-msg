@@ -1,0 +1,2 @@
+# Lint the commit message before commit is created.
+pnpm commitlint --edit --verbose

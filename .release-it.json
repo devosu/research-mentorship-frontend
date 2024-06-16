@@ -1,0 +1,43 @@
+{
+  "verbose": 2,
+  "hooks": {
+    "before:init": [
+      "pnpm install",
+      "pnpm run lint",
+      "pnpm test",
+      "pnpm run build"
+    ],
+    "after:bump": [
+      "pnpm cz"
+    ],
+    "after:release": [
+      "echo 'Successfully released the project: ${name}, version: ${version}, to the repository: ${repo.repository}.'"
+    ]
+  },
+  "git": {
+    "requireCleanWorkingDir": true,
+    "addUntrackedFiles": false,
+    "commit": true,
+    "commitMessage": "chore(release): v${version}",
+    "tag": true,
+    "tagName": "v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version} release",
+    "skipChecks": false,
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog",
+      "preset": {
+        "name": "conventionalcommits"
+      }
+    }
+  }
+}
