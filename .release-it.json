@@ -2,18 +2,12 @@
   "verbose": 2,
   "hooks": {
     "after:bump": [
-      "pnpm git add --no-verify . && pnpm git commit -m --no-verify 'chore(release): update version to ${version}'"
     ],
     "after:release": [
-      "echo 'Successfully released the project: ${name}, version: ${version}, to the repository: ${repo.repository}.'"
     ]
   },
   "git": {
-    "commit": true,
-    "commitMessage": "chore(release): v${version}",
-    "requireCleanWorkingDir": true,
-    "tag": true,
-    "tagName": "v${version}"
+    "commit": false
   },
   "npm": {
     "publish": false

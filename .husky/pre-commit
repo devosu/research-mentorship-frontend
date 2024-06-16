@@ -1,11 +1,4 @@
-#! bin/bash
-
-# Install full dependencies,
-# ensure successful lint, test, and buid,
-# before each release to GitHub.
-
 pnpm install
 pnpm run lint
 pnpm test
 pnpm run build
-
