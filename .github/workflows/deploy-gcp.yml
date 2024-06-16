@@ -144,9 +144,13 @@ jobs:
           message: |
             To DEV's devops officer @KemingHe and the triggering person for this deployment @${{ github.triggering_actor }},
 
-                The new preview of ${{ github.repository }} has been deployed and live at: ${{ steps.deploy.outputs.url }}
+            The new preview of ${{ github.repository }} has been deployed and live at: 
+              
+            > ${{ steps.deploy.outputs.url }}
 
-                Have a great day!
+            **Please manully test the live preview as part of the PR review process.**
+
+            Have a great day!
 
 
   # Concise production deployment job dev, only runs on push to main.
@@ -217,7 +221,11 @@ jobs:
           body: |
             To DEV's @technology team and the triggering person for this deployment @${{ github.triggering_actor }},
 
-                The new production of ${{ github.repository }} has been deployed and live at: ${{ steps.deploy.outputs.url }}
+            The new production of ${{ github.repository }} has been deployed and live at: 
+              
+            > ${{ steps.deploy.outputs.url }}
 
-                Have a great day!
+            **Please reach out to keminghe.career[at]gmail.com for questions, otherwise, you can safely close this issue.**
+
+            Have a great day!
               
