@@ -12,7 +12,7 @@ import DefaultHeader from '@components/DefaultHeader';
 import { navigate } from '../actions';
 
 export default function Dashboard () {
-    const [status, setStatus] = useState('Incomplete');
+    const [status, setStatus] = useState('Approved');
 
     useEffect(() => {
         // get status of application

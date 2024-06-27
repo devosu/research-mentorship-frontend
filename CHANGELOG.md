@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - *(resources/page.tsx)* Implementation of resources page
 - Updated header, separated application pages
 - Implemented protected routes and authentication!
+- *(mvp build)* Mvp build
 
 ### 🐛 Bug Fixes
 

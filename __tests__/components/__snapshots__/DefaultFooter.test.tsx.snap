@@ -4,6 +4,7 @@ exports[`The default footer component matches the snapshot 1`] = `
 <div>
   <footer
     class="bg-zinc-50 text-center dark:bg-neutral-700 lg:text-left"
+    style="bottom: 0px; left: 0px; right: 0px; position: fixed;"
   >
     <div
       class="bg-black/5 p-4 text-center text-surface dark:text-white"

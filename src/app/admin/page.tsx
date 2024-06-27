@@ -18,17 +18,20 @@ export default function Admin () {
 
   async function getData() {
       console.log('running');
-      const ref = collection(db, "users");
+      const ref = collection(db, "applications");
       const q = query(ref, where('type', 'in', ['mentee', 'mentor']));
       const querySnapshot = await getDocs(q);
       var dataHolder: any[] = [];
       querySnapshot.forEach((doc: any) => {
           var data = {
-              name: doc.data().firstName,
-              major: doc.data().currentMajor, 
-              researchField: doc.data().currentMajor, 
-              researchDesc: doc.data().personalBio,
-              link: doc.data().calendarSchedulerLink,
+              id: doc.id,
+              name: doc.data().name,
+              type: doc.data().type, 
+              year: doc.data().year,
+              major: doc.data().major,
+              desiredResearchField: doc.data().desiredResearchField,
+              currentResearchField: doc.data().currentResearchField,
+              currentResearchFieldDescription: doc.data().currentResearchFieldDescription,
           };
           dataHolder.push(data);
           console.log(doc.data().firstName);
@@ -46,8 +49,8 @@ export default function Admin () {
   return (
     <main>
         <DefaultHeader/>
-        {data.map((item) => (
-                <DefaultApplicationCard name={item.name} major={item.major} researchField={item.researchField} researchDesc={item.researchDesc} link={item.link} />
+        {data.map((item, i) => (
+                <DefaultApplicationCard id={`${i}`} name={item.name} major={item.major} currentResearchField={item.researchField} currentResearchFieldDescription={item.researchDesc} />
             ))}
         <DefaultFooter/>
     </main>

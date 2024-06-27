@@ -10,8 +10,9 @@ import { useEffect, useState } from 'react';
 // Local imports.
 import DefaultFooter from '@components/DefaultFooter';
 import DefaultHeader from '@components/DefaultHeader';
-import { db } from '@src/lib/firebaseInit';
+import { db, auth } from '@src/lib/firebaseInit';
 import DefaultMentorCard from "@src/components/DefaultMentorCard";
+import { navigate } from "@src/app/actions";
 
 export default function Mentors () {
     const [data, setData] = useState<any[]>([]);
@@ -38,6 +39,11 @@ export default function Mentors () {
     }
 
     useEffect(() => {
+		auth.onAuthStateChanged(function(user) {
+			if (!user) {
+        navigate('/signin');
+			}
+		  });
         getData();
         console.log(data);
         console.log('done');
