@@ -4,30 +4,29 @@
  */
 
 // Type imports.
-import type { Config } from 'jest';
+import type { Config } from "jest";
 
 // NextJS essential imports.
-import nextJest from 'next/jest.js';
+import nextJest from "next/jest.js";
 
 // Provide path to NextJS app to load env vars and next.config.(mjs) files.
 const createJestConfig = nextJest({
-  dir: './',
+  dir: "./",
 });
 
 // Const for coverage threshold.
 const customCoverageThreshold = {
+  // Test coverage for branch must be above 50%.
+  branches: 50,
 
-  // Test coverage for branch must be above 75%.
-  // branches: 75,
+  // Test coverage for functions must be above 33%.
+  functions: 33,
 
-  // Test coverage for functions must be above 75%.
-  // functions: 75,
+  // Test coverage for lines must be above 50%.
+  lines: 50,
 
-  // Test coverage for lines must be above 75%.
-  // lines: 75,
-
-  // At most 10 statements can be uncovered.
-  // statements: -10,
+  // At most 20 statements can be uncovered.
+  // statements: -20,
 };
 
 const customJestConfig: Config = {
@@ -45,27 +44,27 @@ const customJestConfig: Config = {
 
   // The collect coverage from files configuration.
   collectCoverageFrom: [
-    'src/**/*.{mjs,js,jsx,ts,tsx}',
+    "src/**/*.{mjs,js,jsx,ts,tsx}",
     // Define exclusions after inclusions to take affect.
   ],
 
   // The coverage directory.
-  coverageDirectory: 'coverage',
+  coverageDirectory: "coverage",
 
   // Dirs to ignore for coverage.
   coveragePathIgnorePatterns: [],
 
   // NextJS specified using v8 as coverage provider.
-  coverageProvider: 'v8',
+  coverageProvider: "v8",
 
   // The coverage report configuration.
   coverageReporters: [
-    'json',
-    'lcov',
+    "json",
+    "lcov",
     // Only show partially covered files for text output.
     // ['text', {skipFull: true}],
-    'text',
-    'clover',
+    "text",
+    "clover",
   ],
 
   // Mininum threshold enforcement for coverage.
@@ -74,7 +73,7 @@ const customJestConfig: Config = {
   },
 
   // Print the project name.
-  displayName: 'research-mentorship-frontend-jest',
+  displayName: "research-mentorship-frontend-jest",
 
   // For smaller projects, turn on errorOnDeprecated to catch deprecations.
   errorOnDeprecated: false,
@@ -106,24 +105,24 @@ const customJestConfig: Config = {
 
   // An array of file extensions your modules use
   moduleFileExtensions: [
-    'js',
-    'mjs',
-    'cjs',
-    'jsx',
-    'ts',
-    'tsx',
-    'json',
-    'node',
+    "js",
+    "mjs",
+    "cjs",
+    "jsx",
+    "ts",
+    "tsx",
+    "json",
+    "node",
   ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // Must match `tsconfig.json` paths.
   moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/src/$1',
-    '^@app/(.*)$': '<rootDir>/src/app/$1',
-    '^@lib/(.*)$': '<rootDir>/src/lib/$1',
-    '^@api/(.*)$': '<rootDir>/src/app/api/$1',
-    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    "^@src/(.*)$": "<rootDir>/src/$1",
+    "^@app/(.*)$": "<rootDir>/src/app/$1",
+    "^@lib/(.*)$": "<rootDir>/src/lib/$1",
+    "^@api/(.*)$": "<rootDir>/src/app/api/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -142,7 +141,7 @@ const customJestConfig: Config = {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  reporters: ['default'],
+  reporters: ["default"],
 
   // Automatically reset mock state before every test
   // resetMocks: false,
@@ -157,7 +156,7 @@ const customJestConfig: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  rootDir: './',
+  rootDir: "./",
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -171,7 +170,7 @@ const customJestConfig: Config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   slowTestThreshold: 3,
@@ -180,7 +179,7 @@ const customJestConfig: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
+  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -189,16 +188,13 @@ const customJestConfig: Config = {
   testLocationInResults: true,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    '**/__tests__/**/*.[jt]s?(x)',
-    '**/?(*.)+(spec|test).[jt]s?(x)',
-  ],
+  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
-    '/tmp/',
-    '/node_modules/',
-    '/__tests__/__features__/',
+    "/tmp/",
+    "/node_modules/",
+    "/__tests__/__features__/",
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -214,10 +210,7 @@ const customJestConfig: Config = {
   // transform: undefined,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-    '/node_modules/',
-    '\\.pnp\\.[^\\/]+$',
-  ],
+  transformIgnorePatterns: ["/node_modules/", "\\.pnp\\.[^\\/]+$"],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

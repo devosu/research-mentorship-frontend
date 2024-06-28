@@ -1,2 +1,0 @@
-# Update the changelog after every (conventional) commit.
-pnpm git-cliff -o CHANGELOG.md

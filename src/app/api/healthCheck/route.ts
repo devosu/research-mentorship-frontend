@@ -6,7 +6,7 @@
 
 // Process incoming GET requests by returning a 200 OK.
 export async function GET() {
-  return new Response('OK', {
+  return new Response("OK", {
     status: 200,
   });
 }

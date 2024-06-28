@@ -13,7 +13,8 @@ exports[`The default footer component matches the snapshot 1`] = `
       <a
         href="https://usg.osu.edu/"
       >
-         Undergraduate Student Government at The Ohio State University
+         
+        Undergraduate Student Government at The Ohio State University
       </a>
     </div>
   </footer>

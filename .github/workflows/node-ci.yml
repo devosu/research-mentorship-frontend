@@ -42,12 +42,13 @@ jobs:
 
     env:
       NEXT_PUBLIC_PORT: ${{ vars.PORT }}
+
       NEXT_PUBLIC_FIREBASE_API_KEY: ${{ vars.FIREBASE_API_KEY }}
       NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ vars.FIREBASE_AUTH_DOMAIN }}
       NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{ vars.FIREBASE_STORAGE_BUCKET }}
       NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
       NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
-      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.PRODUCTION_FIREBASE_APP_ID }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ vars.PREVIEW_FIREBASE_APP_ID }}
 
     steps:
       - name: Checkout code
@@ -56,7 +57,7 @@ jobs:
       - name: Install pnpm
         uses: 'pnpm/action-setup@v4'
         with:
-          version: '9.1.4'
+          version: '9.4.0'
 
       - name : Install dependencies
         run: pnpm install

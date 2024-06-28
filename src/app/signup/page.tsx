@@ -2,33 +2,31 @@
 //
 // 'research.osu.dev' account creation definition.
 
-'use client';
+"use client";
 // NextJS essential imports.
 import { useEffect } from "react";
 
 // Local imports.
-import DefaultFooter from '@components/DefaultFooter';
-import DefaultHeader from '@components/DefaultHeader';
-import DefaultRegisterForm from '@components/DefaultRegisterForm';
-import { auth } from "@src/lib/firebaseInit";
+import DefaultFooter from "@components/DefaultFooter";
+import DefaultHeader from "@components/DefaultHeader";
+import DefaultRegisterForm from "@components/DefaultRegisterForm";
 import { navigate } from "@src/app/actions";
+import { auth } from "@src/lib/firebaseInit";
 
-
-export default function SignUp () {
-
+export default function SignUp() {
   // useEffect(() => {
-	// 	auth.onAuthStateChanged(function(user) {
-	// 		if (user) {
+  // 	auth.onAuthStateChanged(function(user) {
+  // 		if (user) {
   //       navigate('/');
-	// 		}
-	// 	  });
-	// }, []);
+  // 		}
+  // 	  });
+  // }, []);
 
   return (
     <main>
-      <DefaultHeader/>
-      <DefaultRegisterForm/>
-      <DefaultFooter/>
+      <DefaultHeader />
+      <DefaultRegisterForm />
+      <DefaultFooter />
     </main>
   );
 }
