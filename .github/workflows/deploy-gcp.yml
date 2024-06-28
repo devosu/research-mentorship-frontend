@@ -78,10 +78,13 @@ jobs:
     env:
       NEW_PREVIEW_IMAGE_NAME: ${{ vars.GCP_ARTIFACT_REGISTRY_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT_ID }}/${{ vars.GCP_ARTIFACT_REGISTRY_NAME }}/${{ vars.GCP_DOCKER_IMAGE_NAME}}:${{ github.sha }}
 
-    # Add 'id-token' with the intended permissions for workload identity federation
+    # Add 'id-token' with the intended permissions for workload identity federation.
     permissions:
+      # For checkout out code andGCP deploy.
       contents: 'read'
       id-token: 'write'
+      # For reporting deployed URL to pull request.
+      pull-requests: 'write'
 
     runs-on: ubuntu-latest
     steps:
@@ -132,8 +135,22 @@ jobs:
             NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
             NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PREVIEW_FIREBASE_APP_ID }}
 
-      - name: Show Deployed URL
-        run: echo ${{ steps.deploy.outputs.url }}
+      - name: Report Deployed URL to Actinons Log
+        run: echo "Preview url at ${{ steps.deploy.outputs.url }}"
+
+      - name: Report Deployed URL to PR
+        uses: 'thollander/actions-comment-pull-request@v2'
+        with:
+          message: |
+            To DEV's devops officer @KemingHe and the triggering person for this deployment @${{ github.triggering_actor }},
+
+            The new preview of ${{ github.repository }} has been deployed and live at: 
+              
+            > ${{ steps.deploy.outputs.url }}
+
+            **Please manully test the live preview as part of the PR review process.**
+
+            Have a great day!
 
 
   # Concise production deployment job dev, only runs on push to main.
@@ -149,6 +166,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
+      issues: 'write'
 
     runs-on: ubuntu-latest
 
@@ -184,7 +202,7 @@ jobs:
           image: ${{ env.NEW_PRODUCTION_IMAGE_NAME }}
           env_vars: |
             NEXT_PUBLIC_PORT=${{ vars.PORT }}
-            
+
             NEXT_PUBLIC_FIREBASE_API_KEY=${{ vars.FIREBASE_API_KEY }}
             NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ vars.FIREBASE_AUTH_DOMAIN }}
             NEXT_PUBLIC_FIREBASE_PROJECT_ID=${{ vars.FIREBASE_PROJECT_ID }}
@@ -192,6 +210,22 @@ jobs:
             NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${{ vars.FIREBASE_MESSAGING_SENDER_ID }}
             NEXT_PUBLIC_FIREBASE_APP_ID=${{ vars.PRODUCTION_FIREBASE_APP_ID }}
 
-      - name: Show Deployed URL
-        run: echo "${{ steps.deploy.outputs.url }}"
-        
+      - name: Report Deployed URL to Actinons Log
+        run: echo "Production url at ${{ steps.deploy.outputs.url }}"
+
+      - name: Report Deployed URL as a New Issue
+        uses: dacbd/create-issue-action@v2
+        with:
+          token: ${{ github.token }}
+          title: ':rocket: New Production Deployment from ${{ github.sha }}'
+          body: |
+            To DEV's @technology team and the triggering person for this deployment @${{ github.triggering_actor }},
+
+            The new production of ${{ github.repository }} has been deployed and live at: 
+              
+            > ${{ steps.deploy.outputs.url }}
+
+            **Please reach out to keminghe.career[at]gmail.com for questions, otherwise, you can safely close this issue.**
+
+            Have a great day!
+              

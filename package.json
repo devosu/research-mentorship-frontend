@@ -2,7 +2,7 @@
   "type": "module",
   "private": true,
   "name": "research-mentorship-frontend",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Next JS frontend application for DEV's Research Mentorship Project.",
   "keywords": ["nextjs", "typescript", "tailwindcss"],
   "homepage": "https://research.osu.dev",
@@ -40,20 +40,20 @@
   },
   "scripts": {
     "prepare": "husky",
-    "dev": "next dev",
+    "dev": "NODE_ENV=development next dev",
     "lint": "biome ci .",
     "lint:fix": "biome check --write .",
     "test": "pnpm run test:unit-and-snapshot && pnpm run test:feature",
-    "test:unit-and-snapshot": "jest",
+    "test:unit-and-snapshot": "NODE_ENV=test jest",
     "test:feature": "cucumber-js",
     "build": "next build",
-    "start": "next start"
+    "release": "release-it",
+    "start": "NODE_ENV=production next start"
   },
   "packageManager": "pnpm@9.4.0",
   "dependencies": {
     "dotenv-safe": "^9.1.0",
     "firebase": "^10.12.2",
-    "firebase-tools": "^13.12.0",
     "husky": "^9.0.11",
     "next": "14.2.3",
     "react": "^18.3.1",

@@ -135,7 +135,7 @@ const customJestConfig: Config = {
   // notifyMode: 'failure-change',
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: "ts-jest",
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -193,8 +193,10 @@ const customJestConfig: Config = {
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
     "/tmp/",
+    "/temp/",
     "/node_modules/",
     "/__tests__/__features__/",
+    "/__tests__/__servers__/",
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
