@@ -11,7 +11,7 @@ WORKDIR /app
 # When using pnpm, make sure to install globally
 # with root privilege before switching back to the node user.
 USER root
-RUN npm install --global pnpm@latest
+RUN npm install --global pnpm@9.4.0
 RUN chown --recursive node:node /app
 
 # When using pnpm, make sure to include
@@ -36,7 +36,7 @@ FROM node:22-alpine AS production
 WORKDIR /app
 
 USER root
-RUN npm install --global pnpm@latest
+RUN npm install --global pnpm@9.4.0
 RUN chown --recursive node:node /app
 
 USER node

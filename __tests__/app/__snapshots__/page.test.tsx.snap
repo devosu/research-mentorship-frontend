@@ -1,19 +1,388 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The homepage matches the snapshot 1`] = `
+exports[`The homepage component matches the snapshot 1`] = `
 <div>
   <main>
     <header>
-      This is the default header.
+      <nav
+        class="relative flex w-full flex-wrap items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:py-4"
+        data-twe-navbar-ref="true"
+      >
+        <div
+          class="flex w-full flex-wrap items-center justify-between px-3"
+        >
+          <div>
+            <a
+              class="mx-2 my-1 flex items-center lg:mb-0 lg:mt-0"
+              href="/"
+            >
+              <img
+                alt="Logo"
+                data-nimg="1"
+                decoding="async"
+                height="35"
+                loading="lazy"
+                src="/_next/image?url=%2Fimages%2Flogo.png&w=96&q=75"
+                srcset="/_next/image?url=%2Fimages%2Flogo.png&w=48&q=75 1x, /_next/image?url=%2Fimages%2Flogo.png&w=96&q=75 2x"
+                style="color: transparent;"
+                width="35"
+              />
+            </a>
+          </div>
+          <button
+            aria-controls="navbarSupportedContent4"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            class="block border-0 bg-transparent px-2 text-black/50 hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 lg:hidden"
+            data-twe-collapse-init="true"
+            data-twe-target="#navbarSupportedContent4"
+            type="button"
+          >
+            <span
+              class="[&>svg]:w-7 [&>svg]:stroke-black/50 dark:[&>svg]:stroke-neutral-200"
+            >
+              <svg
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+          <div
+            class="!visible mt-2 hidden flex-grow basis-[100%] items-center lg:mt-0 lg:!flex lg:basis-auto"
+            data-twe-collapse-item="true"
+            id="navbarSupportedContent4"
+          >
+            <ul
+              class="list-style-none me-auto flex flex-col ps-0 lg:mt-1 lg:flex-row"
+              data-twe-navbar-nav-ref="true"
+            >
+              <li
+                class="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2"
+                data-twe-nav-item-ref="true"
+              >
+                <a
+                  aria-current="page"
+                  class="text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80 lg:px-2"
+                  data-twe-nav-link-ref="true"
+                  href="/"
+                >
+                  OSU Undergraduate Research Mentorship Program
+                </a>
+              </li>
+            </ul>
+            <div
+              class="flex items-center"
+            >
+              <a
+                class="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                data-twe-ripple-color="light"
+                data-twe-ripple-init="true"
+                href="/"
+                type="button"
+              >
+                Home
+              </a>
+              <a
+                class="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                data-twe-ripple-color="light"
+                data-twe-ripple-init="true"
+                href="/resources"
+                type="button"
+              >
+                Resources
+              </a>
+              <div
+                class="relative"
+                data-twe-dropdown-ref="true"
+              >
+                <a
+                  aria-expanded="false"
+                  class="flex items-center px-2 text-black/60 transition duration-200 hover:text-black/80 hover:ease-in-out focus:text-black/80 active:text-black/80 motion-reduce:transition-none dark:text-white/60 dark:hover:text-white/80 dark:focus:text-white/80 dark:active:text-white/80"
+                  data-twe-dropdown-toggle-ref="true"
+                  href="#"
+                  id="dropdownMenuButton2"
+                  type="button"
+                >
+                  <span
+                    class="[&>svg]:h-5 [&>svg]:w-5"
+                  >
+                    <svg
+                      fill="currentColor"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="[&>svg]:w-5"
+                  >
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </a>
+                <ul
+                  aria-labelledby="dropdownMenuButton1"
+                  class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg data-[twe-dropdown-show]:block dark:bg-surface-dark"
+                  data-twe-dropdown-menu-ref="true"
+                >
+                  <li>
+                    <a
+                      class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                      data-twe-dropdown-item-ref="true"
+                      href="/signin"
+                    >
+                      Sign In
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
+                      data-twe-dropdown-item-ref="true"
+                      href="/signup"
+                    >
+                      Sign Up
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
-    <h1>
-      Research Mentorship Program Homepage
-    </h1>
-    <p>
-      Hello world!
-    </p>
-    <footer>
-      This is the default footer.
+    <div
+      class="relative"
+      data-twe-carousel-init="true"
+      data-twe-ride="carousel"
+      id="carouselExampleCaptions"
+    >
+      <div
+        class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+        data-twe-carousel-indicators="true"
+      >
+        <button
+          aria-current="true"
+          aria-label="Slide 1"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          data-twe-carousel-active="true"
+          data-twe-slide-to="0"
+          data-twe-target="#carouselExampleCaptions"
+          type="button"
+        />
+        <button
+          aria-label="Slide 2"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          data-twe-slide-to="1"
+          data-twe-target="#carouselExampleCaptions"
+          type="button"
+        />
+        <button
+          aria-label="Slide 3"
+          class="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+          data-twe-slide-to="2"
+          data-twe-target="#carouselExampleCaptions"
+          type="button"
+        />
+      </div>
+      <div
+        class="relative w-full overflow-hidden after:clear-both after:block after:content-['']"
+      >
+        <div
+          class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-twe-carousel-active="true"
+          data-twe-carousel-item="true"
+        >
+          <img
+            alt="..."
+            class="block w-full"
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(15).jpg"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block"
+          >
+            <h5
+              class="text-xl"
+            >
+              Discover where you 
+              <em>
+                thrive
+              </em>
+              .
+            </h5>
+            <a
+              class="me-3 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              data-twe-ripple-color="light"
+              data-twe-ripple-init="true"
+              href="/mentors"
+              style="margin-top: 25px; margin-bottom: 10px;"
+              type="button"
+            >
+              Find your mentor
+            </a>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-twe-carousel-item="true"
+        >
+          <img
+            alt="..."
+            class="block w-full"
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(22).jpg"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block"
+          >
+            <h5
+              class="text-xl"
+            >
+              <strong>
+                Inspire.
+              </strong>
+               
+              <em>
+                Listen.
+              </em>
+               
+              <u>
+                Grow.
+              </u>
+            </h5>
+            <a
+              class="me-3 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              data-twe-ripple-color="light"
+              data-twe-ripple-init="true"
+              href="/apply-mentor"
+              style="margin-top: 25px; margin-bottom: 10px;"
+              type="button"
+            >
+              Apply to mentor
+            </a>
+          </div>
+        </div>
+        <div
+          class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+          data-twe-carousel-item="true"
+        >
+          <img
+            alt="..."
+            class="block w-full"
+            src="https://tecdn.b-cdn.net/img/Photos/Slides/img%20(23).jpg"
+          />
+          <div
+            class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block"
+          >
+            <h5
+              class="text-xl"
+            >
+              USG x URP
+            </h5>
+            <p
+              style="margin-top: 25px; margin-bottom: 10px;"
+            >
+              An exclusive collaboration fostering student success
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        data-twe-slide="prev"
+        data-twe-target="#carouselExampleCaptions"
+        type="button"
+      >
+        <span
+          class="inline-block h-8 w-8"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+        >
+          Previous
+        </span>
+      </button>
+      <button
+        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+        data-twe-slide="next"
+        data-twe-target="#carouselExampleCaptions"
+        type="button"
+      >
+        <span
+          class="inline-block h-8 w-8"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+        <span
+          class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+        >
+          Next
+        </span>
+      </button>
+    </div>
+    <footer
+      class="bg-zinc-50 text-center dark:bg-neutral-700 lg:text-left"
+      style="bottom: 0px; left: 0px; right: 0px; position: fixed;"
+    >
+      <div
+        class="bg-black/5 p-4 text-center text-surface dark:text-white"
+      >
+        © 2024 Copyright:
+        <a
+          href="https://usg.osu.edu/"
+        >
+           
+          Undergraduate Student Government at The Ohio State University
+        </a>
+      </div>
     </footer>
   </main>
 </div>

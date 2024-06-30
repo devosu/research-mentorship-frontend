@@ -9,11 +9,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Research Mentorship',
-  description: 'OSU Student Government Research Mentorship Program',
+  title: "Research Mentorship",
+  description: "OSU Student Government Research Mentorship Program",
 };
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>{children}</body>

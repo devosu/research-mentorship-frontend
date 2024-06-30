@@ -1,18 +1,23 @@
 // ./__tests__/app/page.test.tsx
 //
-// Snapshot test for the Homepage.
+// Snapshot tests for the Homepage.
 
-// Testing essential imports.
-import { describe, expect, it } from '@jest/globals';
-import { render } from '@testing-library/react';
+// jsdom-jest essential imports.
+import { describe, expect, it } from "@jest/globals";
+import { render } from "@testing-library/react";
 
-// Local imports.
-import HomePage from '@app/page';
+// Local testing module imports.
+import Homepage from "@app/page";
 
-// Test suite.
-describe('The homepage', () => {
-  it('matches the snapshot', () => {
-    const { container } = render(<HomePage />);
+// Behavior for the Homepage component.
+describe("The homepage component", () => {
+  it("renders a main element", () => {
+    const { container } = render(<Homepage />);
+    expect(container.querySelector("main")).toBeDefined();
+  });
+
+  it("matches the snapshot", () => {
+    const { container } = render(<Homepage />);
     expect(container).toMatchSnapshot();
   });
 });

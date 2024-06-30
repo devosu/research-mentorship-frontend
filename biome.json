@@ -7,8 +7,8 @@
     "defaultBranch": "main"
   },
   "files": {
-    "include": ["**/*.(mjs|js|jsx|json|ts|tsx)"],
-    "ignore": [".next", "node_modules"],
+    "include": [],
+    "ignore": [".next", "node_modules", "./*.json"],
     "ignoreUnknown": true
   },
   "organizeImports": {

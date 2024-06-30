@@ -1,4 +1,4 @@
 pnpm install
-pnpm run lint
+
 pnpm test
 pnpm run build

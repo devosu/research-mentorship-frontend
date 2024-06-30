@@ -1,19 +1,20 @@
-// @app/page.tsx
+// @app/signin/page.tsx
 //
-// 'research.osu.dev' homepage definition.
+// 'research.osu.dev' account login definition.
 
+"use client";
 // NextJS essential imports.
 
-import DefaultCarousel from "@components/DefaultCarousel";
 // Local imports.
 import DefaultFooter from "@components/DefaultFooter";
 import DefaultHeader from "@components/DefaultHeader";
+import DefaultLoginForm from "@components/DefaultLoginForm";
 
-export default function Homepage() {
+export default function SignIn() {
   return (
     <main>
       <DefaultHeader />
-      <DefaultCarousel />
+      <DefaultLoginForm />
       <DefaultFooter />
     </main>
   );
