@@ -23,10 +23,10 @@ export default function ApplyMentee() {
   }, []);
 
   function submitApplication() {
-    // var name = (document.getElementById('menteeName') as HTMLInputElement).value;
-    // var year = (document.getElementById('menteeYear') as HTMLInputElement).value;
-    // var major = (document.getElementById('menteeMajor') as HTMLInputElement).value;
-    var researchField = (
+    // const name = (document.getElementById('menteeName') as HTMLInputElement).value;
+    // const year = (document.getElementById('menteeYear') as HTMLInputElement).value;
+    // const major = (document.getElementById('menteeMajor') as HTMLInputElement).value;
+    const researchField = (
       document.getElementById("menteeResearchField") as HTMLInputElement
     ).value;
 
@@ -97,7 +97,7 @@ export default function ApplyMentee() {
                   id="menteeName"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">Year</label>
@@ -107,7 +107,7 @@ export default function ApplyMentee() {
                   id="menteeYear"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">Major</label>
@@ -117,7 +117,7 @@ export default function ApplyMentee() {
                   id="menteeMajor"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">
@@ -129,7 +129,7 @@ export default function ApplyMentee() {
                   id="menteeResearchField"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <button
                 type="button"

@@ -5,7 +5,7 @@
 "use client";
 // NextJS essential imports.
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // Local imports.
 import DefaultFooter from "@components/DefaultFooter";
@@ -15,16 +15,16 @@ import DefaultMentorCard from "@src/components/DefaultMentorCard";
 import { auth, db } from "@src/lib/firebaseInit";
 
 export default function Mentors() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<MentorData[]>([]);
 
-  async function getData() {
+  const getData = useCallback(async () => {
     console.log("running");
     const ref = collection(db, "users");
     const q = query(ref, where("type", "==", "mentor"));
     const querySnapshot = await getDocs(q);
-    var dataHolder: any[] = [];
-    querySnapshot.forEach((doc: any) => {
-      var data = {
+    const dataHolder: MentorData[] = [];
+    for (const doc of querySnapshot.docs) {
+      const data: MentorData = {
         name: doc.data().firstName,
         major: doc.data().currentMajor,
         researchField: doc.data().currentMajor,
@@ -33,10 +33,10 @@ export default function Mentors() {
       };
       dataHolder.push(data);
       console.log(doc.data().firstName);
-    });
+    }
     setData(dataHolder);
     console.log("set data");
-  }
+  }, []);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -45,15 +45,14 @@ export default function Mentors() {
       }
     });
     getData();
-    console.log(data);
-    console.log("done");
-  }, []);
+  }, [getData]);
 
   return (
     <main>
       <DefaultHeader />
       {data.map((item) => (
         <DefaultMentorCard
+          key={item.name}
           name={item.name}
           major={item.major}
           researchField={item.researchField}

@@ -24,8 +24,8 @@ export default function DefaultLoginForm() {
   }, []);
 
   function logInUser() {
-    var email = (document.getElementById("email") as HTMLInputElement).value;
-    var password = (document.getElementById("password") as HTMLInputElement)
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
       .value;
 
     signInWithEmail(email, password).then((res) => {

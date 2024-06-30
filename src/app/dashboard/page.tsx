@@ -47,7 +47,7 @@ export default function Dashboard() {
         </span>
       </div>
 
-      {status == "Incomplete" && (
+      {status === "Incomplete" && (
         <div
           style={{ margin: "20px auto", width: "50%", alignContent: "center" }}
         >
@@ -67,7 +67,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {status == "Approved" && (
+      {status === "Approved" && (
         <div
           style={{ margin: "20px auto", width: "50%", alignContent: "center" }}
         >
@@ -87,7 +87,7 @@ export default function Dashboard() {
         </div>
       )}
 
-      {status == "Submitted" && (
+      {status === "Submitted" && (
         <div
           style={{ margin: "20px auto", width: "50%", alignContent: "center" }}
         >

@@ -17,7 +17,7 @@ export default function DefaultRegisterForm() {
   const [isMentor, setIsMentor] = useState(false);
   const [hasPasswordError, setHasPasswordError] = useState(false);
 
-  const onChangeCheckBox = (e: any) => {
+  const onChangeCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsMentor(e.target.checked);
   };
 
@@ -31,29 +31,23 @@ export default function DefaultRegisterForm() {
 
   function createUser() {
     setHasPasswordError(false);
-    var firstName = (document.getElementById("firstName") as HTMLInputElement)
+    const firstName = (document.getElementById("firstName") as HTMLInputElement)
       .value;
-    var lastName = (document.getElementById("lastName") as HTMLInputElement)
+    const lastName = (document.getElementById("lastName") as HTMLInputElement)
       .value;
-    var email = (document.getElementById("email") as HTMLInputElement).value;
-    var password = (document.getElementById("password") as HTMLInputElement)
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement)
       .value;
-    var confirmPassword = (
+    const confirmPassword = (
       document.getElementById("confirmPassword") as HTMLInputElement
     ).value;
 
-    console.log("fName: " + firstName);
-    console.log("lName: " + lastName);
-    console.log("email: " + email);
-    console.log("password: " + password);
-    console.log("confirmPassword: " + confirmPassword);
-
-    if (password == confirmPassword && isMentor) {
+    if (password === confirmPassword && isMentor) {
       signUpWithEmail(email, password).then((res) => {
         console.log(res?.uid);
         createMentorUserObject(firstName, lastName, email);
       });
-    } else if (password == confirmPassword && !isMentor) {
+    } else if (password === confirmPassword && !isMentor) {
       signUpWithEmail(email, password).then((res) => {
         console.log(res?.uid);
         createMenteeUserObject(firstName, lastName, email);

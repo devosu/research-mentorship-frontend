@@ -75,6 +75,7 @@ export default function DefaultHeader() {
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
+                <title>icon</title>
                 <path
                   fillRule="evenodd"
                   d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
@@ -170,6 +171,7 @@ export default function DefaultHeader() {
                         fill="currentColor"
                         strokeWidth="1.5"
                       >
+                        <title>icon</title>
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -183,6 +185,7 @@ export default function DefaultHeader() {
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
+                        <title>icon</title>
                         <path
                           fillRule="evenodd"
                           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
@@ -240,6 +243,7 @@ export default function DefaultHeader() {
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
+                        <title>icon</title>
                         <path
                           fillRule="evenodd"
                           d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
@@ -277,6 +281,7 @@ export default function DefaultHeader() {
               {/* Sign Out Button */}
               {isAuthenticated && (
                 <button
+                  type="button"
                   className="inline-block rounded px-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-secondary-600 dark:hover:text-secondary-500 dark:focus:text-secondary-500 dark:active:text-secondary-500"
                   onClick={signOutUser}
                   data-twe-dropdown-item-ref

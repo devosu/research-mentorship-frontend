@@ -21,13 +21,13 @@ export default function ApplyMentor() {
   }, []);
 
   function submitForm() {
-    var name = document.getElementById("mentorName")?.textContent;
-    var year = document.getElementById("mentorYear")?.textContent;
-    var major = document.getElementById("mentorMajor")?.textContent;
-    var researchField = document.getElementById(
+    const name = document.getElementById("mentorName")?.textContent;
+    const year = document.getElementById("mentorYear")?.textContent;
+    const major = document.getElementById("mentorMajor")?.textContent;
+    const researchField = document.getElementById(
       "mentorResearchField",
     )?.textContent;
-    var researchDescription = document.getElementById(
+    const researchDescription = document.getElementById(
       "mentorResearchDescription",
     )?.textContent;
   }
@@ -83,7 +83,7 @@ export default function ApplyMentor() {
                   id="mentorName"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">Year</label>
@@ -93,7 +93,7 @@ export default function ApplyMentor() {
                   id="mentorYear"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">Major</label>
@@ -103,7 +103,7 @@ export default function ApplyMentor() {
                   id="mentorMajor"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">
@@ -115,7 +115,7 @@ export default function ApplyMentor() {
                   id="mentorResearchField"
                   className="w-full px-3 py-2 border rounded-md"
                   required
-                ></input>
+                />
               </div>
               <div>
                 <label className="block text-gray-700">
@@ -127,7 +127,7 @@ export default function ApplyMentor() {
                   className="w-full px-3 py-2 border rounded-md"
                   rows={3}
                   required
-                ></textarea>
+                />
               </div>
               <button
                 type="button"
