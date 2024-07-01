@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      dotenv-safe:
-        specifier: ^9.1.0
-        version: 9.1.0(dotenv@8.6.0)
       firebase:
         specifier: ^10.12.2
         version: 10.12.2
@@ -48,9 +45,6 @@ importers:
       '@testing-library/react':
         specifier: ^15.0.7
         version: 15.0.7(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/dotenv-safe':
-        specifier: ^8.1.6
-        version: 8.1.6
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -1001,9 +995,6 @@ packages:
   '@types/cookiejar@2.1.5':
     resolution: {integrity: sha512-he+DHOWReW0nghN24E1WUqM0efK4kI9oTqDm6XmK8ZPe2djZ90BSNdGnIyCLzCPw7/pogPlGbzI2wHGGmi4O/Q==}
 
-  '@types/dotenv-safe@8.1.6':
-    resolution: {integrity: sha512-ftZXu3WGT6ALq+f98IX2gWriGMPds+0ku5h8kZewNpY47ua+Z+XNcin9apZ2kVd4B9LV1vMfUOyDf1/hhreR0Q==}
-
   '@types/express-serve-static-core@4.19.5':
     resolution: {integrity: sha512-y6W03tvrACO72aijJ5uF02FRq5cgDR9lUxddQ8vyF+GvmjJQqbzDcJngEjURc+ZsG31VI3hODNZJ2URj86pzmg==}
 
@@ -1545,15 +1536,6 @@ packages:
     resolution: {integrity: sha512-A2is4PLG+eeSfoTMA95/s4pvAoSo2mKtiM5jlHkAVewmiO8ISFTFKZjH7UAM1Atli/OT/7JHOrJRJiMKUZKYBw==}
     engines: {node: '>=12'}
     deprecated: Use your platform's native DOMException instead
-
-  dotenv-safe@9.1.0:
-    resolution: {integrity: sha512-2qwVAnUN+EDpu41pIK1XiJpHXKHV9Dnti3cE1EnUXT1/BV5+B7xuSZtgZ/4LExkCpp5F6BGikraezQL+8hKCOA==}
-    peerDependencies:
-      dotenv: '>= 8.2.0'
-
-  dotenv@8.6.0:
-    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
-    engines: {node: '>=10'}
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
@@ -4219,11 +4201,6 @@ snapshots:
 
   '@types/cookiejar@2.1.5': {}
 
-  '@types/dotenv-safe@8.1.6':
-    dependencies:
-      '@types/node': 20.14.9
-      dotenv: 8.6.0
-
   '@types/express-serve-static-core@4.19.5':
     dependencies:
       '@types/node': 20.14.9
@@ -4800,12 +4777,6 @@ snapshots:
   domexception@4.0.0:
     dependencies:
       webidl-conversions: 7.0.0
-
-  dotenv-safe@9.1.0(dotenv@8.6.0):
-    dependencies:
-      dotenv: 8.6.0
-
-  dotenv@8.6.0: {}
 
   eastasianwidth@0.2.0: {}
 
