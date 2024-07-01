@@ -6,10 +6,10 @@
 
 // Process incoming GET requests by returning a 200 OK.
 export async function GET(): Promise<Response> {
-  return new Response('OK', {
+  return new Response("OK", {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain',
+      "Content-Type": "text/plain",
     },
   });
 }

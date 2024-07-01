@@ -2,8 +2,21 @@
 
 exports[`The default footer component matches the snapshot 1`] = `
 <div>
-  <footer>
-    This is the default footer.
+  <footer
+    class="bg-zinc-50 text-center dark:bg-neutral-700 lg:text-left"
+    style="bottom: 0px; left: 0px; right: 0px; position: fixed;"
+  >
+    <div
+      class="bg-black/5 p-4 text-center text-surface dark:text-white"
+    >
+      © 2024 Copyright:
+      <a
+        href="https://usg.osu.edu/"
+      >
+         
+        Undergraduate Student Government at The Ohio State University
+      </a>
+    </div>
   </footer>
 </div>
 `;
