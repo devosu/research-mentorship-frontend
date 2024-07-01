@@ -15,16 +15,14 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
+        "name": "next",
       },
     ],
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
-      "@config/*": ["src/config/*"],
+      "@lib/*": ["src/lib/*"],
       "@components/*": ["src/components/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@uils/*": ["src/utils/*"],
       "@app/*": ["src/app/*"],
       "@api/*": ["src/app/api/*"],
     }

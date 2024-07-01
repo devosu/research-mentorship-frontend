@@ -13,20 +13,19 @@
 // Unittests for the /healthcheck liveness endpoint.
 
 // Testing essential imports.
-import { describe, expect, it } from '@jest/globals';
-import { createRequest } from 'node-mocks-http';
+import { describe, expect, it } from "@jest/globals";
+import { createRequest } from "node-mocks-http";
 
 // Local imports.
-import { GET } from '@api/healthcheck/route';
+import { GET } from "@api/healthcheck/route";
 
 // Test suite.
-describe('GET /api/healthcheck', () => {
-  it('returns a 200 OK', async () => {
-
+describe("GET /api/healthcheck", () => {
+  it("returns a 200 OK", async () => {
     // Mock the incoming request.
-    const mockNextRequest = createRequest ({
-      method: 'GET',
-      url: '/api/healthcheck',
+    const mockNextRequest = createRequest({
+      method: "GET",
+      url: "/api/healthcheck",
     });
 
     // Process the request.
@@ -36,6 +35,6 @@ describe('GET /api/healthcheck', () => {
 
     // Check the response.
     expect(mockNextResponseStatus).toBe(200);
-    expect(mockNextResponseText).toBe('OK');    
+    expect(mockNextResponseText).toBe("OK");
   });
 });
