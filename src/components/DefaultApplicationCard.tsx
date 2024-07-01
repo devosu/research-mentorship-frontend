@@ -5,8 +5,6 @@
 // NextJS essential imports.
 
 // Local imports.
-import { db } from "@src/lib/firebaseInit";
-import { doc, updateDoc } from "firebase/firestore";
 
 export interface Props {
   id: string;
@@ -20,17 +18,11 @@ export interface Props {
 
 export default function DefaultApplicationCard(props: Props) {
   async function acceptApplication() {
-    const docRef = doc(db, "applications", props.id);
-    await updateDoc(docRef, {
-      adminApproved: true,
-    });
+    // Placeholder function body.
   }
 
   async function rejectApplication() {
-    const docRef = doc(db, "applications", props.id);
-    await updateDoc(docRef, {
-      adminApproved: false,
-    });
+    // Placeholder function body.
   }
 
   return (
