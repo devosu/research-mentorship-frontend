@@ -28,6 +28,16 @@ RUN pnpm install
 FROM base AS build
 USER node
 COPY --chown=node:node . .
+
+# Accept incoming [Firebase] env vars at build time.
+ENV NEXT_PUBLIC_FIREBASE_API_KEY=
+ENV NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+ENV NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+ENV NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+ENV NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+ENV NEXT_PUBLIC_FIREBASE_APP_ID=
+
+# Build the production application.
 RUN pnpm run build
 
 # Stage 3.A Optimize for production, only install production dependencies,
@@ -50,8 +60,7 @@ COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/.next ./.next
 COPY --from=build --chown=node:node /app/.env.example ./
 
-# Accept incoming [Firebase] env vars only at runtime,
-# latest [Firebase] config no longer needs measurement id.
+# Accept incoming [Firebase] env vars at run time.
 ENV NEXT_PUBLIC_FIREBASE_API_KEY=
 ENV NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
 ENV NEXT_PUBLIC_FIREBASE_PROJECT_ID=
